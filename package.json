@@ -1,0 +1,22 @@
+{
+  "name": "public-footprint-network",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Public Footprint Multi-Domain Network",
+  "workspaces": [
+    "apps/*",
+    "shared/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/main",
+    "dev:main": "npm run dev --workspace=apps/main",
+    "dev:reference": "npm run dev --workspace=apps/reference",
+    "build": "npm run build --workspaces --if-present",
+    "build:main": "npm run build --workspace=apps/main",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
