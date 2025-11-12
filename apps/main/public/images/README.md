@@ -6,6 +6,7 @@
 /public/images/
   /portraits/     - Porträtfotos (z.B. Thomas, Team)
   /logos/         - Logos (Public Footprint, Partner, etc.)
+  /visuals/       - Andere Bilder (Illustrationen, Screenshots, Grafiken)
 ```
 
 ## Verwendung
@@ -32,9 +33,11 @@ Oder als einfaches Bild:
 
 - **Logos:** SVG (skalierbar) oder PNG (transparent)
 - **Porträts:** JPG oder WebP
+- **Visuals:** JPG, PNG oder WebP (je nach Bedarf)
 - **Optimale Größen:**
   - Porträts: 800x800px (wird automatisch optimiert)
   - Logos: SVG (vektorbasiert) oder 2x Auflösung für Retina
+  - Visuals: Abhängig vom Einsatz, max. 1920px Breite
 
 ## Dateinamen
 
