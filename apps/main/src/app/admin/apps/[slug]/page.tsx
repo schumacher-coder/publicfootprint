@@ -10,6 +10,7 @@ interface AppContent {
     title: string
     subtitle: string
     description: string
+    image?: string
   }
   sections: Array<{
     id: string
@@ -215,6 +216,25 @@ export default function AdminAppEditor() {
                   rows={3}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
                 />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Hero-Bild (optional)
+                </label>
+                <input
+                  type="text"
+                  value={content.hero.image || ''}
+                  onChange={(e) => setContent({
+                    ...content,
+                    hero: { ...content.hero, image: e.target.value }
+                  })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                  placeholder="/images/visuals/reference-hero.jpg"
+                />
+                <p className="text-sm text-gray-500 mt-1">
+                  Bildpfad z.B.: /images/visuals/hero-image.jpg oder /images/portraits/thomas.jpg
+                </p>
               </div>
             </div>
           </section>

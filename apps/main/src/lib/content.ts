@@ -16,6 +16,7 @@ export interface Service {
 export interface Homepage {
   hero: {
     title: string
+    backgroundImage?: string
     paragraphs: string[]
   }
   aboutSection: {
@@ -38,6 +39,7 @@ export interface AppContent {
     title: string
     subtitle: string
     description: string
+    image?: string
   }
   sections: Array<{
     id: string

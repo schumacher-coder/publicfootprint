@@ -6,6 +6,7 @@ import Link from 'next/link'
 interface Homepage {
   hero: {
     title: string
+    backgroundImage?: string
     paragraphs: string[]
   }
   aboutSection: {
@@ -150,6 +151,25 @@ export default function AdminHomepage() {
                   })}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
                 />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Hintergrundbild (optional)
+                </label>
+                <input
+                  type="text"
+                  value={content.hero.backgroundImage || ''}
+                  onChange={(e) => setContent({
+                    ...content,
+                    hero: { ...content.hero, backgroundImage: e.target.value }
+                  })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                  placeholder="/images/visuals/hero-background.jpg"
+                />
+                <p className="text-sm text-gray-500 mt-1">
+                  Bildpfad z.B.: /images/visuals/hero-bg.jpg (leer lassen, wenn kein Bild)
+                </p>
               </div>
 
               <div>
