@@ -1,0 +1,20 @@
+{
+  "domain": "media-footprint.de",
+  "hero": {
+    "title": "Media Footprint",
+    "subtitle": "Platzierung in Fachmedien mit echtem Mehrwert",
+    "description": "Über 20 Jahre Redaktionskontakte in der B2B-IT Medienlandschaft – für Ihre Sichtbarkeit."
+  },
+  "sections": [
+    {
+      "id": "intro",
+      "title": "Medienarbeit, die ankommt",
+      "content": "Fachmedien sind nach wie vor wichtige Meinungsbildner in der B2B-IT. Mit unserem Netzwerk und Know-how bringen wir Ihre Themen in die richtigen Publikationen."
+    }
+  ],
+  "cta": {
+    "title": "Lassen Sie uns über Ihre Medienthemen sprechen",
+    "buttonText": "Jetzt Kontakt aufnehmen",
+    "buttonLink": "https://publicfootprint.de/kontakt"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "services": [
+    {
+      "id": "reference",
+      "title": "Reference Footprint",
+      "slug": "reference",
+      "domain": "https://reference-footprint.de",
+      "excerpt": "Überzeugende Kundenreferenzen und Success Stories, die Ihre Kompetenz greifbar machen.",
+      "enabled": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "media",
+      "title": "Media Footprint",
+      "slug": "media",
+      "domain": "https://media-footprint.de",
+      "excerpt": "Platzierung in Fachmedien mit hochwertigem Content. Über 20 Jahre Redaktionskontakte.",
+      "enabled": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "digital",
+      "title": "Digital Footprint",
+      "slug": "digital",
+      "domain": "https://digital-footprint.de",
+      "excerpt": "Digitale Sichtbarkeit erhöhen und neue Zielgruppen online erreichen.",
+      "enabled": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "social",
+      "title": "Social Media Footprint",
+      "slug": "social",
+      "domain": "https://social-footprint.de",
+      "excerpt": "Professionelle Pflege Ihrer Business-Netzwerke auf LinkedIn, XING und Co.",
+      "enabled": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "event",
+      "title": "Event Footprint",
+      "slug": "event",
+      "domain": "https://event-footprint.de",
+      "excerpt": "Maximale Aufmerksamkeit auf Messen und Kongressen – live und digital.",
+      "enabled": true,
+      "sortOrder": 5
+    },
+    {
+      "id": "marketing",
+      "title": "Marketing Footprint",
+      "slug": "marketing",
+      "domain": "https://marketing-footprint.de",
+      "excerpt": "Strategischer Einsatz von Marketing-Mitteln für nachhaltige Ergebnisse.",
+      "enabled": true,
+      "sortOrder": 6
+    }
+  ]
+}

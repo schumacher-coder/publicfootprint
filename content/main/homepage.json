@@ -1,0 +1,26 @@
+{
+  "hero": {
+    "title": "Was ist Ihre Story?",
+    "paragraphs": [
+      "Unsere physikalische Welt besteht aus Atomen und Elementarteilchen. Doch was verbindet Menschen miteinander? Die Antwort ist einfach: **Kommunikation!**",
+      "Seit Anbeginn der Menschheit sind Geschichten der Kitt unseres sozialen Zusammenhalts. Vom Lagerfeuer bis zum digitalen Zeitalter: Storytelling bleibt unser mächtigstes Werkzeug. Unser Gehirn speichert Bilder und Zusammenhänge leichter ab als bloße Fakten.",
+      "Bei Public Footprint helfen wir Unternehmen, ihre einzigartigen Geschichten zu erzählen – spannend, lehrreich, informativ und manchmal einfach unterhaltsam! Wer überzeugende Geschichten erzählt, hinterlässt bleibende Spuren in der Erinnerung seiner Zielgruppe.",
+      "Wir helfen Ihnen dabei, den perfekten kommunikativen Fußabdruck für Ihr Unternehmen zu gestalten!"
+    ]
+  },
+  "aboutSection": {
+    "title": "Public Footprint",
+    "paragraphs": [
+      "Kommunikation ist dann wirkungsvoll, wenn sie lebendig ist und nachhaltige Spuren hinterlässt. Genau dieses Prinzip prägt seit unserer Gründung 2006 unsere Arbeit: Wir schaffen für unsere Kunden einen unverwechselbaren \\\"Public Footprint\\\" in der Medienlandschaft und den sozialen Netzwerken.",
+      "Je markanter dieser Abdruck, desto sicherer nehmen potenzielle Kunden Ihre Fährte auf und entscheiden sich für Ihr Angebot! Mit strategischem Storytelling und maßgeschneiderten Kommunikationslösungen sorgen wir dafür, dass Ihre Botschaft nicht nur gehört, sondern auch in Erinnerung bleibt."
+    ]
+  },
+  "servicesSection": {
+    "title": "Unsere Footprints"
+  },
+  "ctaSection": {
+    "title": "Bereit für Ihren Public Footprint?",
+    "description": "Lassen Sie uns gemeinsam Ihre Geschichte erzählen und nachhaltige Spuren in Ihrer Zielgruppe hinterlassen.",
+    "buttonText": "Jetzt Kontakt aufnehmen"
+  }
+}

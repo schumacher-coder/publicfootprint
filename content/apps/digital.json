@@ -1,0 +1,20 @@
+{
+  "domain": "digital-footprint.de",
+  "hero": {
+    "title": "Digital Footprint",
+    "subtitle": "Digitale Sichtbarkeit für B2B-IT Unternehmen",
+    "description": "Erreichen Sie Ihre Zielgruppe dort, wo sie nach Lösungen sucht – online."
+  },
+  "sections": [
+    {
+      "id": "intro",
+      "title": "Digitale Präsenz, die wirkt",
+      "content": "Ihre potenziellen Kunden recherchieren online, bevor sie Kontakt aufnehmen. Ein starker Digital Footprint sorgt dafür, dass sie Sie finden – und überzeugt werden."
+    }
+  ],
+  "cta": {
+    "title": "Bereit für mehr digitale Sichtbarkeit?",
+    "buttonText": "Jetzt Kontakt aufnehmen",
+    "buttonLink": "https://publicfootprint.de/kontakt"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "domain": "reference-footprint.de",
+  "hero": {
+    "title": "Reference Footprint",
+    "subtitle": "Überzeugende Kundenreferenzen & Success Stories",
+    "description": "Nichts überzeugt potenzielle Kunden mehr als authentische Erfolgsgeschichten. Wir machen Ihre Kompetenz greifbar."
+  },
+  "sections": [
+    {
+      "id": "intro",
+      "title": "Warum Reference Stories?",
+      "content": "In einer Welt voller Werbeversprechen suchen Entscheider nach Beweisen. Referenzen und Success Stories zeigen konkret, wie Ihre Lösung echte Probleme gelöst hat. Sie schaffen Vertrauen und machen den Mehrwert Ihrer Leistung erlebbar."
+    },
+    {
+      "id": "approach",
+      "title": "Unser Ansatz",
+      "content": "Wir entwickeln keine generischen Case Studies, sondern packende Geschichten mit echten Protagonisten, Herausforderungen und Lösungen. Durch intensive Interviews mit Ihren Kunden arbeiten wir die authentischen Erfolgsfaktoren heraus."
+    }
+  ],
+  "cta": {
+    "title": "Ihre Erfolgsgeschichten warten darauf, erzählt zu werden",
+    "buttonText": "Jetzt Kontakt aufnehmen",
+    "buttonLink": "https://publicfootprint.de/kontakt"
+  }
+}
