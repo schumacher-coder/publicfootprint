@@ -18,7 +18,7 @@ export default function Home() {
         } : {}}
       >
         {content.hero.backgroundImage && (
-          <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-white/35"></div>
         )}
         <div className="container-custom relative z-10">
           <div className="max-w-4xl mx-auto text-center">
