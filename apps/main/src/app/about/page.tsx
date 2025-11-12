@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { getAboutContent } from '@/lib/content'
+import { parseMarkdown } from '@/lib/markdown'
 
 export const metadata: Metadata = {
   title: 'About - Public Footprint GmbH',
@@ -7,15 +9,17 @@ export const metadata: Metadata = {
 }
 
 export default function AboutPage() {
+  const content = getAboutContent()
+
   return (
     <>
       {/* Hero */}
       <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="mb-6">Unsere Story</h1>
+            <h1 className="mb-6">{content.hero.title}</h1>
             <p className="text-xl text-gray-600">
-              Kommunikation ist dann gut, wenn sie lebendig ist und Spuren hinterlässt.
+              {content.hero.subtitle}
             </p>
           </div>
         </div>
@@ -26,30 +30,9 @@ export default function AboutPage() {
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <div className="prose prose-lg max-w-none space-y-6 text-gray-700">
-              <p>
-                Deshalb haben wir 2006 bei der Namensfindung für unsere Agentur einen
-                Fußabdruck als Leitmotiv gewählt. Je stärker Ihr „Public Footprint",
-                desto eher nehmen potenzielle Kunden die Fährte auf und entscheiden sich
-                für Ihr Angebot!
-              </p>
-              <p>
-                Unsere Expertise liegt zu <strong>100 Prozent in der Informationstechnologie
-                im Unternehmensumfeld (B2B-IT)</strong>. In diesem komplexen Segment bringen
-                wir über 20 Jahre Erfahrung mit Start-ups, Mittelständlern und internationalen
-                Konzernen mit.
-              </p>
-              <p>
-                Wir verstehen uns nicht als bloßer Dienstleister, sondern als{' '}
-                <strong>Sparringspartner auf Augenhöhe</strong>, der Ihre Herausforderungen
-                versteht und pragmatische Lösungen bietet.
-              </p>
-              <p>
-                Was uns auszeichnet: Wir erfassen technisch komplexe Zusammenhänge schnell
-                und entwickeln daraus verständliche Geschichten, die Ihre Leistungen und
-                Lösungen für potenzielle Kunden greifbar machen. Dabei setzen wir auf
-                intelligente Konzepte statt hektischen Aktionismus – immer mit dem Fokus
-                auf nachhaltige Wirkung.
-              </p>
+              {content.companyStory.paragraphs.map((paragraph, index) => (
+                <p key={index}>{parseMarkdown(paragraph)}</p>
+              ))}
             </div>
           </div>
         </div>
@@ -103,30 +86,27 @@ export default function AboutPage() {
       <section className="py-16">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <h2 className="mb-8">Der Kopf hinter Public Footprint</h2>
+            <h2 className="mb-8">{content.thomasBio.title}</h2>
             <div className="bg-white rounded-lg p-8 md:p-12 shadow-sm border-l-4 border-magenta">
+              {content.thomasBio.image && (
+                <div className="mb-8 flex justify-center">
+                  <img
+                    src={content.thomasBio.image}
+                    alt="Thomas Krings"
+                    className="rounded-lg shadow-lg max-w-md w-full object-cover"
+                  />
+                </div>
+              )}
               <div className="prose prose-lg max-w-none space-y-4 text-gray-700">
-                <p>
-                  <strong>Thomas</strong>, Gründer und Inhaber der Agentur, hat nach einer
-                  kaufmännischen Ausbildung ein Publizistikstudium absolviert, ist zertifizierter
-                  Yoga-Lehrer und Espresso-Profi mit Diplom der Kölner Kaffee-Akademie.
-                </p>
-                <p>
-                  In der Agentur verantwortet er die strategischen Themenstellungen, die Reduktion
-                  von Komplexität, die Einführung neuer Tools und die Entwicklung frischer
-                  Business-Ideen.
-                </p>
-                <p>
-                  In den Pausen, die der alltägliche „Wahnsinn" ihm lässt, kocht, handwerkert,
-                  gärtnert oder liest er, geht mit dem Hund spazieren oder fährt ohne Ziel mit
-                  dem Motorrad durchs Bergische Land.
-                </p>
+                {content.thomasBio.paragraphs.map((paragraph, index) => (
+                  <p key={index}>{parseMarkdown(paragraph)}</p>
+                ))}
                 <div className="pt-4 border-t-2 border-gray-200 mt-6">
                   <p className="text-xl font-medium text-gray-900 italic">
-                    Sein Mantra – und zugleich Leitgedanke der Agentur:
+                    {content.thomasBio.mantra.intro}
                   </p>
                   <p className="text-2xl text-magenta font-light italic">
-                    „Betrachte alles, was Stress verursacht, als Übung in Gelassenheit."
+                    {content.thomasBio.mantra.quote}
                   </p>
                 </div>
               </div>
@@ -141,50 +121,17 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="mb-12 text-center">Über 20 Jahre Erfahrung</h2>
             <div className="space-y-8">
-              <div className="flex gap-6">
-                <div className="flex-shrink-0 w-24 text-right">
-                  <span className="text-2xl font-light text-magenta">2006</span>
+              {content.timeline.map((item, index) => (
+                <div key={index} className="flex gap-6">
+                  <div className="flex-shrink-0 w-24 text-right">
+                    <span className="text-2xl font-light text-magenta">{item.year}</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-medium text-gray-900 mb-2">{item.title}</h3>
+                    <p className="text-gray-600">{item.description}</p>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-gray-900 mb-2">Gründung Public Footprint</h3>
-                  <p className="text-gray-600">
-                    Start als spezialisierte Agentur für B2B-IT Kommunikation
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-6">
-                <div className="flex-shrink-0 w-24 text-right">
-                  <span className="text-2xl font-light text-magenta">2010+</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-gray-900 mb-2">Aufbau Netzwerk</h3>
-                  <p className="text-gray-600">
-                    Langfristige Beziehungen zu Fachredaktionen und Enterprise-Kunden
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-6">
-                <div className="flex-shrink-0 w-24 text-right">
-                  <span className="text-2xl font-light text-magenta">2015+</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-gray-900 mb-2">Digital Transformation</h3>
-                  <p className="text-gray-600">
-                    Expansion in Social Media und digitale Kommunikationskanäle
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-6">
-                <div className="flex-shrink-0 w-24 text-right">
-                  <span className="text-2xl font-light text-magenta">2025</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-gray-900 mb-2">Focus: Reference Stories</h3>
-                  <p className="text-gray-600">
-                    Strategische Neuausrichtung auf authentisches Storytelling
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

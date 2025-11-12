@@ -153,3 +153,34 @@ export function updateNotizenContent(content: NotizenContent): void {
   const filePath = path.join(contentDir, 'main', 'notizen.json')
   fs.writeFileSync(filePath, JSON.stringify(content, null, 2), 'utf8')
 }
+
+// About page functions
+export interface AboutContent {
+  hero: {
+    title: string
+    subtitle: string
+  }
+  companyStory: {
+    paragraphs: string[]
+  }
+  thomasBio: {
+    title: string
+    image: string
+    paragraphs: string[]
+    mantra: {
+      intro: string
+      quote: string
+    }
+  }
+  timeline: Array<{
+    year: string
+    title: string
+    description: string
+  }>
+}
+
+export function getAboutContent(): AboutContent {
+  const filePath = path.join(contentDir, 'main', 'about.json')
+  const fileContents = fs.readFileSync(filePath, 'utf8')
+  return JSON.parse(fileContents)
+}
