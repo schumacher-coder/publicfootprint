@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { getNotizenContent, getPublishedNotizen } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'Notizen - Public Footprint GmbH',
@@ -6,16 +7,18 @@ export const metadata: Metadata = {
 }
 
 export default function NotizenPage() {
+  const content = getNotizenContent()
+  const publishedEntries = getPublishedNotizen()
+
   return (
     <>
       {/* Hero */}
       <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="mb-6">Notizen</h1>
+            <h1 className="mb-6">{content.hero.title}</h1>
             <p className="text-xl text-gray-600">
-              Gedanken, Insights und Beobachtungen aus über 20 Jahren B2B-IT Kommunikation.
-              Keine perfekten Artikel – nur authentische Einblicke in unsere Arbeit.
+              {content.hero.description}
             </p>
           </div>
         </div>
@@ -29,82 +32,53 @@ export default function NotizenPage() {
             {/* Entry Container - Notizbuch-Ästhetik */}
             <div className="space-y-12">
 
-              {/* Entry 1 */}
-              <article className="border-t-2 border-gray-300 pt-8">
-                <time className="block font-mono text-sm text-gray-500 mb-4">
-                  11.11.2025
-                </time>
-                <div className="prose prose-lg max-w-none space-y-4 text-gray-700">
-                  <p>
-                    Neue Website. Neuer Ansatz. Die Multi-Domain-Architektur ist mehr
-                    als nur Technik – sie spiegelt wider, wie sich unser Business entwickelt hat.
-                  </p>
-                  <p>
-                    Reference Stories werden zum Kern. Macht Sinn: KI kann keine
-                    Interviews führen, keine Kundenbeziehungen aufbauen. Das ist human work.
-                    Genau richtig.
-                  </p>
-                  <p className="text-magenta">
-                    → Erste Domain für Reference Footprint in Planung
-                  </p>
-                </div>
-              </article>
+              {publishedEntries.map((entry) => (
+                <article key={entry.id} className="border-t-2 border-gray-300 pt-8">
+                  <time className="block font-mono text-sm text-gray-500 mb-4">
+                    {entry.date}
+                  </time>
+                  <div className="prose prose-lg max-w-none space-y-4 text-gray-700">
+                    {entry.content.map((paragraph, index) => {
+                      const isHighlighted = paragraph.startsWith('→')
+                      return (
+                        <p key={index} className={isHighlighted ? 'text-magenta' : ''}>
+                          {paragraph}
+                        </p>
+                      )
+                    })}
+                  </div>
+                </article>
+              ))}
 
-              {/* Entry 2 - Placeholder */}
-              <article className="border-t-2 border-gray-300 pt-8">
-                <time className="block font-mono text-sm text-gray-500 mb-4">
-                  04.11.2025
-                </time>
-                <div className="prose prose-lg max-w-none space-y-4 text-gray-700">
-                  <p>
-                    B2B-IT Kommunikation verändert sich. Was vor 5 Jahren funktioniert hat,
-                    reicht heute nicht mehr. Entscheider*innen wollen keine Hochglanz-Broschüren,
-                    sondern authentische Einblicke.
-                  </p>
-                  <p>
-                    Deshalb: Mehr Stories, weniger PR-Sprech. Mehr Substanz, weniger Buzzwords.
-                  </p>
+              {publishedEntries.length === 0 && (
+                <div className="text-center py-12 text-gray-500">
+                  Noch keine Notizen vorhanden.
                 </div>
-              </article>
-
-              {/* Entry 3 - Placeholder */}
-              <article className="border-t-2 border-gray-300 pt-8">
-                <time className="block font-mono text-sm text-gray-500 mb-4">
-                  28.10.2025
-                </time>
-                <div className="prose prose-lg max-w-none space-y-4 text-gray-700">
-                  <p>
-                    LinkedIn wird zum wichtigsten Kanal für B2B-Kommunikation. Die Zeiten,
-                    in denen Fachmedien die einzigen Gatekeeper waren, sind vorbei.
-                  </p>
-                  <p>
-                    Aber: LinkedIn-Erfolg braucht Strategie und Konsistenz. Posting
-                    ohne Plan bringt nichts. Authentizität schlägt Frequenz.
-                  </p>
-                </div>
-              </article>
+              )}
 
               {/* Info Box */}
               <div className="border-2 border-gray-200 bg-gray-50 p-8 rounded-lg mt-16">
                 <h3 className="text-xl font-medium text-gray-900 mb-3">
-                  Über diese Notizen
+                  {content.infoBox.title}
                 </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Hier teile ich Gedanken aus dem Agentur-Alltag – unpoliert und direkt.
-                  Mal sind es zwei Zeilen, mal drei Absätze. Kein Redaktionsplan, keine
-                  SEO-Optimierung. Nur echte Insights aus über 20 Jahren in der B2B-IT Kommunikation.
-                </p>
-                <p className="text-gray-700 leading-relaxed mt-4">
-                  Wenn Sie über neue Einträge informiert werden möchten, folgen Sie mir auf{' '}
-                  <a
-                    href="https://www.linkedin.com/in/thomaskrings/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-magenta hover:text-magenta-600 font-medium"
-                  >
-                    LinkedIn
-                  </a>.
-                </p>
+                {content.infoBox.paragraphs.map((paragraph, index) => (
+                  <p key={index} className="text-gray-700 leading-relaxed mt-4">
+                    {paragraph}
+                    {index === content.infoBox.paragraphs.length - 1 && (
+                      <>
+                        {' '}
+                        <a
+                          href={content.infoBox.linkedinUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-magenta hover:text-magenta-600 font-medium"
+                        >
+                          LinkedIn
+                        </a>.
+                      </>
+                    )}
+                  </p>
+                ))}
               </div>
 
             </div>

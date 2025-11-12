@@ -1,0 +1,44 @@
+{
+  "hero": {
+    "title": "Notizen",
+    "description": "Gedanken, Insights und Beobachtungen aus über 20 Jahren B2B-IT Kommunikation. Keine perfekten Artikel – nur authentische Einblicke in unsere Arbeit."
+  },
+  "entries": [
+    {
+      "id": "1",
+      "date": "11.11.2025",
+      "content": [
+        "Neue Website. Neuer Ansatz. Die Multi-Domain-Architektur ist mehr als nur Technik – sie spiegelt wider, wie sich unser Business entwickelt hat.",
+        "Reference Stories werden zum Kern. Macht Sinn: KI kann keine Interviews führen, keine Kundenbeziehungen aufbauen. Das ist human work. Genau richtig.",
+        "→ Erste Domain für Reference Footprint in Planung"
+      ],
+      "published": true
+    },
+    {
+      "id": "2",
+      "date": "04.11.2025",
+      "content": [
+        "B2B-IT Kommunikation verändert sich. Was vor 5 Jahren funktioniert hat, reicht heute nicht mehr. Entscheider*innen wollen keine Hochglanz-Broschüren, sondern authentische Einblicke.",
+        "Deshalb: Mehr Stories, weniger PR-Sprech. Mehr Substanz, weniger Buzzwords."
+      ],
+      "published": true
+    },
+    {
+      "id": "3",
+      "date": "28.10.2025",
+      "content": [
+        "LinkedIn wird zum wichtigsten Kanal für B2B-Kommunikation. Die Zeiten, in denen Fachmedien die einzigen Gatekeeper waren, sind vorbei.",
+        "Aber: LinkedIn-Erfolg braucht Strategie und Konsistenz. Posting ohne Plan bringt nichts. Authentizität schlägt Frequenz."
+      ],
+      "published": true
+    }
+  ],
+  "infoBox": {
+    "title": "Über diese Notizen",
+    "paragraphs": [
+      "Hier teile ich Gedanken aus dem Agentur-Alltag – unpoliert und direkt. Mal sind es zwei Zeilen, mal drei Absätze. Kein Redaktionsplan, keine SEO-Optimierung. Nur echte Insights aus über 20 Jahren in der B2B-IT Kommunikation.",
+      "Wenn Sie über neue Einträge informiert werden möchten, folgen Sie mir auf LinkedIn."
+    ],
+    "linkedinUrl": "https://www.linkedin.com/in/thomaskrings/"
+  }
+}

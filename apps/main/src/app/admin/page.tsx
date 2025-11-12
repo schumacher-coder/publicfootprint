@@ -30,6 +30,12 @@ export default function AdminDashboard() {
       href: '/admin/apps',
       icon: '📄',
     },
+    {
+      title: 'Notizen verwalten',
+      description: 'Blog-Einträge erstellen, bearbeiten und veröffentlichen',
+      href: '/admin/notizen',
+      icon: '📝',
+    },
   ]
 
   return (

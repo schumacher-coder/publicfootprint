@@ -1,0 +1,49 @@
+{
+  "hero": {
+    "title": "Unsere Story",
+    "subtitle": "Kommunikation ist dann gut, wenn sie lebendig ist und Spuren hinterlässt."
+  },
+  "companyStory": {
+    "paragraphs": [
+      "Deshalb haben wir 2006 bei der Namensfindung für unsere Agentur einen Fußabdruck als Leitmotiv gewählt. Je stärker Ihr \\\"Public Footprint\\\", desto eher nehmen potenzielle Kunden die Fährte auf und entscheiden sich für Ihr Angebot!",
+      "Unsere Expertise liegt zu **100 Prozent in der Informationstechnologie im Unternehmensumfeld (B2B-IT)**. In diesem komplexen Segment bringen wir über 20 Jahre Erfahrung mit Start-ups, Mittelständlern und internationalen Konzernen mit.",
+      "Wir verstehen uns nicht als bloßer Dienstleister, sondern als **Sparringspartner auf Augenhöhe**, der Ihre Herausforderungen versteht und pragmatische Lösungen bietet.",
+      "Was uns auszeichnet: Wir erfassen technisch komplexe Zusammenhänge schnell und entwickeln daraus verständliche Geschichten, die Ihre Leistungen und Lösungen für potenzielle Kunden greifbar machen. Dabei setzen wir auf intelligente Konzepte statt hektischen Aktionismus – immer mit dem Fokus auf nachhaltige Wirkung."
+    ]
+  },
+  "thomasBio": {
+    "title": "Der Kopf hinter Public Footprint",
+    "image": "/images/portraits/thomas-krings.jpg",
+    "paragraphs": [
+      "**Thomas**, Gründer und Inhaber der Agentur, hat nach einer kaufmännischen Ausbildung ein Publizistikstudium absolviert, ist zertifizierter Yoga-Lehrer und Espresso-Profi mit Diplom der Kölner Kaffee-Akademie.",
+      "In der Agentur verantwortet er die strategischen Themenstellungen, die Reduktion von Komplexität, die Einführung neuer Tools und die Entwicklung frischer Business-Ideen.",
+      "In den Pausen, die der alltägliche \\\"Wahnsinn\\\" ihm lässt, kocht, handwerkert, gärtnert oder liest er, geht mit dem Hund spazieren oder fährt ohne Ziel mit dem Motorrad durchs Bergische Land."
+    ],
+    "mantra": {
+      "intro": "Sein Mantra – und zugleich Leitgedanke der Agentur:",
+      "quote": "\\\"Betrachte alles, was Stress verursacht, als Übung in Gelassenheit.\\\""
+    }
+  },
+  "timeline": [
+    {
+      "year": "2006",
+      "title": "Gründung Public Footprint",
+      "description": "Start als spezialisierte Agentur für B2B-IT Kommunikation"
+    },
+    {
+      "year": "2010+",
+      "title": "Aufbau Netzwerk",
+      "description": "Langfristige Beziehungen zu Fachredaktionen und Enterprise-Kunden"
+    },
+    {
+      "year": "2015+",
+      "title": "Digital Transformation",
+      "description": "Expansion in Social Media und digitale Kommunikationskanäle"
+    },
+    {
+      "year": "2025",
+      "title": "Focus: Reference Stories",
+      "description": "Strategische Neuausrichtung auf authentisches Storytelling"
+    }
+  ]
+}

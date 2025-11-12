@@ -51,6 +51,26 @@ export interface AppContent {
   }
 }
 
+export interface NotizenEntry {
+  id: string
+  date: string
+  content: string[]
+  published: boolean
+}
+
+export interface NotizenContent {
+  hero: {
+    title: string
+    description: string
+  }
+  entries: NotizenEntry[]
+  infoBox: {
+    title: string
+    paragraphs: string[]
+    linkedinUrl: string
+  }
+}
+
 // Read functions
 export function getHomepageContent(): Homepage {
   const filePath = path.join(contentDir, 'main', 'homepage.json')
@@ -113,4 +133,21 @@ export function deleteApp(appSlug: string): void {
   if (fs.existsSync(filePath)) {
     fs.unlinkSync(filePath)
   }
+}
+
+// Notizen functions
+export function getNotizenContent(): NotizenContent {
+  const filePath = path.join(contentDir, 'main', 'notizen.json')
+  const fileContents = fs.readFileSync(filePath, 'utf8')
+  return JSON.parse(fileContents)
+}
+
+export function getPublishedNotizen(): NotizenEntry[] {
+  const content = getNotizenContent()
+  return content.entries.filter(entry => entry.published)
+}
+
+export function updateNotizenContent(content: NotizenContent): void {
+  const filePath = path.join(contentDir, 'main', 'notizen.json')
+  fs.writeFileSync(filePath, JSON.stringify(content, null, 2), 'utf8')
 }
