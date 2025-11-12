@@ -13,6 +13,7 @@ interface AppContent {
     title: string
     subtitle: string
     description: string
+    image?: string
   }
   sections: Section[]
   cta: {
@@ -32,14 +33,25 @@ export function LandingPage({ content }: LandingPageProps) {
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
         <div className="container-custom">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="mb-6">{content.hero.title}</h1>
-            <p className="text-2xl text-gray-700 mb-4 font-light">
-              {content.hero.subtitle}
-            </p>
-            <p className="text-xl text-gray-600">
-              {content.hero.description}
-            </p>
+          <div className="max-w-4xl mx-auto">
+            {content.hero.image && (
+              <div className="mb-8 flex justify-center">
+                <img
+                  src={content.hero.image}
+                  alt={content.hero.title}
+                  className="rounded-lg shadow-lg max-w-2xl w-full object-cover"
+                />
+              </div>
+            )}
+            <div className="text-center">
+              <h1 className="mb-6">{content.hero.title}</h1>
+              <p className="text-2xl text-gray-700 mb-4 font-light">
+                {content.hero.subtitle}
+              </p>
+              <p className="text-xl text-gray-600">
+                {content.hero.description}
+              </p>
+            </div>
           </div>
         </div>
       </section>

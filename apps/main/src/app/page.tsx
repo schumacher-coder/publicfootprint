@@ -9,8 +9,18 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
-        <div className="container-custom">
+      <section
+        className="section-padding bg-gradient-to-b from-gray-50 to-white relative"
+        style={content.hero.backgroundImage ? {
+          backgroundImage: `url(${content.hero.backgroundImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        } : {}}
+      >
+        {content.hero.backgroundImage && (
+          <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+        )}
+        <div className="container-custom relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="mb-8">
               {content.hero.title}
