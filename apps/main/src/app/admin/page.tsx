@@ -19,6 +19,12 @@ export default function AdminDashboard() {
       icon: '🏠',
     },
     {
+      title: 'About-Seite bearbeiten',
+      description: 'Unternehmensgeschichte, Thomas Bio und Timeline verwalten',
+      href: '/admin/about',
+      icon: '👤',
+    },
+    {
       title: 'Services verwalten',
       description: 'Services hinzufügen, bearbeiten, löschen und sortieren',
       href: '/admin/services',
