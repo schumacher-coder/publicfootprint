@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Was ist Ihre Story?",
-    "backgroundImage": "/images/visuals/pf_zentral.png",
+    "backgroundImage": "/images/visuals/connecteddots.png",
     "content": [
       {
         "type": "text",
