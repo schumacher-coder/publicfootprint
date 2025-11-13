@@ -4,24 +4,45 @@
     "subtitle": "Kommunikation ist dann gut, wenn sie lebendig ist und Spuren hinterlässt."
   },
   "companyStory": {
-    "paragraphs": [
-      "Deshalb haben wir 2006 bei der Namensfindung für unsere Agentur einen Fußabdruck als Leitmotiv gewählt. Je stärker Ihr \\\"Public Footprint\\\", desto eher nehmen potenzielle Kunden die Fährte auf und entscheiden sich für Ihr Angebot!",
-      "Unsere Expertise liegt zu **100 Prozent in der Informationstechnologie im Unternehmensumfeld (B2B-IT)**. In diesem komplexen Segment bringen wir über 20 Jahre Erfahrung mit Start-ups, Mittelständlern und internationalen Konzernen mit.",
-      "Wir verstehen uns nicht als bloßer Dienstleister, sondern als **Sparringspartner auf Augenhöhe**, der Ihre Herausforderungen versteht und pragmatische Lösungen bietet.",
-      "Was uns auszeichnet: Wir erfassen technisch komplexe Zusammenhänge schnell und entwickeln daraus verständliche Geschichten, die Ihre Leistungen und Lösungen für potenzielle Kunden greifbar machen. Dabei setzen wir auf intelligente Konzepte statt hektischen Aktionismus – immer mit dem Fokus auf nachhaltige Wirkung."
+    "content": [
+      {
+        "type": "text",
+        "content": "Deshalb haben wir 2006 bei der Namensfindung für unsere Agentur einen Fußabdruck als Leitmotiv gewählt. Je stärker Ihr \"Public Footprint\", desto eher nehmen potenzielle Kunden die Fährte auf und entscheiden sich für Ihr Angebot!"
+      },
+      {
+        "type": "text",
+        "content": "Unsere Expertise liegt zu **100 Prozent in der Informationstechnologie im Unternehmensumfeld (B2B-IT)**. In diesem komplexen Segment bringen wir über 20 Jahre Erfahrung mit Start-ups, Mittelständlern und internationalen Konzernen mit."
+      },
+      {
+        "type": "text",
+        "content": "Wir verstehen uns nicht als bloßer Dienstleister, sondern als **Sparringspartner auf Augenhöhe**, der Ihre Herausforderungen versteht und pragmatische Lösungen bietet."
+      },
+      {
+        "type": "text",
+        "content": "Was uns auszeichnet: Wir erfassen technisch komplexe Zusammenhänge schnell und entwickeln daraus verständliche Geschichten, die Ihre Leistungen und Lösungen für potenzielle Kunden greifbar machen. Dabei setzen wir auf intelligente Konzepte statt hektischen Aktionismus – immer mit dem Fokus auf nachhaltige Wirkung."
+      }
     ]
   },
   "thomasBio": {
     "title": "Der Kopf hinter Public Footprint",
     "image": "/images/portraits/thomas-krings.jpg",
-    "paragraphs": [
-      "**Thomas**, Gründer und Inhaber der Agentur, hat nach einer kaufmännischen Ausbildung ein Publizistikstudium absolviert, ist zertifizierter Yoga-Lehrer und Espresso-Profi mit Diplom der Kölner Kaffee-Akademie.",
-      "In der Agentur verantwortet er die strategischen Themenstellungen, die Reduktion von Komplexität, die Einführung neuer Tools und die Entwicklung frischer Business-Ideen.",
-      "In den Pausen, die der alltägliche \\\"Wahnsinn\\\" ihm lässt, kocht, handwerkert, gärtnert oder liest er, geht mit dem Hund spazieren oder fährt ohne Ziel mit dem Motorrad durchs Bergische Land."
+    "content": [
+      {
+        "type": "text",
+        "content": "**Thomas**, Gründer und Inhaber der Agentur, hat nach einer kaufmännischen Ausbildung ein Publizistikstudium absolviert, ist zertifizierter Yoga-Lehrer und Espresso-Profi mit Diplom der Kölner Kaffee-Akademie."
+      },
+      {
+        "type": "text",
+        "content": "In der Agentur verantwortet er die strategischen Themenstellungen, die Reduktion von Komplexität, die Einführung neuer Tools und die Entwicklung frischer Business-Ideen."
+      },
+      {
+        "type": "text",
+        "content": "In den Pausen, die der alltägliche \"Wahnsinn\" ihm lässt, kocht, handwerkert, gärtnert oder liest er, geht mit dem Hund spazieren oder fährt ohne Ziel mit dem Motorrad durchs Bergische Land."
+      }
     ],
     "mantra": {
       "intro": "Sein Mantra – und zugleich Leitgedanke der Agentur:",
-      "quote": "\\\"Betrachte alles, was Stress verursacht, als Übung in Gelassenheit.\\\""
+      "quote": "\"Betrachte alles, was Stress verursacht, als Übung in Gelassenheit.\""
     }
   },
   "timeline": [

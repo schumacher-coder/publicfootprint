@@ -1,26 +1,30 @@
 import React from 'react'
 import Link from 'next/link'
+import type { AppContent, ContentBlock } from '@/lib/content'
+import { parseMarkdown } from '@/lib/markdown'
 
-interface Section {
-  id: string
-  title: string
-  content: string
-}
-
-interface AppContent {
-  domain: string
-  hero: {
-    title: string
-    subtitle: string
-    description: string
-    image?: string
+function renderContentBlock(block: ContentBlock, index: number) {
+  if (block.type === 'text') {
+    return (
+      <p key={index}>{parseMarkdown(block.content)}</p>
+    )
+  } else if (block.type === 'image') {
+    return (
+      <div key={index} className="my-8">
+        <img
+          src={block.src}
+          alt={block.alt || ''}
+          className="rounded-lg shadow-lg max-w-full mx-auto"
+        />
+        {block.caption && (
+          <p className="text-sm text-gray-600 text-center mt-2 italic">
+            {block.caption}
+          </p>
+        )}
+      </div>
+    )
   }
-  sections: Section[]
-  cta: {
-    title: string
-    buttonText: string
-    buttonLink: string
-  }
+  return null
 }
 
 interface LandingPageProps {
@@ -67,8 +71,10 @@ export function LandingPage({ content }: LandingPageProps) {
           <div className="container-custom">
             <div className="max-w-4xl mx-auto">
               <h2 className="mb-6">{section.title}</h2>
-              <div className="prose prose-lg max-w-none text-gray-700">
-                <p>{section.content}</p>
+              <div className="prose prose-lg max-w-none text-gray-700 space-y-4">
+                {section.content.map((block, blockIndex) =>
+                  renderContentBlock(block, blockIndex)
+                )}
               </div>
             </div>
           </div>

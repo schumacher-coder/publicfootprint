@@ -1,6 +1,32 @@
 import Link from 'next/link'
-import { getHomepageContent, getServices } from '@/lib/content'
+import { getHomepageContent, getServices, type ContentBlock } from '@/lib/content'
 import { parseMarkdown } from '@/lib/markdown'
+
+function renderContentBlock(block: ContentBlock, index: number, isLast: boolean = false) {
+  if (block.type === 'text') {
+    return (
+      <p key={index} className={isLast ? "text-xl font-medium text-gray-900 pt-4" : ""}>
+        {parseMarkdown(block.content)}
+      </p>
+    )
+  } else if (block.type === 'image') {
+    return (
+      <div key={index} className="my-8">
+        <img
+          src={block.src}
+          alt={block.alt || ''}
+          className="rounded-lg shadow-lg max-w-full mx-auto"
+        />
+        {block.caption && (
+          <p className="text-sm text-gray-600 text-center mt-2 italic">
+            {block.caption}
+          </p>
+        )}
+      </div>
+    )
+  }
+  return null
+}
 
 export default function Home() {
   const content = getHomepageContent()
@@ -26,14 +52,9 @@ export default function Home() {
               {content.hero.title}
             </h1>
             <div className="space-y-6 text-lg leading-relaxed text-gray-700">
-              {content.hero.paragraphs.map((paragraph, index) => {
-                const isLast = index === content.hero.paragraphs.length - 1
-                return (
-                  <p key={index} className={isLast ? "text-xl font-medium text-gray-900 pt-4" : ""}>
-                    {parseMarkdown(paragraph)}
-                  </p>
-                )
-              })}
+              {content.hero.content.map((block, index) =>
+                renderContentBlock(block, index, index === content.hero.content.length - 1)
+              )}
             </div>
             <div className="mt-12 flex gap-4 justify-center flex-wrap">
               <Link href="/services" className="btn-primary">
@@ -53,11 +74,9 @@ export default function Home() {
           <div className="max-w-4xl mx-auto">
             <h2 className="mb-8 text-center">{content.aboutSection.title}</h2>
             <div className="space-y-6">
-              {content.aboutSection.paragraphs.map((paragraph, index) => (
-                <p key={index}>
-                  {parseMarkdown(paragraph)}
-                </p>
-              ))}
+              {content.aboutSection.content.map((block, index) =>
+                renderContentBlock(block, index)
+              )}
             </div>
           </div>
         </div>

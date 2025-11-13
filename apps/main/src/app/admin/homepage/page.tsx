@@ -3,15 +3,19 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
+type ContentBlock =
+  | { type: 'text'; content: string }
+  | { type: 'image'; src: string; alt?: string; caption?: string }
+
 interface Homepage {
   hero: {
     title: string
     backgroundImage?: string
-    paragraphs: string[]
+    content: ContentBlock[]
   }
   aboutSection: {
     title: string
-    paragraphs: string[]
+    content: ContentBlock[]
   }
   servicesSection: {
     title: string
@@ -68,45 +72,117 @@ export default function AdminHomepage() {
     }
   }
 
-  const updateHeroParagraph = (index: number, value: string) => {
+  // Hero content block functions
+  const updateHeroBlock = (index: number, block: ContentBlock) => {
     if (!content) return
-    const newParagraphs = [...content.hero.paragraphs]
-    newParagraphs[index] = value
+    const newContent = [...content.hero.content]
+    newContent[index] = block
     setContent({
       ...content,
-      hero: { ...content.hero, paragraphs: newParagraphs }
+      hero: { ...content.hero, content: newContent }
     })
   }
 
-  const addHeroParagraph = () => {
+  const addHeroTextBlock = () => {
     if (!content) return
     setContent({
       ...content,
       hero: {
         ...content.hero,
-        paragraphs: [...content.hero.paragraphs, 'Neuer Absatz']
+        content: [...content.hero.content, { type: 'text', content: 'Neuer Absatz' }]
       }
     })
   }
 
-  const removeHeroParagraph = (index: number) => {
+  const addHeroImageBlock = () => {
     if (!content) return
     setContent({
       ...content,
       hero: {
         ...content.hero,
-        paragraphs: content.hero.paragraphs.filter((_, i) => i !== index)
+        content: [...content.hero.content, { type: 'image', src: '', alt: '', caption: '' }]
       }
     })
   }
 
-  const updateAboutParagraph = (index: number, value: string) => {
+  const removeHeroBlock = (index: number) => {
     if (!content) return
-    const newParagraphs = [...content.aboutSection.paragraphs]
-    newParagraphs[index] = value
     setContent({
       ...content,
-      aboutSection: { ...content.aboutSection, paragraphs: newParagraphs }
+      hero: {
+        ...content.hero,
+        content: content.hero.content.filter((_, i) => i !== index)
+      }
+    })
+  }
+
+  const moveHeroBlock = (index: number, direction: 'up' | 'down') => {
+    if (!content) return
+    const newContent = [...content.hero.content]
+    const targetIndex = direction === 'up' ? index - 1 : index + 1
+    if (targetIndex < 0 || targetIndex >= newContent.length) return
+
+    [newContent[index], newContent[targetIndex]] = [newContent[targetIndex], newContent[index]]
+    setContent({
+      ...content,
+      hero: { ...content.hero, content: newContent }
+    })
+  }
+
+  // About section content block functions
+  const updateAboutBlock = (index: number, block: ContentBlock) => {
+    if (!content) return
+    const newContent = [...content.aboutSection.content]
+    newContent[index] = block
+    setContent({
+      ...content,
+      aboutSection: { ...content.aboutSection, content: newContent }
+    })
+  }
+
+  const addAboutTextBlock = () => {
+    if (!content) return
+    setContent({
+      ...content,
+      aboutSection: {
+        ...content.aboutSection,
+        content: [...content.aboutSection.content, { type: 'text', content: 'Neuer Absatz' }]
+      }
+    })
+  }
+
+  const addAboutImageBlock = () => {
+    if (!content) return
+    setContent({
+      ...content,
+      aboutSection: {
+        ...content.aboutSection,
+        content: [...content.aboutSection.content, { type: 'image', src: '', alt: '', caption: '' }]
+      }
+    })
+  }
+
+  const removeAboutBlock = (index: number) => {
+    if (!content) return
+    setContent({
+      ...content,
+      aboutSection: {
+        ...content.aboutSection,
+        content: content.aboutSection.content.filter((_, i) => i !== index)
+      }
+    })
+  }
+
+  const moveAboutBlock = (index: number, direction: 'up' | 'down') => {
+    if (!content) return
+    const newContent = [...content.aboutSection.content]
+    const targetIndex = direction === 'up' ? index - 1 : index + 1
+    if (targetIndex < 0 || targetIndex >= newContent.length) return
+
+    [newContent[index], newContent[targetIndex]] = [newContent[targetIndex], newContent[index]]
+    setContent({
+      ...content,
+      aboutSection: { ...content.aboutSection, content: newContent }
     })
   }
 
@@ -173,32 +249,89 @@ export default function AdminHomepage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Absätze
+                <label className="block text-sm font-medium text-gray-700 mb-3">
+                  Inhalte
                 </label>
-                {content.hero.paragraphs.map((paragraph, index) => (
-                  <div key={index} className="mb-3 flex gap-2">
-                    <textarea
-                      value={paragraph}
-                      onChange={(e) => updateHeroParagraph(index, e.target.value)}
-                      rows={3}
-                      className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
-                      placeholder="Text hier eingeben... (Markdown wird unterstützt: **fett**)"
-                    />
-                    <button
-                      onClick={() => removeHeroParagraph(index)}
-                      className="px-3 py-1 text-red-600 hover:bg-red-50 rounded"
-                    >
-                      ×
-                    </button>
+                {content.hero.content.map((block, index) => (
+                  <div key={index} className="mb-4 p-4 border border-gray-200 rounded-md bg-gray-50">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-sm font-medium text-gray-600">
+                        {block.type === 'text' ? '📝 Text' : '🖼️ Bild'}
+                      </span>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => moveHeroBlock(index, 'up')}
+                          disabled={index === 0}
+                          className="px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 rounded disabled:opacity-30"
+                        >
+                          ↑
+                        </button>
+                        <button
+                          onClick={() => moveHeroBlock(index, 'down')}
+                          disabled={index === content.hero.content.length - 1}
+                          className="px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 rounded disabled:opacity-30"
+                        >
+                          ↓
+                        </button>
+                        <button
+                          onClick={() => removeHeroBlock(index)}
+                          className="px-2 py-1 text-sm text-red-600 hover:bg-red-50 rounded"
+                        >
+                          ×
+                        </button>
+                      </div>
+                    </div>
+
+                    {block.type === 'text' ? (
+                      <textarea
+                        value={block.content}
+                        onChange={(e) => updateHeroBlock(index, { ...block, content: e.target.value })}
+                        rows={3}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                        placeholder="Text hier eingeben... (Markdown wird unterstützt: **fett**)"
+                      />
+                    ) : (
+                      <div className="space-y-2">
+                        <input
+                          type="text"
+                          value={block.src}
+                          onChange={(e) => updateHeroBlock(index, { ...block, src: e.target.value })}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                          placeholder="Bildpfad: /images/visuals/beispiel.jpg"
+                        />
+                        <input
+                          type="text"
+                          value={block.alt || ''}
+                          onChange={(e) => updateHeroBlock(index, { ...block, alt: e.target.value })}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                          placeholder="Alt-Text (für Barrierefreiheit)"
+                        />
+                        <input
+                          type="text"
+                          value={block.caption || ''}
+                          onChange={(e) => updateHeroBlock(index, { ...block, caption: e.target.value })}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                          placeholder="Bildunterschrift (optional)"
+                        />
+                      </div>
+                    )}
                   </div>
                 ))}
-                <button
-                  onClick={addHeroParagraph}
-                  className="mt-2 px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-md"
-                >
-                  + Absatz hinzufügen
-                </button>
+
+                <div className="flex gap-2 mt-3">
+                  <button
+                    onClick={addHeroTextBlock}
+                    className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-md"
+                  >
+                    + Text hinzufügen
+                  </button>
+                  <button
+                    onClick={addHeroImageBlock}
+                    className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-md"
+                  >
+                    + Bild hinzufügen
+                  </button>
+                </div>
               </div>
             </div>
           </section>
@@ -224,19 +357,89 @@ export default function AdminHomepage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Absätze
+                <label className="block text-sm font-medium text-gray-700 mb-3">
+                  Inhalte
                 </label>
-                {content.aboutSection.paragraphs.map((paragraph, index) => (
-                  <div key={index} className="mb-3">
-                    <textarea
-                      value={paragraph}
-                      onChange={(e) => updateAboutParagraph(index, e.target.value)}
-                      rows={3}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
-                    />
+                {content.aboutSection.content.map((block, index) => (
+                  <div key={index} className="mb-4 p-4 border border-gray-200 rounded-md bg-gray-50">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-sm font-medium text-gray-600">
+                        {block.type === 'text' ? '📝 Text' : '🖼️ Bild'}
+                      </span>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => moveAboutBlock(index, 'up')}
+                          disabled={index === 0}
+                          className="px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 rounded disabled:opacity-30"
+                        >
+                          ↑
+                        </button>
+                        <button
+                          onClick={() => moveAboutBlock(index, 'down')}
+                          disabled={index === content.aboutSection.content.length - 1}
+                          className="px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 rounded disabled:opacity-30"
+                        >
+                          ↓
+                        </button>
+                        <button
+                          onClick={() => removeAboutBlock(index)}
+                          className="px-2 py-1 text-sm text-red-600 hover:bg-red-50 rounded"
+                        >
+                          ×
+                        </button>
+                      </div>
+                    </div>
+
+                    {block.type === 'text' ? (
+                      <textarea
+                        value={block.content}
+                        onChange={(e) => updateAboutBlock(index, { ...block, content: e.target.value })}
+                        rows={3}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                        placeholder="Text hier eingeben..."
+                      />
+                    ) : (
+                      <div className="space-y-2">
+                        <input
+                          type="text"
+                          value={block.src}
+                          onChange={(e) => updateAboutBlock(index, { ...block, src: e.target.value })}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                          placeholder="Bildpfad: /images/visuals/beispiel.jpg"
+                        />
+                        <input
+                          type="text"
+                          value={block.alt || ''}
+                          onChange={(e) => updateAboutBlock(index, { ...block, alt: e.target.value })}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                          placeholder="Alt-Text (für Barrierefreiheit)"
+                        />
+                        <input
+                          type="text"
+                          value={block.caption || ''}
+                          onChange={(e) => updateAboutBlock(index, { ...block, caption: e.target.value })}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                          placeholder="Bildunterschrift (optional)"
+                        />
+                      </div>
+                    )}
                   </div>
                 ))}
+
+                <div className="flex gap-2 mt-3">
+                  <button
+                    onClick={addAboutTextBlock}
+                    className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-md"
+                  >
+                    + Text hinzufügen
+                  </button>
+                  <button
+                    onClick={addAboutImageBlock}
+                    className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-md"
+                  >
+                    + Bild hinzufügen
+                  </button>
+                </div>
               </div>
             </div>
           </section>

@@ -3,6 +3,11 @@ import path from 'path'
 
 const contentDir = path.join(process.cwd(), '../..', 'content')
 
+// Content block types for flexible text/image mixing
+export type ContentBlock =
+  | { type: 'text'; content: string }
+  | { type: 'image'; src: string; alt?: string; caption?: string }
+
 export interface Service {
   id: string
   title: string
@@ -17,11 +22,11 @@ export interface Homepage {
   hero: {
     title: string
     backgroundImage?: string
-    paragraphs: string[]
+    content: ContentBlock[]
   }
   aboutSection: {
     title: string
-    paragraphs: string[]
+    content: ContentBlock[]
   }
   servicesSection: {
     title: string
@@ -44,7 +49,7 @@ export interface AppContent {
   sections: Array<{
     id: string
     title: string
-    content: string
+    content: ContentBlock[]
   }>
   cta: {
     title: string
@@ -161,12 +166,12 @@ export interface AboutContent {
     subtitle: string
   }
   companyStory: {
-    paragraphs: string[]
+    content: ContentBlock[]
   }
   thomasBio: {
     title: string
     image: string
-    paragraphs: string[]
+    content: ContentBlock[]
     mantra: {
       intro: string
       quote: string
