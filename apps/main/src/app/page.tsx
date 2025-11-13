@@ -57,10 +57,7 @@ export default function Home() {
               )}
             </div>
             <div className="mt-12 flex gap-4 justify-center flex-wrap">
-              <Link href="/services" className="btn-primary">
-                Unsere Services
-              </Link>
-              <Link href="/kontakt" className="btn-secondary">
+              <Link href="/kontakt" className="btn-primary">
                 Kontakt aufnehmen
               </Link>
             </div>
@@ -104,11 +101,6 @@ export default function Home() {
                   </p>
                 </a>
               ))}
-            </div>
-            <div className="text-center mt-12">
-              <Link href="/services" className="btn-primary">
-                Alle Services entdecken
-              </Link>
             </div>
           </div>
         </div>

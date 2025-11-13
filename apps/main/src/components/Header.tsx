@@ -24,9 +24,6 @@ export default function Header() {
             <Link href="/" className="text-gray-700 hover:text-magenta transition-colors">
               Home
             </Link>
-            <Link href="/services" className="text-gray-700 hover:text-magenta transition-colors">
-              Services
-            </Link>
             <Link href="/notizen" className="text-gray-700 hover:text-magenta transition-colors">
               Notizen
             </Link>
@@ -72,13 +69,6 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
-              </Link>
-              <Link
-                href="/services"
-                className="text-gray-700 hover:text-magenta transition-colors py-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Services
               </Link>
               <Link
                 href="/notizen"
