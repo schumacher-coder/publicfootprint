@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Was ist Ihre Story?",
-    "backgroundImage": "",
+    "backgroundImage": "/images/visuals/network-wallpaper.png",
     "content": [
       {
         "type": "text",
