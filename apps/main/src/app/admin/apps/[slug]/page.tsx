@@ -4,6 +4,10 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
+type ContentBlock =
+  | { type: 'text'; content: string }
+  | { type: 'image'; src: string; alt?: string; caption?: string }
+
 interface AppContent {
   domain: string
   hero: {
@@ -15,7 +19,7 @@ interface AppContent {
   sections: Array<{
     id: string
     title: string
-    content: string
+    content: ContentBlock[]
   }>
   cta: {
     title: string
@@ -58,7 +62,7 @@ export default function AdminAppEditor() {
             {
               id: 'intro',
               title: 'Einführung',
-              content: 'Inhalt des ersten Abschnitts'
+              content: [{ type: 'text', content: 'Inhalt des ersten Abschnitts' }]
             }
           ],
           cta: {
@@ -99,6 +103,7 @@ export default function AdminAppEditor() {
     }
   }
 
+  // Section management
   const addSection = () => {
     if (!content) return
     setContent({
@@ -108,16 +113,16 @@ export default function AdminAppEditor() {
         {
           id: `section-${Date.now()}`,
           title: 'Neuer Abschnitt',
-          content: 'Inhalt des Abschnitts'
+          content: [{ type: 'text', content: 'Inhalt des Abschnitts' }]
         }
       ]
     })
   }
 
-  const updateSection = (index: number, field: 'title' | 'content', value: string) => {
+  const updateSectionTitle = (sectionIndex: number, title: string) => {
     if (!content) return
     const newSections = [...content.sections]
-    newSections[index] = { ...newSections[index], [field]: value }
+    newSections[sectionIndex] = { ...newSections[sectionIndex], title }
     setContent({ ...content, sections: newSections })
   }
 
@@ -127,6 +132,58 @@ export default function AdminAppEditor() {
       ...content,
       sections: content.sections.filter((_, i) => i !== index)
     })
+  }
+
+  // Content block management within sections
+  const updateSectionBlock = (sectionIndex: number, blockIndex: number, block: ContentBlock) => {
+    if (!content) return
+    const newSections = [...content.sections]
+    const newContent = [...newSections[sectionIndex].content]
+    newContent[blockIndex] = block
+    newSections[sectionIndex] = { ...newSections[sectionIndex], content: newContent }
+    setContent({ ...content, sections: newSections })
+  }
+
+  const addSectionTextBlock = (sectionIndex: number) => {
+    if (!content) return
+    const newSections = [...content.sections]
+    newSections[sectionIndex] = {
+      ...newSections[sectionIndex],
+      content: [...newSections[sectionIndex].content, { type: 'text', content: 'Neuer Absatz' }]
+    }
+    setContent({ ...content, sections: newSections })
+  }
+
+  const addSectionImageBlock = (sectionIndex: number) => {
+    if (!content) return
+    const newSections = [...content.sections]
+    newSections[sectionIndex] = {
+      ...newSections[sectionIndex],
+      content: [...newSections[sectionIndex].content, { type: 'image', src: '', alt: '', caption: '' }]
+    }
+    setContent({ ...content, sections: newSections })
+  }
+
+  const removeSectionBlock = (sectionIndex: number, blockIndex: number) => {
+    if (!content) return
+    const newSections = [...content.sections]
+    newSections[sectionIndex] = {
+      ...newSections[sectionIndex],
+      content: newSections[sectionIndex].content.filter((_, i) => i !== blockIndex)
+    }
+    setContent({ ...content, sections: newSections })
+  }
+
+  const moveSectionBlock = (sectionIndex: number, blockIndex: number, direction: 'up' | 'down') => {
+    if (!content) return
+    const newSections = [...content.sections]
+    const newContent = [...newSections[sectionIndex].content]
+    const targetIndex = direction === 'up' ? blockIndex - 1 : blockIndex + 1
+    if (targetIndex < 0 || targetIndex >= newContent.length) return
+
+    [newContent[blockIndex], newContent[targetIndex]] = [newContent[targetIndex], newContent[blockIndex]]
+    newSections[sectionIndex] = { ...newSections[sectionIndex], content: newContent }
+    setContent({ ...content, sections: newSections })
   }
 
   if (loading || !content) {
@@ -252,41 +309,113 @@ export default function AdminAppEditor() {
             </div>
 
             <div className="space-y-6">
-              {content.sections.map((section, index) => (
-                <div key={section.id} className="border border-gray-200 rounded-lg p-4">
-                  <div className="flex justify-between items-start mb-3">
-                    <span className="text-sm text-gray-500">Bereich {index + 1}</span>
+              {content.sections.map((section, sectionIndex) => (
+                <div key={section.id} className="border-2 border-gray-300 rounded-lg p-5 bg-gray-50">
+                  <div className="flex justify-between items-start mb-4">
+                    <span className="text-sm font-medium text-gray-600">Bereich {sectionIndex + 1}</span>
                     <button
-                      onClick={() => removeSection(index)}
-                      className="text-red-600 hover:text-red-700 text-sm"
+                      onClick={() => removeSection(sectionIndex)}
+                      className="text-red-600 hover:text-red-700 text-sm font-medium"
                     >
-                      Entfernen
+                      Bereich entfernen
                     </button>
                   </div>
 
-                  <div className="space-y-3">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Titel
-                      </label>
-                      <input
-                        type="text"
-                        value={section.title}
-                        onChange={(e) => updateSection(index, 'title', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
-                      />
-                    </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Bereichs-Titel
+                    </label>
+                    <input
+                      type="text"
+                      value={section.title}
+                      onChange={(e) => updateSectionTitle(sectionIndex, e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta bg-white"
+                    />
+                  </div>
 
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Inhalt
-                      </label>
-                      <textarea
-                        value={section.content}
-                        onChange={(e) => updateSection(index, 'content', e.target.value)}
-                        rows={4}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
-                      />
+                  <div className="space-y-3">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Inhalte
+                    </label>
+                    {section.content.map((block, blockIndex) => (
+                      <div key={blockIndex} className="p-4 border border-gray-200 rounded-md bg-white">
+                        <div className="flex justify-between items-center mb-3">
+                          <span className="text-xs font-medium text-gray-600">
+                            {block.type === 'text' ? '📝 Text' : '🖼️ Bild'}
+                          </span>
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() => moveSectionBlock(sectionIndex, blockIndex, 'up')}
+                              disabled={blockIndex === 0}
+                              className="px-2 py-1 text-xs text-gray-600 hover:bg-gray-200 rounded disabled:opacity-30"
+                            >
+                              ↑
+                            </button>
+                            <button
+                              onClick={() => moveSectionBlock(sectionIndex, blockIndex, 'down')}
+                              disabled={blockIndex === section.content.length - 1}
+                              className="px-2 py-1 text-xs text-gray-600 hover:bg-gray-200 rounded disabled:opacity-30"
+                            >
+                              ↓
+                            </button>
+                            <button
+                              onClick={() => removeSectionBlock(sectionIndex, blockIndex)}
+                              className="px-2 py-1 text-xs text-red-600 hover:bg-red-50 rounded"
+                            >
+                              ×
+                            </button>
+                          </div>
+                        </div>
+
+                        {block.type === 'text' ? (
+                          <textarea
+                            value={block.content}
+                            onChange={(e) => updateSectionBlock(sectionIndex, blockIndex, { ...block, content: e.target.value })}
+                            rows={3}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta text-sm"
+                            placeholder="Text hier eingeben... (Markdown wird unterstützt: **fett**)"
+                          />
+                        ) : (
+                          <div className="space-y-2">
+                            <input
+                              type="text"
+                              value={block.src}
+                              onChange={(e) => updateSectionBlock(sectionIndex, blockIndex, { ...block, src: e.target.value })}
+                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta text-sm"
+                              placeholder="Bildpfad: /images/visuals/beispiel.jpg"
+                            />
+                            <input
+                              type="text"
+                              value={block.alt || ''}
+                              onChange={(e) => updateSectionBlock(sectionIndex, blockIndex, { ...block, alt: e.target.value })}
+                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta text-sm"
+                              placeholder="Alt-Text (für Barrierefreiheit)"
+                            />
+                            <input
+                              type="text"
+                              value={block.caption || ''}
+                              onChange={(e) => updateSectionBlock(sectionIndex, blockIndex, { ...block, caption: e.target.value })}
+                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta text-sm"
+                              placeholder="Bildunterschrift (optional)"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    ))}
+
+                    <div className="flex gap-2 mt-3">
+                      <button
+                        onClick={() => addSectionTextBlock(sectionIndex)}
+                        className="px-3 py-2 text-xs bg-gray-200 hover:bg-gray-300 rounded-md"
+                      >
+                        + Text hinzufügen
+                      </button>
+                      <button
+                        onClick={() => addSectionImageBlock(sectionIndex)}
+                        className="px-3 py-2 text-xs bg-gray-200 hover:bg-gray-300 rounded-md"
+                      >
+                        + Bild hinzufügen
+                      </button>
                     </div>
                   </div>
                 </div>

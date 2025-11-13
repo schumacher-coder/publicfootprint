@@ -10,7 +10,12 @@
     {
       "id": "intro",
       "title": "Medienarbeit, die ankommt",
-      "content": "Fachmedien sind nach wie vor wichtige Meinungsbildner in der B2B-IT. Mit unserem Netzwerk und Know-how bringen wir Ihre Themen in die richtigen Publikationen."
+      "content": [
+        {
+          "type": "text",
+          "content": "Fachmedien sind nach wie vor wichtige Meinungsbildner in der B2B-IT. Mit unserem Netzwerk und Know-how bringen wir Ihre Themen in die richtigen Publikationen."
+        }
+      ]
     }
   ],
   "cta": {

@@ -3,18 +3,22 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
+type ContentBlock =
+  | { type: 'text'; content: string }
+  | { type: 'image'; src: string; alt?: string; caption?: string }
+
 interface AboutContent {
   hero: {
     title: string
     subtitle: string
   }
   companyStory: {
-    paragraphs: string[]
+    content: ContentBlock[]
   }
   thomasBio: {
     title: string
     image: string
-    paragraphs: string[]
+    content: ContentBlock[]
     mantra: {
       intro: string
       quote: string
@@ -72,26 +76,118 @@ export default function AdminAbout() {
     }
   }
 
-  const updateCompanyParagraph = (index: number, value: string) => {
+  // Company Story content block functions
+  const updateCompanyBlock = (index: number, block: ContentBlock) => {
     if (!content) return
-    const newParagraphs = [...content.companyStory.paragraphs]
-    newParagraphs[index] = value
+    const newContent = [...content.companyStory.content]
+    newContent[index] = block
     setContent({
       ...content,
-      companyStory: { paragraphs: newParagraphs }
+      companyStory: { content: newContent }
     })
   }
 
-  const updateBioParagraph = (index: number, value: string) => {
+  const addCompanyTextBlock = () => {
     if (!content) return
-    const newParagraphs = [...content.thomasBio.paragraphs]
-    newParagraphs[index] = value
     setContent({
       ...content,
-      thomasBio: { ...content.thomasBio, paragraphs: newParagraphs }
+      companyStory: {
+        content: [...content.companyStory.content, { type: 'text', content: 'Neuer Absatz' }]
+      }
     })
   }
 
+  const addCompanyImageBlock = () => {
+    if (!content) return
+    setContent({
+      ...content,
+      companyStory: {
+        content: [...content.companyStory.content, { type: 'image', src: '', alt: '', caption: '' }]
+      }
+    })
+  }
+
+  const removeCompanyBlock = (index: number) => {
+    if (!content) return
+    setContent({
+      ...content,
+      companyStory: {
+        content: content.companyStory.content.filter((_, i) => i !== index)
+      }
+    })
+  }
+
+  const moveCompanyBlock = (index: number, direction: 'up' | 'down') => {
+    if (!content) return
+    const newContent = [...content.companyStory.content]
+    const targetIndex = direction === 'up' ? index - 1 : index + 1
+    if (targetIndex < 0 || targetIndex >= newContent.length) return
+
+    [newContent[index], newContent[targetIndex]] = [newContent[targetIndex], newContent[index]]
+    setContent({
+      ...content,
+      companyStory: { content: newContent }
+    })
+  }
+
+  // Thomas Bio content block functions
+  const updateBioBlock = (index: number, block: ContentBlock) => {
+    if (!content) return
+    const newContent = [...content.thomasBio.content]
+    newContent[index] = block
+    setContent({
+      ...content,
+      thomasBio: { ...content.thomasBio, content: newContent }
+    })
+  }
+
+  const addBioTextBlock = () => {
+    if (!content) return
+    setContent({
+      ...content,
+      thomasBio: {
+        ...content.thomasBio,
+        content: [...content.thomasBio.content, { type: 'text', content: 'Neuer Absatz' }]
+      }
+    })
+  }
+
+  const addBioImageBlock = () => {
+    if (!content) return
+    setContent({
+      ...content,
+      thomasBio: {
+        ...content.thomasBio,
+        content: [...content.thomasBio.content, { type: 'image', src: '', alt: '', caption: '' }]
+      }
+    })
+  }
+
+  const removeBioBlock = (index: number) => {
+    if (!content) return
+    setContent({
+      ...content,
+      thomasBio: {
+        ...content.thomasBio,
+        content: content.thomasBio.content.filter((_, i) => i !== index)
+      }
+    })
+  }
+
+  const moveBioBlock = (index: number, direction: 'up' | 'down') => {
+    if (!content) return
+    const newContent = [...content.thomasBio.content]
+    const targetIndex = direction === 'up' ? index - 1 : index + 1
+    if (targetIndex < 0 || targetIndex >= newContent.length) return
+
+    [newContent[index], newContent[targetIndex]] = [newContent[targetIndex], newContent[index]]
+    setContent({
+      ...content,
+      thomasBio: { ...content.thomasBio, content: newContent }
+    })
+  }
+
+  // Timeline functions
   const updateTimelineItem = (index: number, field: 'year' | 'title' | 'description', value: string) => {
     if (!content) return
     const newTimeline = [...content.timeline]
@@ -181,20 +277,89 @@ export default function AdminAbout() {
           <section className="bg-white rounded-lg shadow-sm p-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">Unternehmensgeschichte</h2>
             <div className="space-y-4">
-              {content.companyStory.paragraphs.map((paragraph, index) => (
-                <div key={index}>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Absatz {index + 1}
-                  </label>
-                  <textarea
-                    value={paragraph}
-                    onChange={(e) => updateCompanyParagraph(index, e.target.value)}
-                    rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
-                    placeholder="Markdown wird unterstützt: **fett**"
-                  />
+              <label className="block text-sm font-medium text-gray-700 mb-3">
+                Inhalte
+              </label>
+              {content.companyStory.content.map((block, index) => (
+                <div key={index} className="mb-4 p-4 border border-gray-200 rounded-md bg-gray-50">
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="text-sm font-medium text-gray-600">
+                      {block.type === 'text' ? '📝 Text' : '🖼️ Bild'}
+                    </span>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => moveCompanyBlock(index, 'up')}
+                        disabled={index === 0}
+                        className="px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 rounded disabled:opacity-30"
+                      >
+                        ↑
+                      </button>
+                      <button
+                        onClick={() => moveCompanyBlock(index, 'down')}
+                        disabled={index === content.companyStory.content.length - 1}
+                        className="px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 rounded disabled:opacity-30"
+                      >
+                        ↓
+                      </button>
+                      <button
+                        onClick={() => removeCompanyBlock(index)}
+                        className="px-2 py-1 text-sm text-red-600 hover:bg-red-50 rounded"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  </div>
+
+                  {block.type === 'text' ? (
+                    <textarea
+                      value={block.content}
+                      onChange={(e) => updateCompanyBlock(index, { ...block, content: e.target.value })}
+                      rows={3}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                      placeholder="Text hier eingeben... (Markdown wird unterstützt: **fett**)"
+                    />
+                  ) : (
+                    <div className="space-y-2">
+                      <input
+                        type="text"
+                        value={block.src}
+                        onChange={(e) => updateCompanyBlock(index, { ...block, src: e.target.value })}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                        placeholder="Bildpfad: /images/visuals/beispiel.jpg"
+                      />
+                      <input
+                        type="text"
+                        value={block.alt || ''}
+                        onChange={(e) => updateCompanyBlock(index, { ...block, alt: e.target.value })}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                        placeholder="Alt-Text (für Barrierefreiheit)"
+                      />
+                      <input
+                        type="text"
+                        value={block.caption || ''}
+                        onChange={(e) => updateCompanyBlock(index, { ...block, caption: e.target.value })}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                        placeholder="Bildunterschrift (optional)"
+                      />
+                    </div>
+                  )}
                 </div>
               ))}
+
+              <div className="flex gap-2 mt-3">
+                <button
+                  onClick={addCompanyTextBlock}
+                  className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-md"
+                >
+                  + Text hinzufügen
+                </button>
+                <button
+                  onClick={addCompanyImageBlock}
+                  className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-md"
+                >
+                  + Bild hinzufügen
+                </button>
+              </div>
             </div>
           </section>
 
@@ -236,20 +401,91 @@ export default function AdminAbout() {
                 </p>
               </div>
 
-              {content.thomasBio.paragraphs.map((paragraph, index) => (
-                <div key={index}>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Absatz {index + 1}
-                  </label>
-                  <textarea
-                    value={paragraph}
-                    onChange={(e) => updateBioParagraph(index, e.target.value)}
-                    rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
-                    placeholder="Markdown wird unterstützt: **fett**"
-                  />
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-3">
+                  Inhalte
+                </label>
+                {content.thomasBio.content.map((block, index) => (
+                  <div key={index} className="mb-4 p-4 border border-gray-200 rounded-md bg-gray-50">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-sm font-medium text-gray-600">
+                        {block.type === 'text' ? '📝 Text' : '🖼️ Bild'}
+                      </span>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => moveBioBlock(index, 'up')}
+                          disabled={index === 0}
+                          className="px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 rounded disabled:opacity-30"
+                        >
+                          ↑
+                        </button>
+                        <button
+                          onClick={() => moveBioBlock(index, 'down')}
+                          disabled={index === content.thomasBio.content.length - 1}
+                          className="px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 rounded disabled:opacity-30"
+                        >
+                          ↓
+                        </button>
+                        <button
+                          onClick={() => removeBioBlock(index)}
+                          className="px-2 py-1 text-sm text-red-600 hover:bg-red-50 rounded"
+                        >
+                          ×
+                        </button>
+                      </div>
+                    </div>
+
+                    {block.type === 'text' ? (
+                      <textarea
+                        value={block.content}
+                        onChange={(e) => updateBioBlock(index, { ...block, content: e.target.value })}
+                        rows={3}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                        placeholder="Text hier eingeben... (Markdown wird unterstützt: **fett**)"
+                      />
+                    ) : (
+                      <div className="space-y-2">
+                        <input
+                          type="text"
+                          value={block.src}
+                          onChange={(e) => updateBioBlock(index, { ...block, src: e.target.value })}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                          placeholder="Bildpfad: /images/visuals/beispiel.jpg"
+                        />
+                        <input
+                          type="text"
+                          value={block.alt || ''}
+                          onChange={(e) => updateBioBlock(index, { ...block, alt: e.target.value })}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                          placeholder="Alt-Text (für Barrierefreiheit)"
+                        />
+                        <input
+                          type="text"
+                          value={block.caption || ''}
+                          onChange={(e) => updateBioBlock(index, { ...block, caption: e.target.value })}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                          placeholder="Bildunterschrift (optional)"
+                        />
+                      </div>
+                    )}
+                  </div>
+                ))}
+
+                <div className="flex gap-2 mt-3">
+                  <button
+                    onClick={addBioTextBlock}
+                    className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-md"
+                  >
+                    + Text hinzufügen
+                  </button>
+                  <button
+                    onClick={addBioImageBlock}
+                    className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-md"
+                  >
+                    + Bild hinzufügen
+                  </button>
                 </div>
-              ))}
+              </div>
 
               <div className="pt-4 border-t">
                 <label className="block text-sm font-medium text-gray-700 mb-2">

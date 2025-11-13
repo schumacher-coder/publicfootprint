@@ -1,19 +1,37 @@
 {
   "hero": {
-    "title": "Wirkungsvolle PR für Enterprise IT",
-    "backgroundImage": "/images/visuals/moon.jpg",
-    "paragraphs": [
-      "Seit über 25 Jahren verwandle ich komplexe Technologiethemen in echte Storys. Public Footprint habe ich 2006 gegründet, als spezialisierte PR-Agentur für die IT-Branche. Seitdem hat sich der Fokus noch weiter verschärft; heute konzentriert sich die Agentur ausschließlich auf Enterprise IT.",
-      "Als **Themenversteher** erkläre ich das \"Warum\" hinter Cloud, Storage, Dateninfrastruktur und KI. Referenzen: Hitachi Vantara (seit 2015), Google Cloud, innovative Startups bis Konzerne. ",
-      "Public Footprint steht für **PR mit technischem Tiefgang und ohne Buzzwords.** Das Interface zum Kunden bin ich persönlich. Kein Agentur-Overhead, dafür voller Fokus auf wirkungsvolle Projekte.",
-      "**Thomas Schumacher. Public Footprint seit 2006.**"
+    "title": "Was ist Ihre Story?",
+    "backgroundImage": "",
+    "content": [
+      {
+        "type": "text",
+        "content": "Unsere physikalische Welt besteht aus Atomen und Elementarteilchen. Doch was verbindet Menschen miteinander? Die Antwort ist einfach: **Kommunikation!**"
+      },
+      {
+        "type": "text",
+        "content": "Seit Anbeginn der Menschheit sind Geschichten der Kitt unseres sozialen Zusammenhalts. Vom Lagerfeuer bis zum digitalen Zeitalter: Storytelling bleibt unser mächtigstes Werkzeug. Unser Gehirn speichert Bilder und Zusammenhänge leichter ab als bloße Fakten."
+      },
+      {
+        "type": "text",
+        "content": "Bei Public Footprint helfen wir Unternehmen, ihre einzigartigen Geschichten zu erzählen – spannend, lehrreich, informativ und manchmal einfach unterhaltsam! Wer überzeugende Geschichten erzählt, hinterlässt bleibende Spuren in der Erinnerung seiner Zielgruppe."
+      },
+      {
+        "type": "text",
+        "content": "Wir helfen Ihnen dabei, den perfekten kommunikativen Fußabdruck für Ihr Unternehmen zu gestalten!"
+      }
     ]
   },
   "aboutSection": {
-    "title": "KI als Booster für gute PR",
-    "paragraphs": [
-      "Auf der Liste der Jobs, die KI auslöschen soll, steht PR weit oben. Die Realität? Genau umgekehrt. \nKI macht gute PR unverzichtbar. \n\nWer heute in ChatGPT, Perplexity oder Google gefunden werden will, braucht gute Texte auf \nwertvollen Plattformen. **Ist das nicht die Definition von PR?**",
-      "Das SEO-Business mit seinem Buzzword-Bingo stirbt. Gut so. Die Renaissance der PR hat begonnen. \nPublic Footprint nutzt KI als Tool, nicht als Hype. **Schnell. Innovativ. Seit 25 Jahren im Business.**"
+    "title": "Public Footprint",
+    "content": [
+      {
+        "type": "text",
+        "content": "Kommunikation ist dann wirkungsvoll, wenn sie lebendig ist und nachhaltige Spuren hinterlässt. Genau dieses Prinzip prägt seit unserer Gründung 2006 unsere Arbeit: Wir schaffen für unsere Kunden einen unverwechselbaren \"Public Footprint\" in der Medienlandschaft und den sozialen Netzwerken."
+      },
+      {
+        "type": "text",
+        "content": "Je markanter dieser Abdruck, desto sicherer nehmen potenzielle Kunden Ihre Fährte auf und entscheiden sich für Ihr Angebot! Mit strategischem Storytelling und maßgeschneiderten Kommunikationslösungen sorgen wir dafür, dass Ihre Botschaft nicht nur gehört, sondern auch in Erinnerung bleibt."
+      }
     ]
   },
   "servicesSection": {

@@ -1,7 +1,31 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { getAboutContent } from '@/lib/content'
+import { getAboutContent, type ContentBlock } from '@/lib/content'
 import { parseMarkdown } from '@/lib/markdown'
+
+function renderContentBlock(block: ContentBlock, index: number) {
+  if (block.type === 'text') {
+    return (
+      <p key={index}>{parseMarkdown(block.content)}</p>
+    )
+  } else if (block.type === 'image') {
+    return (
+      <div key={index} className="my-8">
+        <img
+          src={block.src}
+          alt={block.alt || ''}
+          className="rounded-lg shadow-lg max-w-full mx-auto"
+        />
+        {block.caption && (
+          <p className="text-sm text-gray-600 text-center mt-2 italic">
+            {block.caption}
+          </p>
+        )}
+      </div>
+    )
+  }
+  return null
+}
 
 export const metadata: Metadata = {
   title: 'About - Public Footprint GmbH',
@@ -30,9 +54,9 @@ export default function AboutPage() {
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <div className="prose prose-lg max-w-none space-y-6 text-gray-700">
-              {content.companyStory.paragraphs.map((paragraph, index) => (
-                <p key={index}>{parseMarkdown(paragraph)}</p>
-              ))}
+              {content.companyStory.content.map((block, index) =>
+                renderContentBlock(block, index)
+              )}
             </div>
           </div>
         </div>
@@ -98,9 +122,9 @@ export default function AboutPage() {
                 </div>
               )}
               <div className="prose prose-lg max-w-none space-y-4 text-gray-700">
-                {content.thomasBio.paragraphs.map((paragraph, index) => (
-                  <p key={index}>{parseMarkdown(paragraph)}</p>
-                ))}
+                {content.thomasBio.content.map((block, index) =>
+                  renderContentBlock(block, index)
+                )}
                 <div className="pt-4 border-t-2 border-gray-200 mt-6">
                   <p className="text-xl font-medium text-gray-900 italic">
                     {content.thomasBio.mantra.intro}

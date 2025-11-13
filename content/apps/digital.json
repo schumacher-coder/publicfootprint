@@ -10,7 +10,12 @@
     {
       "id": "intro",
       "title": "Digitale Präsenz, die wirkt",
-      "content": "Ihre potenziellen Kunden recherchieren online, bevor sie Kontakt aufnehmen. Ein starker Digital Footprint sorgt dafür, dass sie Sie finden – und überzeugt werden."
+      "content": [
+        {
+          "type": "text",
+          "content": "Ihre potenziellen Kunden recherchieren online, bevor sie Kontakt aufnehmen. Ein starker Digital Footprint sorgt dafür, dass sie Sie finden – und überzeugt werden."
+        }
+      ]
     }
   ],
   "cta": {
