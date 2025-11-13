@@ -12,9 +12,11 @@ export default function Header() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-light text-gray-900">
-              Public <span className="text-magenta font-medium">Footprint</span>
-            </span>
+            <img
+              src="/images/logos/public-footprint-logo.png"
+              alt="Public Footprint"
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}

@@ -48,6 +48,13 @@ export function LandingPage({ content }: LandingPageProps) {
               </div>
             )}
             <div className="text-center">
+              <div className="mb-6 flex justify-center">
+                <img
+                  src="/images/logos/pf-signet.png"
+                  alt="Public Footprint"
+                  className="h-16 w-auto opacity-20"
+                />
+              </div>
               <h1 className="mb-6">{content.hero.title}</h1>
               <p className="text-2xl text-gray-700 mb-4 font-light">
                 {content.hero.subtitle}

@@ -9,9 +9,13 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="md:col-span-2">
-            <h3 className="text-xl font-light text-white mb-4">
-              Public <span className="text-magenta font-medium">Footprint</span> GmbH
-            </h3>
+            <Link href="/" className="inline-block mb-4">
+              <img
+                src="/images/logos/public-footprint-logo.png"
+                alt="Public Footprint"
+                className="h-10 w-auto brightness-0 invert"
+              />
+            </Link>
             <p className="text-gray-400 leading-relaxed mb-4">
               Seit 2006 Ihr Partner für strategische B2B-IT Kommunikation.
               Wir helfen Unternehmen, ihre einzigartigen Geschichten zu erzählen.
