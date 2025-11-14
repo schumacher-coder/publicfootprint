@@ -17,11 +17,6 @@ interface Homepage {
     title: string
     description: string
   }
-  ctaSection: {
-    title: string
-    description: string
-    buttonText: string
-  }
 }
 
 export default function AdminHomepage() {
@@ -309,58 +304,6 @@ export default function AdminHomepage() {
                   rows={3}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
                   placeholder="Text unterhalb des Titels..."
-                />
-              </div>
-            </div>
-          </section>
-
-          {/* CTA Section */}
-          <section className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Call-to-Action Bereich</h2>
-
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Titel
-                </label>
-                <input
-                  type="text"
-                  value={content.ctaSection.title}
-                  onChange={(e) => setContent({
-                    ...content,
-                    ctaSection: { ...content.ctaSection, title: e.target.value }
-                  })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Beschreibung
-                </label>
-                <textarea
-                  value={content.ctaSection.description}
-                  onChange={(e) => setContent({
-                    ...content,
-                    ctaSection: { ...content.ctaSection, description: e.target.value }
-                  })}
-                  rows={2}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Button-Text
-                </label>
-                <input
-                  type="text"
-                  value={content.ctaSection.buttonText}
-                  onChange={(e) => setContent({
-                    ...content,
-                    ctaSection: { ...content.ctaSection, buttonText: e.target.value }
-                  })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
                 />
               </div>
             </div>

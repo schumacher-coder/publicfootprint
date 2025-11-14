@@ -20,7 +20,7 @@ export default function Footer() {
               Seit 2006 Ihr Partner für strategische B2B-IT Kommunikation.
               Wir helfen Unternehmen, ihre einzigartigen Geschichten zu erzählen.
             </p>
-            <div className="space-y-2 text-sm">
+            <div className="space-y-2 text-sm text-white">
               <p>Mendelssohnstraße 9</p>
               <p>51375 Leverkusen</p>
               <p className="pt-2">

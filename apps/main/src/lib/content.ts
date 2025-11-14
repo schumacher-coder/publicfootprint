@@ -28,11 +28,6 @@ export interface Homepage {
     title: string
     description: string
   }
-  ctaSection: {
-    title: string
-    description: string
-    buttonText: string
-  }
 }
 
 export interface AppContent {

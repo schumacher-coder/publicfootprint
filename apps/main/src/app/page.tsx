@@ -56,11 +56,6 @@ export default function Home() {
                 renderContentBlock(block, index, index === content.hero.content.length - 1)
               )}
             </div>
-            <div className="mt-12 flex gap-4 justify-center flex-wrap">
-              <Link href="/kontakt" className="btn-primary">
-                Kontakt aufnehmen
-              </Link>
-            </div>
           </div>
         </div>
       </section>
@@ -78,7 +73,7 @@ export default function Home() {
                 <a
                   key={service.slug}
                   href={service.domain}
-                  className="group bg-magenta p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
+                  className="group bg-magenta/80 p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -95,20 +90,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-magenta-600 to-magenta-700 text-white">
+      {/* Contact Section */}
+      <section className="section-padding bg-white">
         <div className="container-custom text-center">
-          <h2 className="text-white mb-6">
-            {content.ctaSection.title}
-          </h2>
-          <p className="text-xl text-magenta-50 mb-8 max-w-2xl mx-auto">
-            {content.ctaSection.description}
-          </p>
-          <Link
-            href="/kontakt"
-            className="inline-block px-8 py-3 bg-white text-magenta font-medium rounded-md hover:bg-gray-50 transition-colors duration-200"
-          >
-            {content.ctaSection.buttonText}
+          <Link href="/kontakt" className="btn-primary">
+            Kontakt aufnehmen
           </Link>
         </div>
       </section>
