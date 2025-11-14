@@ -1,0 +1,37 @@
+{
+  "title": "Impressum",
+  "content": [
+    {
+      "type": "text",
+      "content": "## Angaben gemäß § 5 TMG\n\nPublic Footprint GmbH  \nMendelssohnstraße 9  \n51375 Leverkusen"
+    },
+    {
+      "type": "text",
+      "content": "## Vertreten durch\n\nGeschäftsführer: Thomas Krings"
+    },
+    {
+      "type": "text",
+      "content": "## Kontakt\n\nTelefon: [+49 214 830977-90](tel:+492148309779)  \nE-Mail: [info@public-footprint.de](mailto:info@public-footprint.de)"
+    },
+    {
+      "type": "text",
+      "content": "## Registereintrag\n\nEintragung im Handelsregister  \nRegistergericht: [Bitte ergänzen]  \nRegisternummer: [Bitte ergänzen]"
+    },
+    {
+      "type": "text",
+      "content": "## Umsatzsteuer-ID\n\nUmsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:  \n[Bitte ergänzen]"
+    },
+    {
+      "type": "text",
+      "content": "## Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV\n\nThomas Krings  \nMendelssohnstraße 9  \n51375 Leverkusen"
+    },
+    {
+      "type": "text",
+      "content": "## EU-Streitschlichtung\n\nDie Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: [https://ec.europa.eu/consumers/odr](https://ec.europa.eu/consumers/odr)\n\nUnsere E-Mail-Adresse finden Sie oben im Impressum."
+    },
+    {
+      "type": "text",
+      "content": "## Verbraucherstreitbeilegung / Universalschlichtungsstelle\n\nWir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
+    }
+  ]
+}

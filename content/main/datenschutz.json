@@ -1,0 +1,37 @@
+{
+  "title": "Datenschutzerklärung",
+  "content": [
+    {
+      "type": "text",
+      "content": "## 1. Datenschutz auf einen Blick\n\n### Allgemeine Hinweise\n\nDie folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung."
+    },
+    {
+      "type": "text",
+      "content": "## 2. Verantwortliche Stelle\n\nDie verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:\n\nPublic Footprint GmbH  \nThomas Krings  \nMendelssohnstraße 9  \n51375 Leverkusen\n\nTelefon: [+49 214 830977-90](tel:+492148309779)  \nE-Mail: [info@public-footprint.de](mailto:info@public-footprint.de)\n\nVerantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet."
+    },
+    {
+      "type": "text",
+      "content": "## 3. Datenerfassung auf dieser Website\n\n### Server-Log-Dateien\n\nDer Provider der Seiten (Vercel) erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:\n\n- Browsertyp und Browserversion\n- verwendetes Betriebssystem\n- Referrer URL\n- Hostname des zugreifenden Rechners\n- Uhrzeit der Serveranfrage\n- IP-Adresse\n\nEine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO."
+    },
+    {
+      "type": "text",
+      "content": "## 4. Kontaktformular\n\nWenn Sie uns per Kontaktformular (Google Forms) Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter."
+    },
+    {
+      "type": "text",
+      "content": "## 5. Google Forms\n\nWir verwenden Google Forms für unser Kontaktformular. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Bei der Nutzung von Google Forms werden Daten an Google übermittelt. Weitere Informationen finden Sie in der Datenschutzerklärung von Google: [https://policies.google.com/privacy](https://policies.google.com/privacy)"
+    },
+    {
+      "type": "text",
+      "content": "## 6. Google Calendar\n\nWir verwenden Google Calendar für Terminvereinbarungen. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Bei der Nutzung von Google Calendar werden Daten an Google übermittelt. Weitere Informationen finden Sie in der Datenschutzerklärung von Google: [https://policies.google.com/privacy](https://policies.google.com/privacy)"
+    },
+    {
+      "type": "text",
+      "content": "## 7. Ihre Rechte\n\nSie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit an uns wenden."
+    },
+    {
+      "type": "text",
+      "content": "**Hinweis:** Diese Datenschutzerklärung ist ein Basis-Template. Bitte lassen Sie diese von einem Rechtsanwalt oder Datenschutzbeauftragten auf Vollständigkeit und Rechtssicherheit prüfen und an Ihre spezifischen Anforderungen anpassen."
+    }
+  ]
+}

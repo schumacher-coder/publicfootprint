@@ -42,6 +42,18 @@ export default function AdminDashboard() {
       href: '/admin/notizen',
       icon: '📝',
     },
+    {
+      title: 'Impressum bearbeiten',
+      description: 'Rechtliche Angaben und Kontaktdaten anpassen',
+      href: '/admin/impressum',
+      icon: '⚖️',
+    },
+    {
+      title: 'Datenschutz bearbeiten',
+      description: 'Datenschutzerklärung verwalten und aktualisieren',
+      href: '/admin/datenschutz',
+      icon: '🔒',
+    },
   ]
 
   return (

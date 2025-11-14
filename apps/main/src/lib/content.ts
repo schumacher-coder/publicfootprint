@@ -189,3 +189,36 @@ export function getAboutContent(): AboutContent {
   const fileContents = fs.readFileSync(filePath, 'utf8')
   return JSON.parse(fileContents)
 }
+
+export function updateAboutContent(content: AboutContent): void {
+  const filePath = path.join(contentDir, 'main', 'about.json')
+  fs.writeFileSync(filePath, JSON.stringify(content, null, 2), 'utf8')
+}
+
+// Legal pages (Impressum & Datenschutz)
+export interface LegalPageContent {
+  title: string
+  content: ContentBlock[]
+}
+
+export function getImpressumContent(): LegalPageContent {
+  const filePath = path.join(contentDir, 'main', 'impressum.json')
+  const fileContents = fs.readFileSync(filePath, 'utf8')
+  return JSON.parse(fileContents)
+}
+
+export function updateImpressumContent(content: LegalPageContent): void {
+  const filePath = path.join(contentDir, 'main', 'impressum.json')
+  fs.writeFileSync(filePath, JSON.stringify(content, null, 2), 'utf8')
+}
+
+export function getDatenschutzContent(): LegalPageContent {
+  const filePath = path.join(contentDir, 'main', 'datenschutz.json')
+  const fileContents = fs.readFileSync(filePath, 'utf8')
+  return JSON.parse(fileContents)
+}
+
+export function updateDatenschutzContent(content: LegalPageContent): void {
+  const filePath = path.join(contentDir, 'main', 'datenschutz.json')
+  fs.writeFileSync(filePath, JSON.stringify(content, null, 2), 'utf8')
+}
