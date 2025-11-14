@@ -65,38 +65,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Public Footprint Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="mb-8 text-center">{content.aboutSection.title}</h2>
-            <div className="space-y-6">
-              {content.aboutSection.content.map((block, index) =>
-                renderContentBlock(block, index)
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Services Preview */}
-      <section className="section-padding bg-gray-50">
+      <section id="services" className="section-padding bg-white">
         <div className="container-custom">
           <div className="max-w-5xl mx-auto">
-            <h2 className="mb-12 text-center">{content.servicesSection.title}</h2>
+            <h2 className="mb-6 text-center">{content.servicesSection.title}</h2>
+            <p className="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">
+              {content.servicesSection.description}
+            </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.map((service) => (
                 <a
                   key={service.slug}
                   href={service.domain}
-                  className="group bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
+                  className="group bg-magenta p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <h3 className="text-xl font-medium text-gray-900 mb-3 group-hover:text-magenta transition-colors">
+                  <h3 className="text-xl font-medium text-white mb-3 group-hover:text-gray-100 transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-white leading-relaxed">
                     {service.excerpt}
                   </p>
                 </a>

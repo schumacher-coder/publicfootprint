@@ -24,12 +24,9 @@ export interface Homepage {
     backgroundImage?: string
     content: ContentBlock[]
   }
-  aboutSection: {
-    title: string
-    content: ContentBlock[]
-  }
   servicesSection: {
     title: string
+    description: string
   }
   ctaSection: {
     title: string

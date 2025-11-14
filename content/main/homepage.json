@@ -21,21 +21,9 @@
       }
     ]
   },
-  "aboutSection": {
-    "title": "Public Footprint",
-    "content": [
-      {
-        "type": "text",
-        "content": "Kommunikation ist dann wirkungsvoll, wenn sie lebendig ist und nachhaltige Spuren hinterlässt. Genau dieses Prinzip prägt seit unserer Gründung 2006 unsere Arbeit: Wir schaffen für unsere Kunden einen unverwechselbaren \"Public Footprint\" in der Medienlandschaft und den sozialen Netzwerken."
-      },
-      {
-        "type": "text",
-        "content": "Je markanter dieser Abdruck, desto sicherer nehmen potenzielle Kunden Ihre Fährte auf und entscheiden sich für Ihr Angebot! Mit strategischem Storytelling und maßgeschneiderten Kommunikationslösungen sorgen wir dafür, dass Ihre Botschaft nicht nur gehört, sondern auch in Erinnerung bleibt."
-      }
-    ]
-  },
   "servicesSection": {
-    "title": "Unsere Footprints"
+    "title": "Unsere Footprints",
+    "description": "Kommunikation ist dann wirkungsvoll, wenn sie lebendig ist und nachhaltige Spuren hinterlässt. Mit unseren maßgeschneiderten Services schaffen wir für Sie einen unverwechselbaren Public Footprint."
   },
   "ctaSection": {
     "title": "Bereit für Ihren Public Footprint?",

@@ -13,12 +13,9 @@ interface Homepage {
     backgroundImage?: string
     content: ContentBlock[]
   }
-  aboutSection: {
-    title: string
-    content: ContentBlock[]
-  }
   servicesSection: {
     title: string
+    description: string
   }
   ctaSection: {
     title: string
@@ -126,63 +123,6 @@ export default function AdminHomepage() {
     setContent({
       ...content,
       hero: { ...content.hero, content: newContent }
-    })
-  }
-
-  // About section content block functions
-  const updateAboutBlock = (index: number, block: ContentBlock) => {
-    if (!content) return
-    const newContent = [...content.aboutSection.content]
-    newContent[index] = block
-    setContent({
-      ...content,
-      aboutSection: { ...content.aboutSection, content: newContent }
-    })
-  }
-
-  const addAboutTextBlock = () => {
-    if (!content) return
-    setContent({
-      ...content,
-      aboutSection: {
-        ...content.aboutSection,
-        content: [...content.aboutSection.content, { type: 'text', content: 'Neuer Absatz' }]
-      }
-    })
-  }
-
-  const addAboutImageBlock = () => {
-    if (!content) return
-    setContent({
-      ...content,
-      aboutSection: {
-        ...content.aboutSection,
-        content: [...content.aboutSection.content, { type: 'image', src: '', alt: '', caption: '' }]
-      }
-    })
-  }
-
-  const removeAboutBlock = (index: number) => {
-    if (!content) return
-    setContent({
-      ...content,
-      aboutSection: {
-        ...content.aboutSection,
-        content: content.aboutSection.content.filter((_, i) => i !== index)
-      }
-    })
-  }
-
-  const moveAboutBlock = (index: number, direction: 'up' | 'down') => {
-    if (!content) return
-    const newContent = [...content.aboutSection.content]
-    const targetIndex = direction === 'up' ? index - 1 : index + 1
-    if (targetIndex < 0 || targetIndex >= newContent.length) return
-
-    [newContent[index], newContent[targetIndex]] = [newContent[targetIndex], newContent[index]]
-    setContent({
-      ...content,
-      aboutSection: { ...content.aboutSection, content: newContent }
     })
   }
 
@@ -336,9 +276,9 @@ export default function AdminHomepage() {
             </div>
           </section>
 
-          {/* About Section */}
+          {/* Services Section */}
           <section className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Public Footprint Bereich</h2>
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">Services-Bereich</h2>
 
             <div className="space-y-4">
               <div>
@@ -347,120 +287,30 @@ export default function AdminHomepage() {
                 </label>
                 <input
                   type="text"
-                  value={content.aboutSection.title}
+                  value={content.servicesSection.title}
                   onChange={(e) => setContent({
                     ...content,
-                    aboutSection: { ...content.aboutSection, title: e.target.value }
+                    servicesSection: { ...content.servicesSection, title: e.target.value }
                   })}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">
-                  Inhalte
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Beschreibung
                 </label>
-                {content.aboutSection.content.map((block, index) => (
-                  <div key={index} className="mb-4 p-4 border border-gray-200 rounded-md bg-gray-50">
-                    <div className="flex justify-between items-center mb-3">
-                      <span className="text-sm font-medium text-gray-600">
-                        {block.type === 'text' ? '📝 Text' : '🖼️ Bild'}
-                      </span>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => moveAboutBlock(index, 'up')}
-                          disabled={index === 0}
-                          className="px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 rounded disabled:opacity-30"
-                        >
-                          ↑
-                        </button>
-                        <button
-                          onClick={() => moveAboutBlock(index, 'down')}
-                          disabled={index === content.aboutSection.content.length - 1}
-                          className="px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 rounded disabled:opacity-30"
-                        >
-                          ↓
-                        </button>
-                        <button
-                          onClick={() => removeAboutBlock(index)}
-                          className="px-2 py-1 text-sm text-red-600 hover:bg-red-50 rounded"
-                        >
-                          ×
-                        </button>
-                      </div>
-                    </div>
-
-                    {block.type === 'text' ? (
-                      <textarea
-                        value={block.content}
-                        onChange={(e) => updateAboutBlock(index, { ...block, content: e.target.value })}
-                        rows={3}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
-                        placeholder="Text hier eingeben..."
-                      />
-                    ) : (
-                      <div className="space-y-2">
-                        <input
-                          type="text"
-                          value={block.src}
-                          onChange={(e) => updateAboutBlock(index, { ...block, src: e.target.value })}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
-                          placeholder="Bildpfad: /images/visuals/beispiel.jpg"
-                        />
-                        <input
-                          type="text"
-                          value={block.alt || ''}
-                          onChange={(e) => updateAboutBlock(index, { ...block, alt: e.target.value })}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
-                          placeholder="Alt-Text (für Barrierefreiheit)"
-                        />
-                        <input
-                          type="text"
-                          value={block.caption || ''}
-                          onChange={(e) => updateAboutBlock(index, { ...block, caption: e.target.value })}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
-                          placeholder="Bildunterschrift (optional)"
-                        />
-                      </div>
-                    )}
-                  </div>
-                ))}
-
-                <div className="flex gap-2 mt-3">
-                  <button
-                    onClick={addAboutTextBlock}
-                    className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-md"
-                  >
-                    + Text hinzufügen
-                  </button>
-                  <button
-                    onClick={addAboutImageBlock}
-                    className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-md"
-                  >
-                    + Bild hinzufügen
-                  </button>
-                </div>
+                <textarea
+                  value={content.servicesSection.description}
+                  onChange={(e) => setContent({
+                    ...content,
+                    servicesSection: { ...content.servicesSection, description: e.target.value }
+                  })}
+                  rows={3}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
+                  placeholder="Text unterhalb des Titels..."
+                />
               </div>
-            </div>
-          </section>
-
-          {/* Services Section */}
-          <section className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Services-Bereich</h2>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Titel
-              </label>
-              <input
-                type="text"
-                value={content.servicesSection.title}
-                onChange={(e) => setContent({
-                  ...content,
-                  servicesSection: { title: e.target.value }
-                })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
-              />
             </div>
           </section>
 

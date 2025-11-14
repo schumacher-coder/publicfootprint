@@ -173,7 +173,7 @@ export default function AboutPage() {
             <Link href="/kontakt" className="btn-primary">
               Kontakt aufnehmen
             </Link>
-            <Link href="/services" className="btn-secondary">
+            <Link href="/#services" className="btn-secondary">
               Services entdecken
             </Link>
           </div>

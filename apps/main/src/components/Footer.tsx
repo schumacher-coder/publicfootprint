@@ -4,7 +4,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="text-white" style={{ backgroundColor: '#575757' }}>
       <div className="container-custom py-12">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -16,7 +16,7 @@ export default function Footer() {
                 className="h-10 w-auto brightness-0 invert"
               />
             </Link>
-            <p className="text-gray-400 leading-relaxed mb-4">
+            <p className="text-white leading-relaxed mb-4">
               Seit 2006 Ihr Partner für strategische B2B-IT Kommunikation.
               Wir helfen Unternehmen, ihre einzigartigen Geschichten zu erzählen.
             </p>
@@ -102,7 +102,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+        <div className="border-t border-gray-600 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-white">
           <p>© {currentYear} Public Footprint GmbH. Alle Rechte vorbehalten.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <Link href="/impressum" className="hover:text-magenta transition-colors">
