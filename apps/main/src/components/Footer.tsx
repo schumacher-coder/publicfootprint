@@ -1,7 +1,9 @@
 import Link from 'next/link'
+import { getServices } from '@/lib/content'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  const services = getServices()
 
   return (
     <footer className="text-white" style={{ backgroundColor: '#575757' }}>
@@ -40,36 +42,18 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-medium mb-4">Services</h4>
             <ul className="space-y-2 text-base">
-              <li>
-                <Link href="/services#reference" className="text-magenta hover:text-magenta-400 transition-colors">
-                  Reference Footprint
-                </Link>
-              </li>
-              <li>
-                <Link href="/services#media" className="text-magenta hover:text-magenta-400 transition-colors">
-                  Media Footprint
-                </Link>
-              </li>
-              <li>
-                <Link href="/services#digital" className="text-magenta hover:text-magenta-400 transition-colors">
-                  Digital Footprint
-                </Link>
-              </li>
-              <li>
-                <Link href="/services#social" className="text-magenta hover:text-magenta-400 transition-colors">
-                  Social Media Footprint
-                </Link>
-              </li>
-              <li>
-                <Link href="/services#event" className="text-magenta hover:text-magenta-400 transition-colors">
-                  Event Footprint
-                </Link>
-              </li>
-              <li>
-                <Link href="/services#marketing" className="text-magenta hover:text-magenta-400 transition-colors">
-                  Marketing Footprint
-                </Link>
-              </li>
+              {services.map((service) => (
+                <li key={service.slug}>
+                  <a
+                    href={service.domain}
+                    className="text-magenta hover:text-magenta-400 transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {service.title}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
