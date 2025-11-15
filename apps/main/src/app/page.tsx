@@ -73,14 +73,14 @@ export default function Home() {
                 <a
                   key={service.slug}
                   href={service.domain}
-                  className="group bg-magenta/80 p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
+                  className="group bg-gray-50 p-8 rounded-lg shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,0.15)] transition-all duration-200 border border-gray-200"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <h3 className="text-xl font-medium text-white mb-3 group-hover:text-gray-100 transition-colors">
+                  <h3 className="text-xl font-medium text-gray-900 mb-3 group-hover:text-magenta transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-white leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                     {service.excerpt}
                   </p>
                 </a>
