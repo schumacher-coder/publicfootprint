@@ -336,7 +336,7 @@ export default function AdminAbout() {
                             className="max-w-xs rounded shadow-sm"
                             onError={(e) => {
                               e.currentTarget.style.display = 'none'
-                              const next = e.currentTarget.nextElementSibling as HTMLElement
+                              const next = e.currentTarget.nextElementSibling as HTMLElement | null
                               if (next) next.style.display = 'block'
                             }}
                           />
@@ -423,7 +423,8 @@ export default function AdminAbout() {
                       className="max-w-xs rounded-md shadow-sm"
                       onError={(e) => {
                         e.currentTarget.style.display = 'none'
-                        e.currentTarget.nextElementSibling!.style.display = 'block'
+                        const next = e.currentTarget.nextElementSibling as HTMLElement | null
+                        if (next) next.style.display = 'block'
                       }}
                     />
                     <p className="text-sm text-red-600 mt-2" style={{ display: 'none' }}>
@@ -496,7 +497,7 @@ export default function AdminAbout() {
                               className="max-w-xs rounded shadow-sm"
                               onError={(e) => {
                                 e.currentTarget.style.display = 'none'
-                                const next = e.currentTarget.nextElementSibling as HTMLElement
+                                const next = e.currentTarget.nextElementSibling as HTMLElement | null
                                 if (next) next.style.display = 'block'
                               }}
                             />
