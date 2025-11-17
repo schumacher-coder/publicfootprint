@@ -1,5 +1,6 @@
 import { headers } from 'next/headers'
 import Link from 'next/link'
+import Image from 'next/image'
 import { getHomepageContent, getServices, getAppContent, type ContentBlock, type AppContent } from '@/lib/content'
 import { parseMarkdown } from '@/lib/markdown'
 
@@ -93,16 +94,20 @@ function HomePageView() {
   return (
     <>
       {/* Hero Section */}
-      <section
-        className="section-padding bg-gradient-to-b from-gray-50 to-white relative"
-        style={content.hero.backgroundImage ? {
-          backgroundImage: `url(${content.hero.backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        } : {}}
-      >
+      <section className="section-padding bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         {content.hero.backgroundImage && (
-          <div className="absolute inset-0 bg-white/20"></div>
+          <>
+            <Image
+              src={content.hero.backgroundImage}
+              alt="Background"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority
+              quality={85}
+            />
+            <div className="absolute inset-0 bg-white/20 z-[1]"></div>
+          </>
         )}
         <div className="container-custom relative z-10">
           <div className="max-w-4xl mx-auto text-center">
