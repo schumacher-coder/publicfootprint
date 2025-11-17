@@ -1,11 +1,12 @@
+import { headers } from 'next/headers'
 import Link from 'next/link'
-import { getHomepageContent, getServices, type ContentBlock } from '@/lib/content'
+import { getHomepageContent, getServices, getAppContent, type ContentBlock, type AppContent } from '@/lib/content'
 import { parseMarkdown } from '@/lib/markdown'
 
 function renderContentBlock(block: ContentBlock, index: number, isLast: boolean = false) {
   if (block.type === 'text') {
     return (
-      <p key={index} className={isLast ? "text-xl font-medium text-gray-900 pt-4" : ""}>
+      <p key={index} className={isLast ? "text-xl font-medium text-gray-900 pt-4" : "text-lg text-gray-700 leading-relaxed"}>
         {parseMarkdown(block.content)}
       </p>
     )
@@ -28,7 +29,64 @@ function renderContentBlock(block: ContentBlock, index: number, isLast: boolean 
   return null
 }
 
-export default function Home() {
+// Landing Page Component for service domains
+function LandingPageView({ content }: { content: AppContent }) {
+  return (
+    <>
+      {/* Hero Section */}
+      <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="mb-6">{content.hero.title}</h1>
+            <p className="text-2xl text-gray-700 mb-4 font-light">
+              {content.hero.subtitle}
+            </p>
+            <p className="text-xl text-gray-600">
+              {content.hero.description}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Content Sections */}
+      {content.sections.map((section, index) => (
+        <section
+          key={section.id}
+          className={`section-padding ${
+            index % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+          }`}
+        >
+          <div className="container-custom">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="mb-6">{section.title}</h2>
+              <div className="space-y-4">
+                {section.content.map((block, idx) =>
+                  renderContentBlock(block, idx, idx === section.content.length - 1)
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
+
+      {/* CTA Section */}
+      <section className="section-padding bg-gradient-to-r from-magenta-600 to-magenta-700 text-white">
+        <div className="container-custom text-center">
+          <h2 className="text-white mb-6">{content.cta.title}</h2>
+          <a
+            href={content.cta.buttonLink}
+            className="inline-block px-8 py-3 bg-white text-magenta-600 font-medium rounded-md hover:bg-gray-50 transition-colors duration-200"
+          >
+            {content.cta.buttonText}
+          </a>
+        </div>
+      </section>
+    </>
+  )
+}
+
+// Homepage Component for main domain
+function HomePageView() {
   const content = getHomepageContent()
   const services = getServices()
 
@@ -100,4 +158,28 @@ export default function Home() {
       </section>
     </>
   )
+}
+
+export default async function Home() {
+  // Get current hostname
+  const headersList = await headers()
+  const hostname = headersList.get('host') || ''
+
+  // Check if this is a landing page domain
+  const services = getServices()
+  const service = services.find(s => {
+    const domain = s.domain.replace('https://', '').replace('http://', '')
+    return hostname === domain || hostname === `www.${domain}`
+  })
+
+  // If it's a service domain, show landing page
+  if (service) {
+    const landingContent = getAppContent(service.slug)
+    if (landingContent) {
+      return <LandingPageView content={landingContent} />
+    }
+  }
+
+  // Otherwise show homepage
+  return <HomePageView />
 }
