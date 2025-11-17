@@ -37,11 +37,11 @@ function LandingPageView({ content }: { content: AppContent }) {
       <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="mb-6">{content.hero.title}</h1>
-            <p className="text-2xl text-gray-700 mb-4 font-light">
+            <h1 className="mb-8">{content.hero.title}</h1>
+            <p className="text-lg text-gray-700 mb-4 leading-relaxed">
               {content.hero.subtitle}
             </p>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg text-gray-700 leading-relaxed">
               {content.hero.description}
             </p>
           </div>
