@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Metadata } from 'next'
 import { getAboutContent, type ContentBlock } from '@/lib/content'
 import { parseMarkdown } from '@/lib/markdown'
@@ -11,11 +12,15 @@ function renderContentBlock(block: ContentBlock, index: number) {
   } else if (block.type === 'image') {
     return (
       <div key={index} className="my-8">
-        <img
-          src={block.src}
-          alt={block.alt || ''}
-          className="rounded-lg shadow-lg max-w-full mx-auto"
-        />
+        <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+          <Image
+            src={block.src}
+            alt={block.alt || ''}
+            fill
+            className="rounded-lg shadow-lg object-cover"
+            sizes="(max-width: 768px) 100vw, 896px"
+          />
+        </div>
         {block.caption && (
           <p className="text-sm text-gray-600 text-center mt-2 italic">
             {block.caption}
@@ -114,11 +119,16 @@ export default function AboutPage() {
             <div className="bg-white rounded-lg p-8 md:p-12 shadow-sm border-l-4 border-magenta">
               {content.thomasBio.image && (
                 <div className="mb-8 flex justify-center">
-                  <img
-                    src={content.thomasBio.image}
-                    alt="Thomas Krings"
-                    className="rounded-lg shadow-lg max-w-md w-full object-cover"
-                  />
+                  <div className="relative max-w-md w-full" style={{ aspectRatio: '3/2' }}>
+                    <Image
+                      src={content.thomasBio.image}
+                      alt="Thomas Krings"
+                      fill
+                      className="rounded-lg shadow-lg object-cover"
+                      sizes="(max-width: 768px) 100vw, 448px"
+                      priority
+                    />
+                  </div>
                 </div>
               )}
               <div className="prose prose-lg max-w-none space-y-4 text-gray-700">
