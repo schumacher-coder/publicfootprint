@@ -55,7 +55,7 @@ export default function AboutPage() {
       </section>
 
       {/* Company Story */}
-      <section className="pt-8 pb-16">
+      <section className="pb-16">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <div className="prose prose-lg max-w-none space-y-6 text-gray-700">
