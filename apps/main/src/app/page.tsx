@@ -72,7 +72,7 @@ function LandingPageView({ content }: { content: AppContent }) {
       {/* CTA Section */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom text-center">
-          <h2 className="text-gray-900 mb-6">{content.cta.title}</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{content.cta.title}</h2>
           <a
             href={content.cta.buttonLink}
             className="inline-block px-8 py-3 bg-magenta-600 text-white font-medium rounded-md hover:bg-magenta-700 transition-colors duration-200"
