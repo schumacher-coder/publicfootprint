@@ -101,6 +101,9 @@ function HomePageView() {
           backgroundPosition: 'center',
         } : {}}
       >
+        {content.hero.backgroundImage && (
+          <div className="absolute inset-0 bg-white/20"></div>
+        )}
         <div className="container-custom relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="mb-8">
