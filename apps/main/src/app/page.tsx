@@ -59,10 +59,10 @@ function LandingPageView({ content }: { content: AppContent }) {
         >
           <div className="container-custom">
             <div className="max-w-4xl mx-auto">
-              <h2 className="mb-6">{section.title}</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">{section.title}</h2>
               <div className="space-y-4">
                 {section.content.map((block, idx) =>
-                  renderContentBlock(block, idx, idx === section.content.length - 1)
+                  renderContentBlock(block, idx, false)
                 )}
               </div>
             </div>
