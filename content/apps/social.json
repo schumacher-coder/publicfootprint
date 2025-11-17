@@ -1,0 +1,26 @@
+{
+  "domain": "socialmedia-footprint.de",
+  "hero": {
+    "title": "Social Media Footprint",
+    "subtitle": "Professionelle Pflege Ihrer Business-Netzwerke",
+    "description": "LinkedIn, XING und Co. strategisch nutzen – für mehr Sichtbarkeit und qualifizierte Kontakte.",
+    "image": ""
+  },
+  "sections": [
+    {
+      "id": "intro",
+      "title": "Social Media für B2B-IT",
+      "content": [
+        {
+          "type": "text",
+          "content": "Business-Netzwerke wie LinkedIn und XING sind zentrale Plattformen im B2B-Umfeld. Wir helfen Ihnen, diese Kanäle strategisch zu nutzen – mit relevantem Content und gezielter Ansprache."
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "title": "Lassen Sie uns über Ihre Social-Media-Strategie sprechen",
+    "buttonText": "Jetzt Kontakt aufnehmen",
+    "buttonLink": "https://publicfootprint.de/kontakt"
+  }
+}
