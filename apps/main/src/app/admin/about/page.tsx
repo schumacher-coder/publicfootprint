@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 type ContentBlock =
   | { type: 'text'; content: string }
@@ -330,19 +331,15 @@ export default function AdminAbout() {
                       {block.src && (
                         <div className="mt-2 p-2 bg-white rounded border">
                           <p className="text-xs text-gray-600 mb-1">Vorschau:</p>
-                          <img
-                            src={block.src}
-                            alt="Vorschau"
-                            className="max-w-xs rounded shadow-sm"
-                            onError={(e) => {
-                              e.currentTarget.style.display = 'none'
-                              const next = e.currentTarget.nextElementSibling as HTMLElement | null
-                              if (next) next.style.display = 'block'
-                            }}
-                          />
-                          <p className="text-xs text-red-600 mt-1" style={{ display: 'none' }}>
-                            ⚠️ Bild nicht gefunden!
-                          </p>
+                          <div className="relative w-full max-w-xs" style={{ aspectRatio: '16/9' }}>
+                            <Image
+                              src={block.src}
+                              alt="Vorschau"
+                              fill
+                              className="rounded shadow-sm object-cover"
+                              sizes="384px"
+                            />
+                          </div>
                         </div>
                       )}
                       <input
@@ -417,19 +414,15 @@ export default function AdminAbout() {
                 {content.thomasBio.image && (
                   <div className="mt-3 p-3 bg-gray-50 rounded-md">
                     <p className="text-xs text-gray-600 mb-2">Vorschau:</p>
-                    <img
-                      src={content.thomasBio.image}
-                      alt="Bildvorschau"
-                      className="max-w-xs rounded-md shadow-sm"
-                      onError={(e) => {
-                        e.currentTarget.style.display = 'none'
-                        const next = e.currentTarget.nextElementSibling as HTMLElement | null
-                        if (next) next.style.display = 'block'
-                      }}
-                    />
-                    <p className="text-sm text-red-600 mt-2" style={{ display: 'none' }}>
-                      ⚠️ Bild konnte nicht geladen werden. Pfad überprüfen!
-                    </p>
+                    <div className="relative w-full max-w-xs" style={{ aspectRatio: '3/2' }}>
+                      <Image
+                        src={content.thomasBio.image}
+                        alt="Bildvorschau"
+                        fill
+                        className="rounded-md shadow-sm object-cover"
+                        sizes="384px"
+                      />
+                    </div>
                   </div>
                 )}
                 <p className="text-sm text-gray-500 mt-1">
@@ -491,19 +484,15 @@ export default function AdminAbout() {
                         {block.src && (
                           <div className="mt-2 p-2 bg-white rounded border">
                             <p className="text-xs text-gray-600 mb-1">Vorschau:</p>
-                            <img
-                              src={block.src}
-                              alt="Vorschau"
-                              className="max-w-xs rounded shadow-sm"
-                              onError={(e) => {
-                                e.currentTarget.style.display = 'none'
-                                const next = e.currentTarget.nextElementSibling as HTMLElement | null
-                                if (next) next.style.display = 'block'
-                              }}
-                            />
-                            <p className="text-xs text-red-600 mt-1" style={{ display: 'none' }}>
-                              ⚠️ Bild nicht gefunden!
-                            </p>
+                            <div className="relative w-full max-w-xs" style={{ aspectRatio: '16/9' }}>
+                              <Image
+                                src={block.src}
+                                alt="Vorschau"
+                                fill
+                                className="rounded shadow-sm object-cover"
+                                sizes="384px"
+                              />
+                            </div>
                           </div>
                         )}
                         <input
