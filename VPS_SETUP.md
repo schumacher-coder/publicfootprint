@@ -11,7 +11,8 @@ Komplette Anleitung zur Installation auf einem Ionos/Hetzner VPS mit Ubuntu 22.0
 ssh root@<vps-ip>
 
 # 2. Setup-Script herunterladen und ausführen
-curl -O https://raw.githubusercontent.com/schumacher-coder/publicfootprint/main/setup-vps.sh
+# WICHTIG: Nutze Feature-Branch bis main-Branch erstellt ist
+curl -O https://raw.githubusercontent.com/schumacher-coder/publicfootprint/claude/analyze-codebase-01Fq4FBHbyt4tZzpr8Lo4NRT/setup-vps.sh
 chmod +x setup-vps.sh
 sudo ./setup-vps.sh
 ```
