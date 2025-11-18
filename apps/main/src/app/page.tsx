@@ -35,11 +35,11 @@ function LandingPageView({ content }: { content: AppContent }) {
   return (
     <>
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
+      <section className="section-padding-tight bg-gradient-to-b from-gray-50 to-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="mb-8">{content.hero.title}</h1>
-            <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+            <h1 className="mb-6">{content.hero.title}</h1>
+            <p className="text-lg text-gray-700 mb-3 leading-relaxed">
               {content.hero.subtitle}
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
@@ -53,14 +53,14 @@ function LandingPageView({ content }: { content: AppContent }) {
       {content.sections.map((section, index) => (
         <section
           key={section.id}
-          className={`section-padding ${
+          className={`section-padding-tight ${
             index % 2 === 0 ? 'bg-white' : 'bg-gray-50'
           }`}
         >
           <div className="container-custom">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">{section.title}</h2>
-              <div className="space-y-4">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">{section.title}</h2>
+              <div className="space-y-3">
                 {section.content.map((block, idx) =>
                   renderContentBlock(block, idx, false)
                 )}
@@ -71,7 +71,7 @@ function LandingPageView({ content }: { content: AppContent }) {
       ))}
 
       {/* CTA Section */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding-tight bg-gray-50">
         <div className="container-custom text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">{content.cta.title}</h2>
           <a

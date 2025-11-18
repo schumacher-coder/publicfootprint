@@ -45,6 +45,10 @@
     @apply py-16 md:py-24 lg:py-32;
   }
 
+  .section-padding-tight {
+    @apply py-8 md:py-12;
+  }
+
   .btn-primary {
     @apply inline-block px-8 py-3 bg-magenta text-white font-medium rounded-md hover:bg-magenta-600 transition-colors duration-200;
   }
