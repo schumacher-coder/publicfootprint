@@ -64,8 +64,9 @@ export default function HeroCarousel({ images, interval = 5000, children }: Hero
           className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
           style={{
             backgroundImage: `url(${image})`,
-            backgroundSize: 'cover',
+            backgroundSize: 'contain',
             backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
             opacity: index === currentIndex ? 1 : 0,
             zIndex: index === currentIndex ? 1 : 0,
           }}
