@@ -3,10 +3,11 @@
     "title": "Was ist Ihre Story?",
     "logo": "/images/logos/public-footprint-logo.png",
     "backgroundImages": [
-      "/images/visuals/connecteddots.png",
-      "/images/visuals/network-wallpaper.png",
-      "/images/visuals/pf-wallpaper.png",
-      "/images/visuals/pf_zentral.png"
+      "/images/visuals/moon.jpg",
+      "/images/visuals/windingroad.jpg",
+      "/images/visuals/stoneage.jpg",
+      "/images/visuals/campfire.jpg",
+      "/images/visuals/berlinwall.jpg"
     ]
   },
   "mainContent": {
