@@ -3,11 +3,7 @@
     "title": "Was ist Ihre Story?",
     "logo": "/images/logos/public-footprint-logo.png",
     "backgroundImages": [
-      "/images/visuals/moon.jpg",
-      "/images/visuals/windingroad.jpg",
-      "/images/visuals/stoneage.jpg",
-      "/images/visuals/campfire.jpg",
-      "/images/visuals/berlinwall.jpg"
+      "/images/visuals/campfire.jpg"
     ]
   },
   "mainContent": {
