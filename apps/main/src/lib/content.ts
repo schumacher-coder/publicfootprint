@@ -21,7 +21,9 @@ export interface Service {
 export interface Homepage {
   hero: {
     title: string
-    backgroundImage?: string
+    logo?: string
+    backgroundImage?: string // Deprecated: use backgroundImages instead
+    backgroundImages?: string[] // Array of images for carousel
     content: ContentBlock[]
   }
   servicesSection: {

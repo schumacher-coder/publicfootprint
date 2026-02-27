@@ -1,11 +1,15 @@
 import Link from 'next/link'
 import { getHomepageContent, getServices, type ContentBlock } from '@/lib/content'
 import { parseMarkdown } from '@/lib/markdown'
+import HeroCarousel from '@/components/HeroCarousel'
 
-function renderContentBlock(block: ContentBlock, index: number, isLast: boolean = false) {
+function renderContentBlock(block: ContentBlock, index: number, isLast: boolean = false, isHero: boolean = false) {
   if (block.type === 'text') {
+    const textClass = isHero
+      ? (isLast ? "text-xl font-medium pt-4" : "")
+      : (isLast ? "text-xl font-medium text-gray-900 pt-4" : "")
     return (
-      <p key={index} className={isLast ? "text-xl font-medium text-gray-900 pt-4" : ""}>
+      <p key={index} className={textClass}>
         {parseMarkdown(block.content)}
       </p>
     )
@@ -18,7 +22,7 @@ function renderContentBlock(block: ContentBlock, index: number, isLast: boolean 
           className="rounded-lg shadow-lg max-w-full mx-auto"
         />
         {block.caption && (
-          <p className="text-sm text-gray-600 text-center mt-2 italic">
+          <p className={`text-sm text-center mt-2 italic ${isHero ? 'text-white/80' : 'text-gray-600'}`}>
             {block.caption}
           </p>
         )}
@@ -32,33 +36,44 @@ export default function Home() {
   const content = getHomepageContent()
   const services = getServices()
 
+  // Support both single image and carousel
+  const heroImages = content.hero.backgroundImages
+    ? content.hero.backgroundImages
+    : content.hero.backgroundImage
+    ? [content.hero.backgroundImage]
+    : []
+
   return (
     <>
-      {/* Hero Section */}
-      <section
-        className="section-padding bg-gradient-to-b from-gray-50 to-white relative"
-        style={content.hero.backgroundImage ? {
-          backgroundImage: `url(${content.hero.backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        } : {}}
-      >
-        {content.hero.backgroundImage && (
-          <div className="absolute inset-0 bg-white/35"></div>
-        )}
-        <div className="container-custom relative z-10">
+      {/* Hero Section with Carousel */}
+      <HeroCarousel images={heroImages}>
+        <div className="container-custom py-20">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="mb-8">
+            {/* Logo */}
+            {content.hero.logo && (
+              <div className="mb-10">
+                <img
+                  src={content.hero.logo}
+                  alt="Public Footprint Logo"
+                  className="h-32 md:h-40 mx-auto drop-shadow-2xl"
+                />
+              </div>
+            )}
+
+            {/* Title */}
+            <h1 className="mb-8 text-white drop-shadow-lg">
               {content.hero.title}
             </h1>
-            <div className="space-y-6 text-lg leading-relaxed text-gray-700">
+
+            {/* Content */}
+            <div className="space-y-6 text-lg leading-relaxed text-white/95 drop-shadow-md">
               {content.hero.content.map((block, index) =>
-                renderContentBlock(block, index, index === content.hero.content.length - 1)
+                renderContentBlock(block, index, index === content.hero.content.length - 1, true)
               )}
             </div>
           </div>
         </div>
-      </section>
+      </HeroCarousel>
 
       {/* Services Preview */}
       <section id="services" className="section-padding bg-white">
