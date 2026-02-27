@@ -10,16 +10,50 @@ interface HeroCarouselProps {
 
 export default function HeroCarousel({ images, interval = 5000, children }: HeroCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [imagesLoaded, setImagesLoaded] = useState(false)
+
+  // Preload all images
+  useEffect(() => {
+    if (images.length === 0) return
+
+    let loadedCount = 0
+    const imageElements: HTMLImageElement[] = []
+
+    images.forEach((src) => {
+      const img = new Image()
+      img.src = src
+      img.onload = () => {
+        loadedCount++
+        if (loadedCount === images.length) {
+          setImagesLoaded(true)
+        }
+      }
+      img.onerror = () => {
+        loadedCount++
+        if (loadedCount === images.length) {
+          setImagesLoaded(true)
+        }
+      }
+      imageElements.push(img)
+    })
+
+    return () => {
+      imageElements.forEach((img) => {
+        img.onload = null
+        img.onerror = null
+      })
+    }
+  }, [images])
 
   useEffect(() => {
-    if (images.length <= 1) return
+    if (images.length <= 1 || !imagesLoaded) return
 
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
     }, interval)
 
     return () => clearInterval(timer)
-  }, [images.length, interval])
+  }, [images.length, interval, imagesLoaded])
 
   return (
     <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
