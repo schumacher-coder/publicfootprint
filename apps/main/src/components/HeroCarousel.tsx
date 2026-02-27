@@ -22,7 +22,7 @@ export default function HeroCarousel({ images, interval = 5000, children }: Hero
   }, [images.length, interval])
 
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
       {/* Background Images with Crossfade */}
       {images.map((image, index) => (
         <div

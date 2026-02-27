@@ -7,7 +7,10 @@
       "/images/visuals/network-wallpaper.png",
       "/images/visuals/pf-wallpaper.png",
       "/images/visuals/pf_zentral.png"
-    ],
+    ]
+  },
+  "mainContent": {
+    "title": "Was ist Ihre Story?",
     "content": [
       {
         "type": "text",

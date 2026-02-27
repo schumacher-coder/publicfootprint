@@ -64,16 +64,23 @@ export default function Home() {
             <h1 className="mb-8 text-magenta drop-shadow-lg">
               {content.hero.title}
             </h1>
+          </div>
+        </div>
+      </HeroCarousel>
 
-            {/* Content */}
-            <div className="space-y-6 text-lg leading-relaxed text-white/95 drop-shadow-md">
-              {content.hero.content.map((block, index) =>
-                renderContentBlock(block, index, index === content.hero.content.length - 1, true)
+      {/* Main Content Section */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="mb-8 text-center">{content.mainContent.title}</h2>
+            <div className="space-y-6 text-lg leading-relaxed text-gray-700">
+              {content.mainContent.content.map((block, index) =>
+                renderContentBlock(block, index, index === content.mainContent.content.length - 1, false)
               )}
             </div>
           </div>
         </div>
-      </HeroCarousel>
+      </section>
 
       {/* Services Preview */}
       <section id="services" className="section-padding bg-white">

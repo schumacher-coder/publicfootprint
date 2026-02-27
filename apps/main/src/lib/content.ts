@@ -24,6 +24,10 @@ export interface Homepage {
     logo?: string
     backgroundImage?: string // Deprecated: use backgroundImages instead
     backgroundImages?: string[] // Array of images for carousel
+    content?: ContentBlock[] // Optional: for backwards compatibility
+  }
+  mainContent: {
+    title: string
     content: ContentBlock[]
   }
   servicesSection: {
