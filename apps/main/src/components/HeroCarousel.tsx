@@ -38,8 +38,8 @@ export default function HeroCarousel({ images, interval = 5000, children }: Hero
         />
       ))}
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-white/90 z-5" />
+      {/* Subtle Overlay for text readability */}
+      <div className="absolute inset-0 bg-black/20 z-5" />
 
       {/* Content */}
       <div className="relative z-10 w-full">
