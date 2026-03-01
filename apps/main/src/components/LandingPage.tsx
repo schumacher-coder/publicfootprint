@@ -50,35 +50,35 @@ export function LandingPage({ content }: LandingPageProps) {
             {/* Dark Overlay */}
             <div className="absolute inset-0 bg-black/40 z-10" />
             {/* Content Overlay */}
-            <div className="relative z-20 container-custom py-20 text-center">
-              <h1 className="mb-8 text-magenta drop-shadow-lg text-[80px] font-bold">
+            <div className="relative z-20 container-custom py-12 md:py-20 text-center px-4">
+              <h1 className="mb-6 md:mb-8 text-magenta drop-shadow-lg text-4xl md:text-6xl lg:text-[80px] font-bold leading-tight">
                 {content.hero.title}
               </h1>
-              <p className="text-2xl text-white mb-4 font-light drop-shadow-lg">
+              <p className="text-lg md:text-xl lg:text-2xl text-white mb-3 md:mb-4 font-light drop-shadow-lg">
                 {content.hero.subtitle}
               </p>
-              <p className="text-xl text-white/90 drop-shadow-lg">
+              <p className="text-base md:text-lg lg:text-xl text-white/90 drop-shadow-lg">
                 {content.hero.description}
               </p>
             </div>
           </>
         )}
         {!content.hero.image && (
-          <div className="container-custom">
+          <div className="container-custom px-4">
             <div className="max-w-4xl mx-auto">
               <div className="text-center">
-                <div className="mb-6 flex justify-center">
+                <div className="mb-4 md:mb-6 flex justify-center">
                   <img
                     src="/images/logos/pf-signet.png"
                     alt="Public Footprint"
-                    className="h-16 w-auto opacity-20"
+                    className="h-12 md:h-16 w-auto opacity-20"
                   />
                 </div>
-                <h1 className="mb-6">{content.hero.title}</h1>
-                <p className="text-2xl text-gray-700 mb-4 font-light">
+                <h1 className="mb-4 md:mb-6 text-3xl md:text-5xl lg:text-6xl">{content.hero.title}</h1>
+                <p className="text-lg md:text-xl lg:text-2xl text-gray-700 mb-3 md:mb-4 font-light">
                   {content.hero.subtitle}
                 </p>
-                <p className="text-xl text-gray-600">
+                <p className="text-base md:text-lg lg:text-xl text-gray-600">
                   {content.hero.description}
                 </p>
               </div>

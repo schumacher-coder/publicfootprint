@@ -50,21 +50,21 @@ export default function Home() {
     <>
       {/* Hero Section with Carousel */}
       <HeroCarousel images={heroImages}>
-        <div className="container-custom py-20">
-          <div className="max-w-4xl mx-auto text-center">
+        <div className="container-custom py-12 md:py-20">
+          <div className="max-w-4xl mx-auto text-center px-4">
             {/* Logo */}
             {content.hero.logo && (
-              <div className="mb-10">
+              <div className="mb-6 md:mb-10">
                 <img
                   src={content.hero.logo}
                   alt="Public Footprint Logo"
-                  className="h-32 md:h-40 mx-auto drop-shadow-2xl brightness-0 invert"
+                  className="h-24 md:h-32 lg:h-40 mx-auto drop-shadow-2xl brightness-0 invert"
                 />
               </div>
             )}
 
             {/* Title */}
-            <h1 className="mb-8 text-magenta drop-shadow-lg text-[80px] font-bold">
+            <h1 className="mb-6 md:mb-8 text-magenta drop-shadow-lg text-4xl md:text-6xl lg:text-[80px] font-bold leading-tight">
               {content.hero.title}
             </h1>
           </div>
