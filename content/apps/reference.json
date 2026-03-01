@@ -1,29 +1,19 @@
 {
   "domain": "reference-footprint.de",
   "hero": {
-    "title": "Reference Footprint",
-    "subtitle": "Überzeugende Kundenreferenzen & Success Stories",
-    "description": "Nichts überzeugt potenzielle Kunden mehr als authentische Erfolgsgeschichten. Wir machen Ihre Kompetenz greifbar.",
-    "image": ""
+    "title": "Ihre Erfolgsgeschichte verdient es, erzählt zu werden.",
+    "subtitle": "Überzeugende Kundenreferenzen & Success Storys",
+    "description": "",
+    "image": "/images/visuals/moon.webp"
   },
   "sections": [
     {
       "id": "intro",
-      "title": "Warum Reference Stories?",
+      "title": "Referenzstorys, die wirken",
       "content": [
         {
           "type": "text",
-          "content": "In einer Welt voller Werbeversprechen suchen Entscheider nach Beweisen. Referenzen und Success Stories zeigen konkret, wie Ihre Lösung echte Probleme gelöst hat. Sie schaffen Vertrauen und machen den Mehrwert Ihrer Leistung erlebbar."
-        }
-      ]
-    },
-    {
-      "id": "approach",
-      "title": "Unser Ansatz",
-      "content": [
-        {
-          "type": "text",
-          "content": "Wir entwickeln keine generischen Case Studies, sondern packende Geschichten mit echten Protagonisten, Herausforderungen und Lösungen. Durch intensive Interviews mit Ihren Kunden arbeiten wir die authentischen Erfolgsfaktoren heraus."
+          "content": "Die beste Werbung sind zufriedene Kunden. Wir verwandeln erfolgreiche Projekte in überzeugende Referenzstorys – für Webseiten, Sales-Unterlagen und Medienarbeit. KI-gestützt recherchiert, menschlich erzählt.\n\n**Was wir machen**\n\nReferenzstorys sind mehr als Marketingmaterial – sie sind der Beweis, dass Ihre Technologie funktioniert. In der realen Welt, bei echten Kunden, mit messbaren Ergebnissen. KI hilft uns, technische Dokumentationen zu analysieren und erste Entwürfe zu strukturieren. Am Ende sorgt immer ein Mensch dafür, dass die Story authentisch klingt und die richtigen Akzente setzt.\n\nWir führen die Interviews, extrahieren die relevanten Insights und schreiben Stories, die Entscheider überzeugen. Dabei nutzen wir KI-Tools für Recherche und Vorarbeit, aber die entscheidenden Fragen im Interview und das finale Storytelling bleiben menschliche Arbeit. Kein Marketing-Sprech, keine leeren Versprechen – nur Fakten, die so erzählt werden, dass sie im Gedächtnis bleiben.\n\n**Für wen & Warum**\n\nReference Stories funktionieren besonders gut bei erklärungsbedürftigen Themen: Cloud-Migration, Infrastruktur-Modernisierung, KI-Integration, Daten-Management. Genau dort, wo ein einfaches \"funktioniert gut\" nicht ausreicht und technischer Tiefgang gefragt ist.\n\nMit 25 Jahren Enterprise IT-Erfahrung verstehe ich Storage-Architekturen genauso wie Cloud-native Ansätze. Das ermöglicht Interviews auf Augenhöhe mit CTOs und Architekten. Google Cloud vertraut bei Reference Stories auf Public Footprint – diese Zusammenarbeit basiert auf einer einfachen Erkenntnis: KI kann Content generieren, aber echte Stories entstehen im Gespräch zwischen Menschen.\n\n**Formate & Pakete**\n\n**Bronze – Single Story**: Eine Customer Success Story aus 2-3 Interviews, web-optimiert (~800 Wörter), eine Revision. KI-Recherche, menschliche Qualitätssicherung.\n**Silver – Story-Paket**: Drei Stories für verschiedene Use Cases, multiple Formate (Web, PDF, Social), zwei Revisionen pro Story.\n**Gold – Referenz-Programm**: Fortlaufende Entwicklung mit quartalsweisen Stories, veröffentlichungsreife Versionen, optional mit Resource Hub Integration."
         }
       ]
     }

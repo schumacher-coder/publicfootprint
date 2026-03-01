@@ -1,23 +1,23 @@
 {
   "domain": "https://personal-footprint.de",
   "hero": {
-    "title": "Personal Footprint",
-    "subtitle": "Executive Ghostwriting. KI gestützt. Menschlich gedacht.",
-    "description": "Ihre persönliche Marke im digitalen Zeitalter - professionell positioniert und authentisch kommuniziert.",
-    "image": ""
+    "title": "Ihre Stimme, professionell formuliert.",
+    "subtitle": "Executive Ghostwriting für Tech-Leader. KI gestützt. Menschlich gedacht.",
+    "description": "",
+    "image": "/images/visuals/stoneage.webp"
   },
   "sections": [
     {
       "id": "intro",
-      "title": "Ihre digitale Visitenkarte",
+      "title": "Executive Ghostwriting für Tech-Leader",
       "content": [
         {
           "type": "text",
-          "content": "In der B2B-IT-Welt entscheidet Ihre Online-Präsenz über Vertrauen und Geschäftserfolg. Wir helfen Führungskräften und Experten, ihre persönliche Marke strategisch aufzubauen."
+          "content": "**Was wir machen**\n\nIn Enterprise IT kaufen Menschen von Menschen. Technologie-Entscheidungen werden von Beziehungen und Vertrauen beeinflusst. Deshalb ist die persönliche Sichtbarkeit von Führungskräften ein strategischer Faktor. KI kann heute Content in Sekunden generieren, aber authentisches Executive Branding entsteht nur, wenn die Persönlichkeit durchscheint und die Expertise glaubwürdig rüberkommt.\n\nExecutive Ghostwriting bedeutet: Wir entwickeln Ihre Kernbotschaften, schreiben in Ihrem Stil und sorgen für kontinuierliche Sichtbarkeit. KI unterstützt bei Recherche und Strukturierung, aber die finale Stimme kommt von Ihnen und wird von mir in eine Form gebracht, die funktioniert. Kein generisches Marketing-Geplänkel, sondern fundierte Takes zu aktuellen Entwicklungen.\n\nUnser Prozess startet mit einem Positionierungs-Workshop, in dem wir Ihre Kernthemen und Differenzierung erarbeiten. Daraus entwickeln wir einen Content-Plan, der zu Ihrem Zeitbudget passt. Beim Ghostwriting nutze ich KI für Vorarbeit, schreibe aber so, wie Sie denken und sprechen würden.\n\n**Für wen & Warum**\n\nExecutive Ghostwriting eignet sich für CTOs und Tech-VPs in wachsenden Unternehmen, Gründer mit technischem Hintergrund, die ihre Expertise sichtbar machen wollen, und Produktverantwortliche in Enterprise IT, die durch Thought Leadership Vertrauen aufbauen.\n\nEs geht nicht um Selbstdarstellung, sondern um ein strategisches Business-Tool: Für Recruiting der besten Talente, für Partner-Akquise, für Sales-Support mit echtem Mehrwert. Ich schreibe, wie Technologie-Leader denken, weil ich ihre Welt seit 25 Jahren verstehe. KI hilft mir, schneller zu recherchieren, aber die Einordnung und der rote Faden kommen aus Erfahrung."
         },
         {
           "type": "text",
-          "content": "Mit über 20 Jahren Erfahrung in der B2B-IT-Kommunikation kombinieren wir KI-gestützte Effizienz mit menschlicher Expertise - für Content, der überzeugt."
+          "content": "**Wie wir arbeiten**\n\nMonatliches Content-Kontingent statt Pay-per-Post: Sie wissen, was es kostet, wir wissen, was wir liefern. KI beschleunigt den Workflow von Themen-Identifikation bis Content-Produktion, während ich dafür sorge, dass jeder Post Ihre Handschrift trägt.\n\nAuthentizität vor Reichweite: Ein durchdachter Post mit 500 Impressions bei den richtigen Leuten ist mehr wert als 10.000 zufällige Views. Langfristiger Aufbau ist entscheidend – nach 6 Monaten konsequenter Arbeit sehen Sie messbare Ergebnisse: Mehr Anfragen, relevante Invites, neue Chancen.\n\n**Formate**\n\n- **LinkedIn Content**: Posts, Artikel, Carousels – regelmäßig und konsistent\n- **Byline Articles**: Ghostwriting für Ihre Beiträge in Fachmedien\n- **Keynote Prep**: Briefings und Skripte für Vorträge\n- **Thought Leadership**: Whitepapers, Position Papers, Abstracts"
         }
       ]
     }

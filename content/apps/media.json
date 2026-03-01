@@ -1,19 +1,19 @@
 {
   "domain": "media-footprint.de",
   "hero": {
-    "title": "Media Footprint",
+    "title": "Ihr Weg in die Medien",
     "subtitle": "Platzierung in Fachmedien mit echtem Mehrwert",
-    "description": "Über 20 Jahre Redaktionskontakte in der B2B-IT Medienlandschaft – für Ihre Sichtbarkeit.",
-    "image": ""
+    "description": "",
+    "image": "/images/visuals/windingroad.webp"
   },
   "sections": [
     {
       "id": "intro",
-      "title": "Medienarbeit, die ankommt",
+      "title": "PR für Enterprise IT, die ankommt",
       "content": [
         {
           "type": "text",
-          "content": "Fachmedien sind nach wie vor wichtige Meinungsbildner in der B2B-IT. Mit unserem Netzwerk und Know-how bringen wir Ihre Themen in die richtigen Publikationen."
+          "content": "Seit über 25 Jahren vermitteln wir zwischen komplexer Technologie und Medien. Klassische Pressearbeit für erklärungsbedürftige Themen – von Storage bis KI. Effizient dank moderner Tools, wirksam durch menschliche Expertise.\n\n**Was wir machen**\n\nGute Enterprise IT-PR ist Übersetzungsarbeit. KI kann uns helfen, Markttrends zu analysieren und relevante Medien zu identifizieren. Aber die entscheidende Frage bleibt: Versteht der Journalist, warum das relevant ist? Diese Einschätzung erfordert Erfahrung, Gespür und die Fähigkeit, zwischen den Zeilen zu lesen.\n\nWir schreiben Pressemitteilungen, die Redaktionen ernst nehmen, pitchen Themen, die platziert werden, und bereiten Interviews vor, die zitiert werden. KI unterstützt uns bei Vorbereitung und Monitoring, aber die Beziehung zu Journalisten und das Verständnis für ihre Bedürfnisse lässt sich nicht automatisieren.\nUnser Spektrum: Pressemitteilungen, Media Pitching, Interview-Vorbereitung, Krisenkommunikation, Analyst Relations (Gartner, Forrester, IDC), Pressereisen und Events.\n\n**Für wen & Warum**\n\nUnser Fokus liegt auf Enterprise IT: Infrastructure, Data Management, Cloud, Security, AI/ML. Ich verstehe nicht nur die Technologie, sondern auch die Medienlandschaft und kann einschätzen, welche Story bei welcher Redaktion Chancen hat. KI-Tools untermauern diese Einschätzung mit Daten, die finale Entscheidung trifft ein Mensch mit 25 Jahren Medien-Erfahrung.\n\nDirekter Draht statt Agentur-Hierarchie: Jedes Projekt führe ich persönlich. Hitachi Vantara arbeitet seit über 10 Jahren mit Public Footprint – diese Kontinuität basiert darauf, moderne Tools für Effizienz zu nutzen, aber nie die menschliche Expertise zu ersetzen, die den Unterschied zwischen Pressemitteilung und Platzierung macht.\n\n**Was Sie erwarten können**\n\nKeine Wunder-Versprechen, sondern realistische Einschätzungen. Mit der richtigen Story zum richtigen Zeitpunkt bei der richtigen Redaktion steigen die Chancen erheblich. KI optimiert diese Parameter durch Analyse von Publikationsmustern und Themen-Monitoring. Die Entscheidung, wann welcher Pitch geht, treffe ich auf Basis von Erfahrung und persönlichem Kontakt.\n\nTransparenz bedeutet, Sie wissen jederzeit, was läuft: Welche Medien kontaktiert wurden, welche Rückmeldungen kamen, was die nächsten Schritte sind. Langfristige Kontinuität ist entscheidend – ein strukturiertes PR-Programm über Monate baut systematisch Sichtbarkeit auf."
         }
       ]
     }
@@ -21,6 +21,6 @@
   "cta": {
     "title": "Lassen Sie uns über Ihre Medienthemen sprechen",
     "buttonText": "Jetzt Kontakt aufnehmen",
-    "buttonLink": "https://publicfootprint.de/kontakt"
+    "buttonLink": "https://media-footprint.de/kontakt"
   }
 }
