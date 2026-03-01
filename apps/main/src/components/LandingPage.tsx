@@ -36,7 +36,7 @@ export function LandingPage({ content }: LandingPageProps) {
   return (
     <>
       {/* Hero Section */}
-      <section className={content.hero.image ? "relative min-h-[60vh] flex items-center justify-center overflow-hidden" : "section-padding bg-gradient-to-b from-gray-50 to-white"}>
+      <section className={content.hero.image ? "relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-gray-800" : "section-padding bg-gradient-to-b from-gray-50 to-white"}>
         {content.hero.image && (
           <>
             {/* Background Image */}
@@ -45,6 +45,7 @@ export function LandingPage({ content }: LandingPageProps) {
               alt={content.hero.title}
               className="absolute inset-0 w-full h-full object-cover z-0"
               loading="eager"
+              fetchPriority="high"
             />
             {/* Dark Overlay */}
             <div className="absolute inset-0 bg-black/40 z-10" />
