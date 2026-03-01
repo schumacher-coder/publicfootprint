@@ -36,19 +36,20 @@ export default function AdminServices() {
     }
   }
 
-  const saveServices = async () => {
+  // Helper function to save services with custom data
+  const saveServicesInternal = async (servicesToSave: Service[]) => {
     setSaving(true)
     setMessage('')
     try {
       const response = await fetch('/api/admin/services', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ services }),
+        body: JSON.stringify({ services: servicesToSave }),
       })
 
       if (response.ok) {
         setMessage('✅ Services erfolgreich gespeichert!')
-        setTimeout(() => setMessage(''), 3000)
+        setTimeout(() => setMessage(''), 2000)
       } else {
         setMessage('❌ Fehler beim Speichern')
       }
@@ -57,6 +58,10 @@ export default function AdminServices() {
     } finally {
       setSaving(false)
     }
+  }
+
+  const saveServices = async () => {
+    await saveServicesInternal(services)
   }
 
   const addNewService = () => {
@@ -83,20 +88,26 @@ export default function AdminServices() {
     }
   }
 
-  const moveUp = (index: number) => {
+  const moveUp = async (index: number) => {
     if (index === 0) return
     const newServices = [...services]
     ;[newServices[index - 1], newServices[index]] = [newServices[index], newServices[index - 1]]
     newServices.forEach((s, i) => s.sortOrder = i + 1)
     setServices(newServices)
+
+    // Automatically save after reordering
+    await saveServicesInternal(newServices)
   }
 
-  const moveDown = (index: number) => {
+  const moveDown = async (index: number) => {
     if (index === services.length - 1) return
     const newServices = [...services]
     ;[newServices[index], newServices[index + 1]] = [newServices[index + 1], newServices[index]]
     newServices.forEach((s, i) => s.sortOrder = i + 1)
     setServices(newServices)
+
+    // Automatically save after reordering
+    await saveServicesInternal(newServices)
   }
 
   if (loading) {
