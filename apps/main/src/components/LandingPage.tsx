@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import type { AppContent, ContentBlock } from '@/lib/content'
 import { parseMarkdown } from '@/lib/markdown'
 import Footer from './Footer'
@@ -36,36 +37,57 @@ export function LandingPage({ content }: LandingPageProps) {
   return (
     <>
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto">
-            {content.hero.image && (
-              <div className="mb-8 flex justify-center">
-                <img
-                  src={content.hero.image}
-                  alt={content.hero.title}
-                  className="rounded-lg shadow-lg max-w-2xl w-full object-cover"
-                />
-              </div>
-            )}
-            <div className="text-center">
-              <div className="mb-6 flex justify-center">
-                <img
-                  src="/images/logos/pf-signet.png"
-                  alt="Public Footprint"
-                  className="h-16 w-auto opacity-20"
-                />
-              </div>
-              <h1 className="mb-6">{content.hero.title}</h1>
-              <p className="text-2xl text-gray-700 mb-4 font-light">
+      <section className={content.hero.image ? "relative min-h-[60vh] flex items-center justify-center" : "section-padding bg-gradient-to-b from-gray-50 to-white"}>
+        {content.hero.image && (
+          <>
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0">
+              <Image
+                src={content.hero.image}
+                alt={content.hero.title}
+                fill
+                className="object-cover"
+                priority
+              />
+              {/* Dark Overlay */}
+              <div className="absolute inset-0 bg-black/40" />
+            </div>
+            {/* Content Overlay */}
+            <div className="relative z-10 container-custom py-20 text-center">
+              <h1 className="mb-8 text-magenta drop-shadow-lg text-[80px] font-bold">
+                {content.hero.title}
+              </h1>
+              <p className="text-2xl text-white mb-4 font-light drop-shadow-lg">
                 {content.hero.subtitle}
               </p>
-              <p className="text-xl text-gray-600">
+              <p className="text-xl text-white/90 drop-shadow-lg">
                 {content.hero.description}
               </p>
             </div>
+          </>
+        )}
+        {!content.hero.image && (
+          <div className="container-custom">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center">
+                <div className="mb-6 flex justify-center">
+                  <img
+                    src="/images/logos/pf-signet.png"
+                    alt="Public Footprint"
+                    className="h-16 w-auto opacity-20"
+                  />
+                </div>
+                <h1 className="mb-6">{content.hero.title}</h1>
+                <p className="text-2xl text-gray-700 mb-4 font-light">
+                  {content.hero.subtitle}
+                </p>
+                <p className="text-xl text-gray-600">
+                  {content.hero.description}
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* Content Sections */}
