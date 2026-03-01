@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { AppContent, ContentBlock } from '@/lib/content'
 import { parseMarkdown } from '@/lib/markdown'
-import Footer from './Footer'
 
 function renderContentBlock(block: ContentBlock, index: number) {
   if (block.type === 'text') {
@@ -120,9 +119,6 @@ export function LandingPage({ content }: LandingPageProps) {
           </a>
         </div>
       </section>
-
-      {/* Footer */}
-      <Footer />
     </>
   )
 }
