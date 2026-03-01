@@ -55,7 +55,7 @@ export default function Home() {
                 <img
                   src={content.hero.logo}
                   alt="Public Footprint Logo"
-                  className="h-32 md:h-40 mx-auto drop-shadow-2xl"
+                  className="h-32 md:h-40 mx-auto drop-shadow-2xl brightness-0 invert"
                 />
               </div>
             )}
