@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   description: 'Gedanken, Insights und Beobachtungen aus über 20 Jahren B2B-IT Kommunikation.',
 }
 
+// Revalidate every 60 seconds - ISR (Incremental Static Regeneration)
+export const revalidate = 60
+
 export default function NotizenPage() {
   const content = getNotizenContent()
   const publishedEntries = getPublishedNotizen()

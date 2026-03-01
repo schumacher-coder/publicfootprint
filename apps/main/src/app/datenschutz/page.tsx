@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   description: 'Datenschutzerklärung der Public Footprint GmbH.',
 }
 
+// Revalidate every 60 seconds - ISR (Incremental Static Regeneration)
+export const revalidate = 60
+
 function renderContentBlock(block: ContentBlock, index: number) {
   if (block.type === 'text') {
     return (

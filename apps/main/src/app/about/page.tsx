@@ -3,6 +3,9 @@ import type { Metadata } from 'next'
 import { getAboutContent, type ContentBlock } from '@/lib/content'
 import { parseMarkdown } from '@/lib/markdown'
 
+// Revalidate every 60 seconds - ISR (Incremental Static Regeneration)
+export const revalidate = 60
+
 function renderContentBlock(block: ContentBlock, index: number) {
   if (block.type === 'text') {
     return (

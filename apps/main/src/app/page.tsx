@@ -3,6 +3,9 @@ import { getHomepageContent, getServices, type ContentBlock } from '@/lib/conten
 import { parseMarkdown } from '@/lib/markdown'
 import HeroCarousel from '@/components/HeroCarousel'
 
+// Revalidate every 60 seconds - ISR (Incremental Static Regeneration)
+export const revalidate = 60
+
 function renderContentBlock(block: ContentBlock, index: number, isLast: boolean = false, isHero: boolean = false) {
   if (block.type === 'text') {
     const textClass = isHero
