@@ -23,8 +23,9 @@ export async function GET(
     // Convert Node stream to Web Stream
     const readableStream = new ReadableStream({
       start(controller) {
-        stream.on('data', (chunk: Buffer) => {
-          controller.enqueue(new Uint8Array(chunk))
+        stream.on('data', (chunk: string | Buffer) => {
+          const buffer = typeof chunk === 'string' ? Buffer.from(chunk) : chunk
+          controller.enqueue(new Uint8Array(buffer))
         })
         stream.on('end', () => {
           controller.close()
