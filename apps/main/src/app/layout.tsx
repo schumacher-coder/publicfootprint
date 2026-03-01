@@ -1,7 +1,16 @@
 import type { Metadata } from 'next'
+import { Nunito } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+
+// Self-hosted Google Font (DSGVO-konform)
+const nunito = Nunito({
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-nunito',
+})
 
 export const metadata: Metadata = {
   title: 'Public Footprint GmbH - B2B-IT Kommunikation',
@@ -15,12 +24,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="de">
+    <html lang="de" className={nunito.variable}>
       <head>
         <link rel="icon" type="image/png" href="/images/logos/pf-signet.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body>
         <Header />
