@@ -42,12 +42,11 @@ export function LandingPage({ content }: LandingPageProps) {
           <>
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
-              <Image
+              <img
                 src={content.hero.image}
                 alt={content.hero.title}
-                fill
-                className="object-cover"
-                priority
+                className="w-full h-full object-cover"
+                loading="eager"
               />
               {/* Dark Overlay */}
               <div className="absolute inset-0 bg-black/40" />
