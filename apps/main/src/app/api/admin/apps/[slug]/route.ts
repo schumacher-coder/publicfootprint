@@ -3,10 +3,11 @@ import { getAppContent, updateAppContent, createNewApp, deleteApp } from '@/lib/
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const content = getAppContent(params.slug)
+    const { slug } = await params
+    const content = getAppContent(slug)
     if (!content) {
       return NextResponse.json(
         { error: 'App content not found' },
@@ -24,16 +25,17 @@ export async function GET(
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
+    const { slug } = await params
     const body = await request.json()
     const { content, isNew } = body
 
     if (isNew) {
-      createNewApp(params.slug, content)
+      createNewApp(slug, content)
     } else {
-      updateAppContent(params.slug, content)
+      updateAppContent(slug, content)
     }
 
     return NextResponse.json({ success: true })
@@ -47,10 +49,11 @@ export async function POST(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
-    deleteApp(params.slug)
+    const { slug } = await params
+    deleteApp(slug)
     return NextResponse.json({ success: true })
   } catch (error) {
     return NextResponse.json(

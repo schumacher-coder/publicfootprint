@@ -9,8 +9,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export default function ServicePage({ params }: { params: { slug: string } }) {
-  const content = getAppContent(params.slug)
+export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const content = getAppContent(slug)
 
   if (!content) {
     notFound()
