@@ -71,9 +71,7 @@ if [[ -n $(git status -s content/) ]]; then
     fi
 
     log "✅ Content backup completed successfully"
-
-    # Erfolgs-Notification (nur bei tatsächlichem Backup)
-    notify "✅ Backup Success" "$COMMIT_MSG - pushed to GitHub" "default" "white_check_mark,backup"
+    # No notification on success - only errors are reported
 else
     log "No changes in content/, skipping backup"
 fi
