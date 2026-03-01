@@ -64,7 +64,7 @@ export default function AdminDatenschutz() {
     if (!content) return
     setContent({
       ...content,
-      content: [...content.content, { type: 'text', content: 'Neuer Absatz' }]
+      content: [...(content.content || []), { type: 'text', content: 'Neuer Absatz' }]
     })
   }
 
@@ -72,34 +72,34 @@ export default function AdminDatenschutz() {
     if (!content) return
     setContent({
       ...content,
-      content: [...content.content, { type: 'image', src: '', alt: '', caption: '' }]
+      content: [...(content.content || []), { type: 'image', src: '', alt: '', caption: '' }]
     })
   }
 
   const updateBlock = (index: number, block: ContentBlock) => {
     if (!content) return
-    const newContent = [...content.content]
+    const newContent = [...(content.content || [])]
     newContent[index] = block
     setContent({ ...content, content: newContent })
   }
 
   const moveBlockUp = (index: number) => {
     if (!content || index === 0) return
-    const newContent = [...content.content]
+    const newContent = [...(content.content || [])]
     ;[newContent[index - 1], newContent[index]] = [newContent[index], newContent[index - 1]]
     setContent({ ...content, content: newContent })
   }
 
   const moveBlockDown = (index: number) => {
-    if (!content || index === content.content.length - 1) return
-    const newContent = [...content.content]
+    if (!content || index === (content.content || []).length - 1) return
+    const newContent = [...(content.content || [])]
     ;[newContent[index], newContent[index + 1]] = [newContent[index + 1], newContent[index]]
     setContent({ ...content, content: newContent })
   }
 
   const deleteBlock = (index: number) => {
     if (!content) return
-    const newContent = content.content.filter((_, i) => i !== index)
+    const newContent = (content.content || []).filter((_, i) => i !== index)
     setContent({ ...content, content: newContent })
   }
 
@@ -176,7 +176,7 @@ export default function AdminDatenschutz() {
             </div>
 
             <div className="space-y-4">
-              {content.content.map((block, index) => (
+              {(content.content || []).map((block, index) => (
                 <div key={index} className="border border-gray-200 rounded-md p-4 bg-white">
                   <div className="flex items-start justify-between mb-3">
                     <span className="text-sm font-medium text-gray-600">
@@ -193,7 +193,7 @@ export default function AdminDatenschutz() {
                       </button>
                       <button
                         onClick={() => moveBlockDown(index)}
-                        disabled={index === content.content.length - 1}
+                        disabled={index === (content.content || []).length - 1}
                         className="text-gray-400 hover:text-gray-600 disabled:opacity-30"
                         title="Nach unten"
                       >

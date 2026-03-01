@@ -109,7 +109,7 @@ export default function AdminAppEditor() {
     setContent({
       ...content,
       sections: [
-        ...content.sections,
+        ...(content.sections || []),
         {
           id: `section-${Date.now()}`,
           title: 'Neuer Abschnitt',
@@ -121,7 +121,7 @@ export default function AdminAppEditor() {
 
   const updateSectionTitle = (sectionIndex: number, title: string) => {
     if (!content) return
-    const newSections = [...content.sections]
+    const newSections = [...(content.sections || [])]
     newSections[sectionIndex] = { ...newSections[sectionIndex], title }
     setContent({ ...content, sections: newSections })
   }
@@ -130,15 +130,15 @@ export default function AdminAppEditor() {
     if (!content) return
     setContent({
       ...content,
-      sections: content.sections.filter((_, i) => i !== index)
+      sections: (content.sections || []).filter((_, i) => i !== index)
     })
   }
 
   // Content block management within sections
   const updateSectionBlock = (sectionIndex: number, blockIndex: number, block: ContentBlock) => {
     if (!content) return
-    const newSections = [...content.sections]
-    const newContent = [...newSections[sectionIndex].content]
+    const newSections = [...(content.sections || [])]
+    const newContent = [...(newSections[sectionIndex].content || [])]
     newContent[blockIndex] = block
     newSections[sectionIndex] = { ...newSections[sectionIndex], content: newContent }
     setContent({ ...content, sections: newSections })
@@ -146,38 +146,38 @@ export default function AdminAppEditor() {
 
   const addSectionTextBlock = (sectionIndex: number) => {
     if (!content) return
-    const newSections = [...content.sections]
+    const newSections = [...(content.sections || [])]
     newSections[sectionIndex] = {
       ...newSections[sectionIndex],
-      content: [...newSections[sectionIndex].content, { type: 'text', content: 'Neuer Absatz' }]
+      content: [...(newSections[sectionIndex].content || []), { type: 'text', content: 'Neuer Absatz' }]
     }
     setContent({ ...content, sections: newSections })
   }
 
   const addSectionImageBlock = (sectionIndex: number) => {
     if (!content) return
-    const newSections = [...content.sections]
+    const newSections = [...(content.sections || [])]
     newSections[sectionIndex] = {
       ...newSections[sectionIndex],
-      content: [...newSections[sectionIndex].content, { type: 'image', src: '', alt: '', caption: '' }]
+      content: [...(newSections[sectionIndex].content || []), { type: 'image', src: '', alt: '', caption: '' }]
     }
     setContent({ ...content, sections: newSections })
   }
 
   const removeSectionBlock = (sectionIndex: number, blockIndex: number) => {
     if (!content) return
-    const newSections = [...content.sections]
+    const newSections = [...(content.sections || [])]
     newSections[sectionIndex] = {
       ...newSections[sectionIndex],
-      content: newSections[sectionIndex].content.filter((_, i) => i !== blockIndex)
+      content: (newSections[sectionIndex].content || []).filter((_, i) => i !== blockIndex)
     }
     setContent({ ...content, sections: newSections })
   }
 
   const moveSectionBlock = (sectionIndex: number, blockIndex: number, direction: 'up' | 'down') => {
     if (!content) return
-    const newSections = [...content.sections]
-    const newContent = [...newSections[sectionIndex].content]
+    const newSections = [...(content.sections || [])]
+    const newContent = [...(newSections[sectionIndex].content || [])]
     const targetIndex = direction === 'up' ? blockIndex - 1 : blockIndex + 1
     if (targetIndex < 0 || targetIndex >= newContent.length) return
 
@@ -309,7 +309,7 @@ export default function AdminAppEditor() {
             </div>
 
             <div className="space-y-6">
-              {content.sections.map((section, sectionIndex) => (
+              {(content.sections || []).map((section, sectionIndex) => (
                 <div key={section.id} className="border-2 border-gray-300 rounded-lg p-5 bg-gray-50">
                   <div className="flex justify-between items-start mb-4">
                     <span className="text-sm font-medium text-gray-600">Bereich {sectionIndex + 1}</span>
@@ -337,7 +337,7 @@ export default function AdminAppEditor() {
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Inhalte
                     </label>
-                    {section.content.map((block, blockIndex) => (
+                    {(section.content || []).map((block, blockIndex) => (
                       <div key={blockIndex} className="p-4 border border-gray-200 rounded-md bg-white">
                         <div className="flex justify-between items-center mb-3">
                           <span className="text-xs font-medium text-gray-600">
@@ -353,7 +353,7 @@ export default function AdminAppEditor() {
                             </button>
                             <button
                               onClick={() => moveSectionBlock(sectionIndex, blockIndex, 'down')}
-                              disabled={blockIndex === section.content.length - 1}
+                              disabled={blockIndex === (section.content || []).length - 1}
                               className="px-2 py-1 text-xs text-gray-600 hover:bg-gray-200 rounded disabled:opacity-30"
                             >
                               ↓
@@ -421,7 +421,7 @@ export default function AdminAppEditor() {
                 </div>
               ))}
 
-              {content.sections.length === 0 && (
+              {(content.sections || []).length === 0 && (
                 <p className="text-gray-500 text-center py-4">
                   Noch keine Inhaltsbereiche vorhanden
                 </p>

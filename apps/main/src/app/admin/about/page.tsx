@@ -79,7 +79,7 @@ export default function AdminAbout() {
   // Company Story content block functions
   const updateCompanyBlock = (index: number, block: ContentBlock) => {
     if (!content) return
-    const newContent = [...content.companyStory.content]
+    const newContent = [...(content.companyStory.content || [])]
     newContent[index] = block
     setContent({
       ...content,
@@ -92,7 +92,7 @@ export default function AdminAbout() {
     setContent({
       ...content,
       companyStory: {
-        content: [...content.companyStory.content, { type: 'text', content: 'Neuer Absatz' }]
+        content: [...(content.companyStory.content || []), { type: 'text', content: 'Neuer Absatz' }]
       }
     })
   }
@@ -102,7 +102,7 @@ export default function AdminAbout() {
     setContent({
       ...content,
       companyStory: {
-        content: [...content.companyStory.content, { type: 'image', src: '', alt: '', caption: '' }]
+        content: [...(content.companyStory.content || []), { type: 'image', src: '', alt: '', caption: '' }]
       }
     })
   }
@@ -112,14 +112,14 @@ export default function AdminAbout() {
     setContent({
       ...content,
       companyStory: {
-        content: content.companyStory.content.filter((_, i) => i !== index)
+        content: (content.companyStory.content || []).filter((_, i) => i !== index)
       }
     })
   }
 
   const moveCompanyBlock = (index: number, direction: 'up' | 'down') => {
     if (!content) return
-    const newContent = [...content.companyStory.content]
+    const newContent = [...(content.companyStory.content || [])]
     const targetIndex = direction === 'up' ? index - 1 : index + 1
     if (targetIndex < 0 || targetIndex >= newContent.length) return
 
@@ -133,7 +133,7 @@ export default function AdminAbout() {
   // Thomas Bio content block functions
   const updateBioBlock = (index: number, block: ContentBlock) => {
     if (!content) return
-    const newContent = [...content.thomasBio.content]
+    const newContent = [...(content.thomasBio.content || [])]
     newContent[index] = block
     setContent({
       ...content,
@@ -147,7 +147,7 @@ export default function AdminAbout() {
       ...content,
       thomasBio: {
         ...content.thomasBio,
-        content: [...content.thomasBio.content, { type: 'text', content: 'Neuer Absatz' }]
+        content: [...(content.thomasBio.content || []), { type: 'text', content: 'Neuer Absatz' }]
       }
     })
   }
@@ -158,7 +158,7 @@ export default function AdminAbout() {
       ...content,
       thomasBio: {
         ...content.thomasBio,
-        content: [...content.thomasBio.content, { type: 'image', src: '', alt: '', caption: '' }]
+        content: [...(content.thomasBio.content || []), { type: 'image', src: '', alt: '', caption: '' }]
       }
     })
   }
@@ -169,14 +169,14 @@ export default function AdminAbout() {
       ...content,
       thomasBio: {
         ...content.thomasBio,
-        content: content.thomasBio.content.filter((_, i) => i !== index)
+        content: (content.thomasBio.content || []).filter((_, i) => i !== index)
       }
     })
   }
 
   const moveBioBlock = (index: number, direction: 'up' | 'down') => {
     if (!content) return
-    const newContent = [...content.thomasBio.content]
+    const newContent = [...(content.thomasBio.content || [])]
     const targetIndex = direction === 'up' ? index - 1 : index + 1
     if (targetIndex < 0 || targetIndex >= newContent.length) return
 
@@ -190,7 +190,7 @@ export default function AdminAbout() {
   // Timeline functions
   const updateTimelineItem = (index: number, field: 'year' | 'title' | 'description', value: string) => {
     if (!content) return
-    const newTimeline = [...content.timeline]
+    const newTimeline = [...(content.timeline || [])]
     newTimeline[index] = { ...newTimeline[index], [field]: value }
     setContent({ ...content, timeline: newTimeline })
   }
@@ -199,7 +199,7 @@ export default function AdminAbout() {
     if (!content) return
     setContent({
       ...content,
-      timeline: [...content.timeline, {
+      timeline: [...(content.timeline || []), {
         year: '2025',
         title: 'Neuer Meilenstein',
         description: 'Beschreibung'
@@ -211,7 +211,7 @@ export default function AdminAbout() {
     if (!content) return
     setContent({
       ...content,
-      timeline: content.timeline.filter((_, i) => i !== index)
+      timeline: (content.timeline || []).filter((_, i) => i !== index)
     })
   }
 
@@ -280,7 +280,7 @@ export default function AdminAbout() {
               <label className="block text-sm font-medium text-gray-700 mb-3">
                 Inhalte
               </label>
-              {content.companyStory.content.map((block, index) => (
+              {((content.companyStory.content || []) || []).map((block, index) => (
                 <div key={index} className="mb-4 p-4 border border-gray-200 rounded-md bg-gray-50">
                   <div className="flex justify-between items-center mb-3">
                     <span className="text-sm font-medium text-gray-600">
@@ -296,7 +296,7 @@ export default function AdminAbout() {
                       </button>
                       <button
                         onClick={() => moveCompanyBlock(index, 'down')}
-                        disabled={index === content.companyStory.content.length - 1}
+                        disabled={index === (content.companyStory.content || []).length - 1}
                         className="px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 rounded disabled:opacity-30"
                       >
                         ↓
@@ -405,7 +405,7 @@ export default function AdminAbout() {
                 <label className="block text-sm font-medium text-gray-700 mb-3">
                   Inhalte
                 </label>
-                {content.thomasBio.content.map((block, index) => (
+                {((content.thomasBio.content || []) || []).map((block, index) => (
                   <div key={index} className="mb-4 p-4 border border-gray-200 rounded-md bg-gray-50">
                     <div className="flex justify-between items-center mb-3">
                       <span className="text-sm font-medium text-gray-600">
@@ -421,7 +421,7 @@ export default function AdminAbout() {
                         </button>
                         <button
                           onClick={() => moveBioBlock(index, 'down')}
-                          disabled={index === content.thomasBio.content.length - 1}
+                          disabled={index === (content.thomasBio.content || []).length - 1}
                           className="px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 rounded disabled:opacity-30"
                         >
                           ↓
@@ -536,7 +536,7 @@ export default function AdminAbout() {
             </div>
 
             <div className="space-y-4">
-              {content.timeline.map((item, index) => (
+              {((content.timeline || []) || []).map((item, index) => (
                 <div key={index} className="border border-gray-200 rounded-lg p-4">
                   <div className="flex justify-between items-start mb-3">
                     <span className="text-sm text-gray-500">Meilenstein {index + 1}</span>

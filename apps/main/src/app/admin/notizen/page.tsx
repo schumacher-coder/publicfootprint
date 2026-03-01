@@ -83,7 +83,7 @@ export default function AdminNotizen() {
     }
     setContent({
       ...content,
-      entries: [newEntry, ...content.entries]
+      entries: [newEntry, ...(content.entries || [])]
     })
   }
 
@@ -91,7 +91,7 @@ export default function AdminNotizen() {
     if (!content) return
     setContent({
       ...content,
-      entries: content.entries.map(e => e.id === id ? { ...e, [field]: value } : e)
+      entries: (content.entries || []).map(e => e.id === id ? { ...e, [field]: value } : e)
     })
   }
 
@@ -99,7 +99,7 @@ export default function AdminNotizen() {
     if (!content) return
     setContent({
       ...content,
-      entries: content.entries.map(e => {
+      entries: (content.entries || []).map(e => {
         if (e.id === id) {
           const newContent = [...e.content]
           newContent[index] = value
@@ -114,7 +114,7 @@ export default function AdminNotizen() {
     if (!content) return
     setContent({
       ...content,
-      entries: content.entries.map(e =>
+      entries: (content.entries || []).map(e =>
         e.id === id ? { ...e, content: [...e.content, 'Neuer Absatz...'] } : e
       )
     })
@@ -124,7 +124,7 @@ export default function AdminNotizen() {
     if (!content) return
     setContent({
       ...content,
-      entries: content.entries.map(e => {
+      entries: (content.entries || []).map(e => {
         if (e.id === id) {
           return { ...e, content: e.content.filter((_, i) => i !== index) }
         }
@@ -138,21 +138,21 @@ export default function AdminNotizen() {
     if (confirm('Notiz wirklich löschen?')) {
       setContent({
         ...content,
-        entries: content.entries.filter(e => e.id !== id)
+        entries: (content.entries || []).filter(e => e.id !== id)
       })
     }
   }
 
   const moveEntryUp = (index: number) => {
     if (!content || index === 0) return
-    const newEntries = [...content.entries]
+    const newEntries = [...(content.entries || [])]
     ;[newEntries[index - 1], newEntries[index]] = [newEntries[index], newEntries[index - 1]]
     setContent({ ...content, entries: newEntries })
   }
 
   const moveEntryDown = (index: number) => {
-    if (!content || index === content.entries.length - 1) return
-    const newEntries = [...content.entries]
+    if (!content || index === (content.entries || []).length - 1) return
+    const newEntries = [...(content.entries || [])]
     ;[newEntries[index], newEntries[index + 1]] = [newEntries[index + 1], newEntries[index]]
     setContent({ ...content, entries: newEntries })
   }
@@ -228,7 +228,7 @@ export default function AdminNotizen() {
             </div>
 
             <div className="space-y-6">
-              {content.entries.map((entry, index) => (
+              {(content.entries || []).map((entry, index) => (
                 <div
                   key={entry.id}
                   className={`border rounded-lg p-4 ${
@@ -246,7 +246,7 @@ export default function AdminNotizen() {
                       </button>
                       <button
                         onClick={() => moveEntryDown(index)}
-                        disabled={index === content.entries.length - 1}
+                        disabled={index === (content.entries || []).length - 1}
                         className="px-2 py-1 text-xs bg-gray-100 hover:bg-gray-200 disabled:opacity-30 rounded"
                       >
                         ↓
@@ -321,7 +321,7 @@ export default function AdminNotizen() {
                 </div>
               ))}
 
-              {content.entries.length === 0 && (
+              {(content.entries || []).length === 0 && (
                 <p className="text-gray-500 text-center py-4">
                   Noch keine Notizen vorhanden
                 </p>
