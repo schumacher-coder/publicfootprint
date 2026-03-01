@@ -1,0 +1,30 @@
+{
+  "domain": "https://personal-footprint.de",
+  "hero": {
+    "title": "Personal Footprint",
+    "subtitle": "Executive Ghostwriting. KI gestützt. Menschlich gedacht.",
+    "description": "Ihre persönliche Marke im digitalen Zeitalter - professionell positioniert und authentisch kommuniziert.",
+    "image": ""
+  },
+  "sections": [
+    {
+      "id": "intro",
+      "title": "Ihre digitale Visitenkarte",
+      "content": [
+        {
+          "type": "text",
+          "content": "In der B2B-IT-Welt entscheidet Ihre Online-Präsenz über Vertrauen und Geschäftserfolg. Wir helfen Führungskräften und Experten, ihre persönliche Marke strategisch aufzubauen."
+        },
+        {
+          "type": "text",
+          "content": "Mit über 20 Jahren Erfahrung in der B2B-IT-Kommunikation kombinieren wir KI-gestützte Effizienz mit menschlicher Expertise - für Content, der überzeugt."
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "title": "Bereit für Ihren Personal Footprint?",
+    "buttonText": "Jetzt Kontakt aufnehmen",
+    "buttonLink": "https://publicfootprint.de/kontakt"
+  }
+}
