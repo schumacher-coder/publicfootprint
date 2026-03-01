@@ -67,7 +67,7 @@ export default function AdminHomepage() {
   // Hero content block functions
   const updateHeroBlock = (index: number, block: ContentBlock) => {
     if (!content) return
-    const newContent = [...content.hero.content]
+    const newContent = [...(content.hero.content || [])]
     newContent[index] = block
     setContent({
       ...content,
@@ -81,7 +81,7 @@ export default function AdminHomepage() {
       ...content,
       hero: {
         ...content.hero,
-        content: [...content.hero.content, { type: 'text', content: 'Neuer Absatz' }]
+        content: [...(content.hero.content || []), { type: 'text', content: 'Neuer Absatz' }]
       }
     })
   }
@@ -92,7 +92,7 @@ export default function AdminHomepage() {
       ...content,
       hero: {
         ...content.hero,
-        content: [...content.hero.content, { type: 'image', src: '', alt: '', caption: '' }]
+        content: [...(content.hero.content || []), { type: 'image', src: '', alt: '', caption: '' }]
       }
     })
   }
@@ -103,14 +103,14 @@ export default function AdminHomepage() {
       ...content,
       hero: {
         ...content.hero,
-        content: content.hero.content.filter((_, i) => i !== index)
+        content: (content.hero.content || []).filter((_, i) => i !== index)
       }
     })
   }
 
   const moveHeroBlock = (index: number, direction: 'up' | 'down') => {
     if (!content) return
-    const newContent = [...content.hero.content]
+    const newContent = [...(content.hero.content || [])]
     const targetIndex = direction === 'up' ? index - 1 : index + 1
     if (targetIndex < 0 || targetIndex >= newContent.length) return
 
@@ -187,7 +187,7 @@ export default function AdminHomepage() {
                 <label className="block text-sm font-medium text-gray-700 mb-3">
                   Inhalte
                 </label>
-                {content.hero.content.map((block, index) => (
+                {(content.hero.content || []).map((block, index) => (
                   <div key={index} className="mb-4 p-4 border border-gray-200 rounded-md bg-gray-50">
                     <div className="flex justify-between items-center mb-3">
                       <span className="text-sm font-medium text-gray-600">
@@ -203,7 +203,7 @@ export default function AdminHomepage() {
                         </button>
                         <button
                           onClick={() => moveHeroBlock(index, 'down')}
-                          disabled={index === content.hero.content.length - 1}
+                          disabled={index === (content.hero.content || []).length - 1}
                           className="px-2 py-1 text-sm text-gray-600 hover:bg-gray-200 rounded disabled:opacity-30"
                         >
                           ↓
