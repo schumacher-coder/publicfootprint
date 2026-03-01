@@ -1,16 +1,14 @@
 import type { Metadata } from 'next'
-import { Nunito } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-// Self-hosted Google Font (DSGVO-konform)
-const nunito = Nunito({
-  weight: ['300', '400', '500', '600', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-nunito',
-})
+// Self-hosted Nunito font via Fontsource (DSGVO-konform, keine Google-Verbindung)
+import '@fontsource/nunito/300.css'
+import '@fontsource/nunito/400.css'
+import '@fontsource/nunito/500.css'
+import '@fontsource/nunito/600.css'
+import '@fontsource/nunito/700.css'
 
 export const metadata: Metadata = {
   title: 'Public Footprint GmbH - B2B-IT Kommunikation',
@@ -24,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="de" className={nunito.variable}>
+    <html lang="de">
       <head>
         <link rel="icon" type="image/png" href="/images/logos/pf-signet.png" />
       </head>

@@ -39,7 +39,7 @@ module.exports = {
         'darkgray': '#575757',
       },
       fontFamily: {
-        sans: ['var(--font-nunito)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['Nunito', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
     },
   },
