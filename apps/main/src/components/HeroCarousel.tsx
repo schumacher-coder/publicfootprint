@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 interface HeroCarouselProps {
   images: string[]
@@ -10,60 +11,16 @@ interface HeroCarouselProps {
 
 export default function HeroCarousel({ images, interval = 5000, children }: HeroCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [imagesLoaded, setImagesLoaded] = useState(false)
-
-  // Debug: Log images on mount
-  useEffect(() => {
-    console.log('🖼️ HeroCarousel images:', images)
-    console.log('📊 Total images:', images.length)
-  }, [images])
-
-  // Preload all images
-  useEffect(() => {
-    if (images.length === 0) return
-
-    let loadedCount = 0
-    const imageElements: HTMLImageElement[] = []
-
-    images.forEach((src) => {
-      const img = new Image()
-      img.src = src
-      img.onload = () => {
-        console.log('✅ Loaded:', src)
-        loadedCount++
-        if (loadedCount === images.length) {
-          console.log('🎉 All images loaded!')
-          setImagesLoaded(true)
-        }
-      }
-      img.onerror = () => {
-        console.error('❌ Failed to load:', src)
-        loadedCount++
-        if (loadedCount === images.length) {
-          console.log('⚠️ All images processed (some may have failed)')
-          setImagesLoaded(true)
-        }
-      }
-      imageElements.push(img)
-    })
-
-    return () => {
-      imageElements.forEach((img) => {
-        img.onload = null
-        img.onerror = null
-      })
-    }
-  }, [images])
 
   useEffect(() => {
-    if (images.length <= 1 || !imagesLoaded) return
+    if (images.length <= 1) return
 
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
     }, interval)
 
     return () => clearInterval(timer)
-  }, [images.length, interval, imagesLoaded])
+  }, [images.length, interval])
 
   return (
     <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
@@ -73,14 +30,23 @@ export default function HeroCarousel({ images, interval = 5000, children }: Hero
           key={image}
           className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
           style={{
-            backgroundImage: `url(${image})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
             opacity: index === currentIndex ? 1 : 0,
             zIndex: index === currentIndex ? 1 : 0,
           }}
-        />
+        >
+          <Image
+            src={image}
+            alt={`Hero background ${index + 1}`}
+            fill
+            priority={index === 0}
+            quality={90}
+            sizes="100vw"
+            style={{
+              objectFit: 'cover',
+              objectPosition: 'center',
+            }}
+          />
+        </div>
       ))}
 
       {/* Subtle Overlay for text readability */}
