@@ -12,6 +12,12 @@ export default function HeroCarousel({ images, interval = 5000, children }: Hero
   const [currentIndex, setCurrentIndex] = useState(0)
   const [imagesLoaded, setImagesLoaded] = useState(false)
 
+  // Debug: Log images on mount
+  useEffect(() => {
+    console.log('🖼️ HeroCarousel images:', images)
+    console.log('📊 Total images:', images.length)
+  }, [images])
+
   // Preload all images
   useEffect(() => {
     if (images.length === 0) return
@@ -23,14 +29,18 @@ export default function HeroCarousel({ images, interval = 5000, children }: Hero
       const img = new Image()
       img.src = src
       img.onload = () => {
+        console.log('✅ Loaded:', src)
         loadedCount++
         if (loadedCount === images.length) {
+          console.log('🎉 All images loaded!')
           setImagesLoaded(true)
         }
       }
       img.onerror = () => {
+        console.error('❌ Failed to load:', src)
         loadedCount++
         if (loadedCount === images.length) {
+          console.log('⚠️ All images processed (some may have failed)')
           setImagesLoaded(true)
         }
       }
