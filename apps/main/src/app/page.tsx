@@ -61,7 +61,7 @@ export default function Home() {
             )}
 
             {/* Title */}
-            <h1 className="mb-8 text-magenta drop-shadow-lg">
+            <h1 className="mb-8 text-magenta drop-shadow-lg text-6xl font-bold">
               {content.hero.title}
             </h1>
           </div>
