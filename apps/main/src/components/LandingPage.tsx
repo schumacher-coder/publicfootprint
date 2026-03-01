@@ -37,22 +37,20 @@ export function LandingPage({ content }: LandingPageProps) {
   return (
     <>
       {/* Hero Section */}
-      <section className={content.hero.image ? "relative min-h-[60vh] flex items-center justify-center" : "section-padding bg-gradient-to-b from-gray-50 to-white"}>
+      <section className={content.hero.image ? "relative min-h-[60vh] flex items-center justify-center overflow-hidden" : "section-padding bg-gradient-to-b from-gray-50 to-white"}>
         {content.hero.image && (
           <>
             {/* Background Image */}
-            <div className="absolute inset-0 z-0">
-              <img
-                src={content.hero.image}
-                alt={content.hero.title}
-                className="w-full h-full object-cover"
-                loading="eager"
-              />
-              {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-black/40" />
-            </div>
+            <img
+              src={content.hero.image}
+              alt={content.hero.title}
+              className="absolute inset-0 w-full h-full object-cover z-0"
+              loading="eager"
+            />
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-black/40 z-10" />
             {/* Content Overlay */}
-            <div className="relative z-10 container-custom py-20 text-center">
+            <div className="relative z-20 container-custom py-20 text-center">
               <h1 className="mb-8 text-magenta drop-shadow-lg text-[80px] font-bold">
                 {content.hero.title}
               </h1>
