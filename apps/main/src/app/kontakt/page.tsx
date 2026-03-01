@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Kontakt - Public Footprint GmbH',
-  description: 'Kontaktieren Sie uns für Ihre B2B-IT Kommunikationsprojekte. Telefon, E-Mail oder Termin buchen.',
+  description: 'Kontaktieren Sie uns für Ihre B2B-IT Kommunikationsprojekte. Per Telefon oder E-Mail.',
 }
 
 export default function KontaktPage() {
@@ -81,87 +81,32 @@ export default function KontaktPage() {
 
             </div>
 
-            {/* Contact Form Placeholder */}
-            <div className="bg-gray-50 rounded-lg p-8 md:p-12">
-              <h2 className="text-2xl font-light text-gray-900 mb-6 text-center">
-                Nachricht senden
-              </h2>
-
-              {/* Google Forms Embed Placeholder */}
-              <div className="bg-white rounded-lg p-8 text-center">
-                <div className="max-w-2xl mx-auto">
-                  <p className="text-gray-600 mb-6">
-                    Nutzen Sie unser Kontaktformular, um uns eine Nachricht zu senden.
-                    Wir melden uns innerhalb von 24 Stunden bei Ihnen zurück.
-                  </p>
-
-                  {/* TODO: Replace with actual Google Forms embed URL */}
-                  <div className="aspect-[4/3] bg-gray-100 rounded-lg flex items-center justify-center">
-                    <div className="text-center">
-                      <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                      <p className="text-gray-500 text-sm">
-                        Google Forms wird hier eingebettet<br />
-                        (Embed-URL in Entwicklung konfigurieren)
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Uncomment and add your Google Forms URL */}
-                  {/*
-                  <iframe
-                    src="YOUR_GOOGLE_FORMS_EMBED_URL"
-                    width="100%"
-                    height="800"
-                    frameBorder="0"
-                    marginHeight={0}
-                    marginWidth={0}
-                    className="rounded-lg"
-                  >
-                    Wird geladen…
-                  </iframe>
-                  */}
-                </div>
-              </div>
-            </div>
-
-            {/* Calendar Booking */}
-            <div className="mt-12 bg-white rounded-lg p-8 md:p-12 shadow-sm border-l-4 border-magenta">
-              <h2 className="text-2xl font-light text-gray-900 mb-6 text-center">
-                Termin vereinbaren
-              </h2>
-              <div className="max-w-2xl mx-auto text-center">
-                <p className="text-gray-600 mb-6">
-                  Buchen Sie direkt einen Termin für ein unverbindliches Erstgespräch.
-                  Wir besprechen Ihre Anforderungen und entwickeln gemeinsam eine Strategie.
-                </p>
-
-                {/* Google Calendar Embed Placeholder */}
-                <div className="aspect-[4/3] bg-gray-50 rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <p className="text-gray-500 text-sm">
-                      Google Calendar Appointment Scheduling<br />
-                      (Embed-URL in Entwicklung konfigurieren)
-                    </p>
-                  </div>
-                </div>
-
-                {/* Uncomment and add your Google Calendar Appointment Scheduling URL */}
-                {/*
-                <iframe
-                  src="YOUR_GOOGLE_CALENDAR_APPOINTMENT_URL"
-                  width="100%"
-                  height="600"
-                  frameBorder="0"
-                  className="rounded-lg"
+            {/* Simple Contact CTA */}
+            <div className="bg-gradient-to-br from-magenta to-magenta-700 rounded-lg p-8 md:p-12 text-center text-white shadow-lg">
+              <h2 className="text-3xl font-light mb-4">Lassen Sie uns sprechen</h2>
+              <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto">
+                Schreiben Sie uns eine E-Mail oder rufen Sie uns an.
+                Wir melden uns innerhalb von 24 Stunden bei Ihnen zurück.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a
+                  href="mailto:info@public-footprint.de"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-white text-magenta font-medium rounded-md hover:bg-gray-100 transition-colors duration-200"
                 >
-                  Wird geladen…
-                </iframe>
-                */}
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  E-Mail schreiben
+                </a>
+                <a
+                  href="tel:+492148309779"
+                  className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white text-white font-medium rounded-md hover:bg-white/10 transition-colors duration-200"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  Anrufen
+                </a>
               </div>
             </div>
 
