@@ -71,11 +71,12 @@ sudo crontab -e
 
 ## Notifications
 
-Das Script sendet Notifications für:
+Das Script sendet **nur Fehler-Notifications** (keine Erfolgs-Meldungen):
 
-- ✅ **Backup Success** - Content wurde erfolgreich gesichert (nur wenn es Änderungen gab)
 - ❌ **Backup Failed** - Git push fehlgeschlagen
 - ⚠️ **Website Down** - Website nicht erreichbar
+
+**Erfolgreiches Backup** wird nur im Log vermerkt, **keine Notification**.
 
 ## Anpassungen
 
