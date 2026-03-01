@@ -27,7 +27,7 @@
     },
     {
       "type": "text",
-      "content": "## 7. Zusammenfassung\n\n**Diese Website ist bewusst datenschutzfreundlich gestaltet:**\n\n✅ Keine Cookies  \n✅ Kein Tracking  \n✅ Keine externe Dienste (außer selbst gehostete Fonts)  \n✅ Minimale Datenerfassung (nur Server-Logs)  \n✅ Keine Datenübertragung an Dritte  \n✅ Automatische Löschung nach 30 Tagen\n\n**Stand:** März 2026\n\n---\n\n*Hinweis: Diese Datenschutzerklärung wurde mit größter Sorgfalt erstellt. Für absolute Rechtssicherheit empfehlen wir eine Prüfung durch einen Datenschutzbeauftragten oder Rechtsanwalt.*"
+      "content": "## 7. Zusammenfassung\n\n**Diese Website ist bewusst datenschutzfreundlich gestaltet:**\n\n✅ Keine Cookies  \n✅ Kein Tracking  \n✅ Keine externen Dienste (selbst gehostete Fonts statt Google Fonts)  \n✅ Minimale Datenerfassung (nur Server-Logs)  \n✅ Keine Datenübertragung an Dritte  \n✅ Automatische Löschung nach 30 Tagen\n\n**Stand:** März 2026\n\n---\n\n*Hinweis: Diese Datenschutzerklärung wurde mit größter Sorgfalt erstellt. Für absolute Rechtssicherheit empfehlen wir eine Prüfung durch einen Datenschutzbeauftragten oder Rechtsanwalt.*"
     }
   ]
 }

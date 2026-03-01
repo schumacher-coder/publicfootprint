@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 function renderContentBlock(block: ContentBlock, index: number) {
   if (block.type === 'text') {
     return (
-      <div key={index} className="prose prose-lg max-w-none">
+      <div key={index}>
         {parseMarkdown(block.content)}
       </div>
     )

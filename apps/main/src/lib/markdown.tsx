@@ -1,34 +1,55 @@
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
-// Simple markdown parser for basic formatting
+// Full markdown parser using react-markdown
 export function parseMarkdown(text: string): React.ReactNode {
-  const parts: React.ReactNode[] = []
-  let lastIndex = 0
+  return (
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm]}
+      components={{
+        // Headings
+        h1: ({ node, ...props }) => <h1 className="text-3xl font-bold mb-4 text-gray-900" {...props} />,
+        h2: ({ node, ...props }) => <h2 className="text-2xl font-bold mb-3 mt-8 text-gray-900" {...props} />,
+        h3: ({ node, ...props }) => <h3 className="text-xl font-semibold mb-2 mt-6 text-gray-900" {...props} />,
+        h4: ({ node, ...props }) => <h4 className="text-lg font-semibold mb-2 mt-4 text-gray-900" {...props} />,
 
-  // Match **bold** text
-  const boldRegex = /\*\*(.+?)\*\*/g
-  let match: RegExpExecArray | null
+        // Paragraphs
+        p: ({ node, ...props }) => <p className="mb-4 leading-relaxed text-gray-700" {...props} />,
 
-  while ((match = boldRegex.exec(text)) !== null) {
-    // Add text before match
-    if (match.index > lastIndex) {
-      parts.push(text.substring(lastIndex, match.index))
-    }
+        // Links
+        a: ({ node, ...props }) => (
+          <a
+            className="text-magenta hover:text-magenta-700 underline transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+            {...props}
+          />
+        ),
 
-    // Add bold text
-    parts.push(
-      <strong key={match.index} className="text-gray-900">
-        {match[1]}
-      </strong>
-    )
+        // Lists
+        ul: ({ node, ...props }) => <ul className="list-disc list-inside mb-4 space-y-2 text-gray-700" {...props} />,
+        ol: ({ node, ...props }) => <ol className="list-decimal list-inside mb-4 space-y-2 text-gray-700" {...props} />,
+        li: ({ node, ...props }) => <li className="leading-relaxed" {...props} />,
 
-    lastIndex = match.index + match[0].length
-  }
+        // Strong/Bold
+        strong: ({ node, ...props }) => <strong className="font-semibold text-gray-900" {...props} />,
 
-  // Add remaining text
-  if (lastIndex < text.length) {
-    parts.push(text.substring(lastIndex))
-  }
+        // Emphasis/Italic
+        em: ({ node, ...props }) => <em className="italic" {...props} />,
 
-  return parts.length > 0 ? parts : text
+        // Code
+        code: ({ node, ...props }) => (
+          <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono text-gray-800" {...props} />
+        ),
+
+        // Blockquote
+        blockquote: ({ node, ...props }) => (
+          <blockquote className="border-l-4 border-magenta pl-4 py-2 mb-4 italic text-gray-600" {...props} />
+        ),
+      }}
+    >
+      {text}
+    </ReactMarkdown>
+  )
 }
