@@ -5,18 +5,24 @@ import sharp from 'sharp';
 
 const IMAGES_DIR = 'apps/main/public/images/visuals';
 const MAX_WIDTH = 1920;
-const WEBP_QUALITY = 82;
+const WEBP_QUALITY = 70; // Reduziert für bessere Mobile-Performance!
 
 const imagesToOptimize = [
+  // Hero-Bilder (müssen SCHNELL laden!)
   'berlinwall.jpg',
   'moon.jpg',
   'stoneage.jpg',
-  'windingroad.jpg'
+  'windingroad.jpg',
+  // Große Bilder
+  'thomas-portrait.jpg',
+  'lion.jpg',
+  'network-wallpaper.png',
+  'connecteddots.png'
 ];
 
 async function optimizeImage(filename) {
   const inputPath = join(IMAGES_DIR, filename);
-  const outputFilename = filename.replace(/\.jpg$/, '.webp');
+  const outputFilename = filename.replace(/\.(jpg|png)$/, '.webp');
   const outputPath = join(IMAGES_DIR, outputFilename);
 
   console.log(`\n📸 Optimizing: ${filename}`);
