@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { getNotizenContent, updateNotizenContent } from '@/lib/content'
 
 export async function GET() {
@@ -19,6 +20,9 @@ export async function POST(request: NextRequest) {
     const { content } = body
 
     updateNotizenContent(content)
+
+    // Immediately revalidate the public notizen page
+    revalidatePath('/notizen')
 
     return NextResponse.json({ success: true })
   } catch (error) {
