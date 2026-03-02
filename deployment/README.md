@@ -91,13 +91,13 @@ sudo lsof -i :3003
 ### Permission issues:
 ```bash
 # Make sure .env file is readable
-ls -la /home/user/publicfootprint/apps/main/.env
+ls -la /home/thomas/publicfootprint/apps/main/.env
 ```
 
 ### Update after code changes:
 ```bash
 # Rebuild and restart
-cd /home/user/publicfootprint/apps/main
+cd /home/thomas/publicfootprint/apps/main
 npm run build
 sudo systemctl restart publicfootprint
 ```

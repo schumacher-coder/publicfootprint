@@ -5,11 +5,11 @@ After=network.target
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/home/user/publicfootprint/apps/main
+WorkingDirectory=/home/thomas/publicfootprint/apps/main
 Environment="NODE_ENV=production"
 Environment="PORT=3003"
-EnvironmentFile=/home/user/publicfootprint/apps/main/.env
-ExecStart=/opt/node22/bin/node /home/user/publicfootprint/apps/main/node_modules/.bin/next start -p 3003
+EnvironmentFile=/home/thomas/publicfootprint/apps/main/.env
+ExecStart=/opt/node22/bin/node /home/thomas/publicfootprint/apps/main/node_modules/.bin/next start -p 3003
 Restart=always
 RestartSec=10
 StandardOutput=journal

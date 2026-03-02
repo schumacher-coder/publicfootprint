@@ -1,7 +1,7 @@
 #!/bin/bash
 # PublicFootprint Startup Script
 
-cd /home/user/publicfootprint/apps/main
+cd /home/thomas/publicfootprint/apps/main
 
 # Load environment variables
 export $(grep -v '^#' .env | xargs)

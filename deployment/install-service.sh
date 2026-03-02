@@ -13,7 +13,7 @@ fi
 
 # Copy service file
 echo "📋 Copying service file to /etc/systemd/system/"
-cp /home/user/publicfootprint/deployment/publicfootprint.service /etc/systemd/system/
+cp /home/thomas/publicfootprint/deployment/publicfootprint.service /etc/systemd/system/
 
 # Reload systemd
 echo "🔄 Reloading systemd daemon..."
