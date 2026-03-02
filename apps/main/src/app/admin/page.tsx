@@ -13,6 +13,12 @@ export default function AdminDashboard() {
 
   const sections = [
     {
+      title: 'Server Statistiken',
+      description: 'DSGVO-konforme Zugriffszahlen und Analytics aus nginx Logs',
+      href: '/admin/stats',
+      icon: '📊',
+    },
+    {
       title: 'Homepage bearbeiten',
       description: 'Hero, Über-uns-Bereich und Call-to-Action anpassen',
       href: '/admin/homepage',
