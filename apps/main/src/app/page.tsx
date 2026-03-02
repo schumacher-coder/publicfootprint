@@ -1,10 +1,18 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { getHomepageContent, getServices, type ContentBlock } from '@/lib/content'
 import { parseMarkdown } from '@/lib/markdown'
 import HeroCarousel from '@/components/HeroCarousel'
 
 // Revalidate every 60 seconds - ISR (Incremental Static Regeneration)
 export const revalidate = 60
+
+// Page-specific metadata
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://publicfootprint.de'
+  }
+}
 
 function renderContentBlock(block: ContentBlock, index: number, isLast: boolean = false, isHero: boolean = false) {
   if (block.type === 'text') {
