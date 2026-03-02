@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { getNotizenContent, getPublishedNotizen } from '@/lib/content'
+import NotizenEntry from '@/components/NotizenEntry'
 
 export const metadata: Metadata = {
   title: 'Notizen - Public Footprint GmbH',
@@ -36,21 +37,7 @@ export default function NotizenPage() {
             <div className="space-y-12">
 
               {publishedEntries.map((entry) => (
-                <article key={entry.id} className="border-t-2 border-gray-300 pt-8">
-                  <time className="block font-mono text-sm text-gray-500 mb-4">
-                    {entry.date}
-                  </time>
-                  <div className="prose prose-lg max-w-none space-y-4 text-gray-700">
-                    {entry.content.map((paragraph, index) => {
-                      const isHighlighted = paragraph.startsWith('→')
-                      return (
-                        <p key={index} className={isHighlighted ? 'text-magenta' : ''}>
-                          {paragraph}
-                        </p>
-                      )
-                    })}
-                  </div>
-                </article>
+                <NotizenEntry key={entry.id} entry={entry} />
               ))}
 
               {publishedEntries.length === 0 && (
