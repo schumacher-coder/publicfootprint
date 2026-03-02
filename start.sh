@@ -1,0 +1,12 @@
+#!/bin/bash
+# PublicFootprint Startup Script
+
+cd /home/user/publicfootprint/apps/main
+
+# Load environment variables
+export $(grep -v '^#' .env | xargs)
+export NODE_ENV=production
+export PORT=3003
+
+# Start the app
+/opt/node22/bin/node node_modules/.bin/next start -p 3003

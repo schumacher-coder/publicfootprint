@@ -1,0 +1,20 @@
+[Unit]
+Description=PublicFootprint Next.js Application
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/user/publicfootprint/apps/main
+Environment="NODE_ENV=production"
+Environment="PORT=3003"
+EnvironmentFile=/home/user/publicfootprint/apps/main/.env
+ExecStart=/opt/node22/bin/node /home/user/publicfootprint/apps/main/node_modules/.bin/next start -p 3003
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=publicfootprint
+
+[Install]
+WantedBy=multi-user.target
