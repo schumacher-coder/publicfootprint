@@ -123,7 +123,7 @@ function parseLogLine(line: string): LogEntry | null {
  * @param since Filter entries since this date
  */
 export async function parseNginxLogs(
-  logPath: string = '/var/log/nginx/access.log',
+  logPath: string = process.env.NGINX_LOG_PATH || '/var/log/nginx/access.log',
   since?: Date
 ): Promise<DashboardStats> {
   const entries: LogEntry[] = []

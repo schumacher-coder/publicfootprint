@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
     const period = searchParams.get('period') as 'today' | 'yesterday' | '7days' | '30days' || 'today'
 
     // Optional: Custom log path (for development/testing)
-    const logPath = searchParams.get('logPath') || '/var/log/nginx/access.log'
+    const logPath = searchParams.get('logPath') || process.env.NGINX_LOG_PATH || '/var/log/nginx/access.log'
 
     // Parse logs and generate stats
     const stats = await getStatsForPeriod(period, logPath)
