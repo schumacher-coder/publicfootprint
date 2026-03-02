@@ -9,7 +9,7 @@ WorkingDirectory=/home/thomas/publicfootprint/apps/main
 Environment="NODE_ENV=production"
 Environment="PORT=3003"
 EnvironmentFile=/home/thomas/publicfootprint/apps/main/.env
-ExecStart=/opt/node22/bin/node /home/thomas/publicfootprint/apps/main/node_modules/.bin/next start -p 3003
+ExecStart=/usr/bin/node /home/thomas/publicfootprint/apps/main/node_modules/.bin/next start -p 3003
 Restart=always
 RestartSec=10
 StandardOutput=journal

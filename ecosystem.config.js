@@ -4,7 +4,7 @@ module.exports = {
     script: 'node_modules/.bin/next',
     args: 'start -p 3003',
     cwd: '/home/thomas/publicfootprint/apps/main',
-    interpreter: '/opt/node22/bin/node',
+    interpreter: '/usr/bin/node',
     env: {
       NODE_ENV: 'production',
       PORT: '3003'

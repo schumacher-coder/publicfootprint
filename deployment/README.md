@@ -44,7 +44,7 @@ sudo systemctl disable publicfootprint  # Disable auto-start
 
 ## Requirements
 
-- **Node.js 22+** installed at `/opt/node22/bin/node`
+- **Node.js 22+** installed at `/usr/bin/node`
 - **Next.js app** built (`npm run build` in `apps/main/`)
 - **Environment file** at `apps/main/.env`
 - **Port 3003** available
@@ -82,7 +82,7 @@ sudo journalctl -u publicfootprint -n 50
 
 # Verify Node.js path
 which node
-/opt/node22/bin/node --version
+/usr/bin/node --version
 
 # Check if port is already in use
 sudo lsof -i :3003

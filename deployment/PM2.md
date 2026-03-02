@@ -79,7 +79,7 @@ pm2 startup                   # Generate startup script
 ### Current Settings:
 - **App Name:** `publicfootprint`
 - **Port:** `3003`
-- **Node Version:** `/opt/node22/bin/node`
+- **Node Version:** `/usr/bin/node`
 - **Working Dir:** `/home/thomas/publicfootprint/apps/main`
 - **Mode:** `fork` (single instance)
 - **Max Memory:** `1GB` (auto-restart if exceeded)
@@ -101,7 +101,7 @@ pm2 logs publicfootprint --err
 sudo lsof -i :3003
 
 # Verify Node.js path
-/opt/node22/bin/node --version
+/usr/bin/node --version
 ```
 
 ### High memory usage:
