@@ -32,6 +32,7 @@ export default function AdminNotizen() {
   const [message, setMessage] = useState('')
   const [showMarkdownHelp, setShowMarkdownHelp] = useState(false)
   const [previewMode, setPreviewMode] = useState<Record<string, boolean>>({})
+  const [uploading, setUploading] = useState(false)
 
   useEffect(() => {
     loadContent()
@@ -161,6 +162,43 @@ export default function AdminNotizen() {
     setContent({ ...content, entries: newEntries })
   }
 
+  const handleImageUpload = async (entryId: string, paragraphIndex: number, file: File) => {
+    setUploading(true)
+    try {
+      const formData = new FormData()
+      formData.append('file', file)
+
+      const response = await fetch('/api/admin/upload', {
+        method: 'POST',
+        body: formData,
+      })
+
+      if (!response.ok) {
+        const error = await response.json()
+        throw new Error(error.error || 'Upload failed')
+      }
+
+      const data = await response.json()
+
+      // Insert Markdown image syntax at cursor position or end of paragraph
+      const entry = content?.entries.find(e => e.id === entryId)
+      if (entry) {
+        const currentContent = entry.content[paragraphIndex] || ''
+        const imageMarkdown = `![Bild](${data.url})`
+        const newContent = currentContent ? `${currentContent}\n\n${imageMarkdown}` : imageMarkdown
+
+        updateEntryContent(entryId, paragraphIndex, newContent)
+        setMessage(`✅ Bild hochgeladen: ${data.filename}`)
+        setTimeout(() => setMessage(''), 3000)
+      }
+    } catch (error) {
+      setMessage(`❌ Upload-Fehler: ${error instanceof Error ? error.message : 'Unknown error'}`)
+      console.error('Upload error:', error)
+    } finally {
+      setUploading(false)
+    }
+  }
+
   if (loading || !content) {
     return <div className="p-8">Lädt...</div>
   }
@@ -178,8 +216,18 @@ export default function AdminNotizen() {
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {message && (
-          <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-md">
+          <div className={`mb-6 p-4 rounded-md ${
+            message.includes('✅') ? 'bg-green-50 border border-green-200' :
+            message.includes('❌') ? 'bg-red-50 border border-red-200' :
+            'bg-blue-50 border border-blue-200'
+          }`}>
             {message}
+          </div>
+        )}
+
+        {uploading && (
+          <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-md">
+            📤 Bild wird hochgeladen...
           </div>
         )}
 
@@ -258,6 +306,13 @@ export default function AdminNotizen() {
                     <p><code>- Liste</code> → Aufzählung</p>
                   </div>
                 </div>
+                <div className="mt-3 pt-3 border-t border-blue-300">
+                  <p className="font-semibold">📷 Bilder hochladen:</p>
+                  <p>Klicke auf den 📷-Button neben dem Absatz, um ein Bild hochzuladen.</p>
+                  <p className="text-xs text-gray-600 mt-1">
+                    Der Markdown-Code <code>![Bild](url)</code> wird automatisch eingefügt.
+                  </p>
+                </div>
               </div>
             )}
 
@@ -319,15 +374,17 @@ export default function AdminNotizen() {
                           <label className="block text-sm font-medium text-gray-700">
                             Absätze (Markdown)
                           </label>
-                          <button
-                            onClick={() => setPreviewMode({
-                              ...previewMode,
-                              [entry.id]: !previewMode[entry.id]
-                            })}
-                            className="px-3 py-1 text-xs bg-gray-100 hover:bg-gray-200 rounded"
-                          >
-                            {previewMode[entry.id] ? '📝 Bearbeiten' : '👁️ Vorschau'}
-                          </button>
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() => setPreviewMode({
+                                ...previewMode,
+                                [entry.id]: !previewMode[entry.id]
+                              })}
+                              className="px-3 py-1 text-xs bg-gray-100 hover:bg-gray-200 rounded"
+                            >
+                              {previewMode[entry.id] ? '📝 Bearbeiten' : '👁️ Vorschau'}
+                            </button>
+                          </div>
                         </div>
                         {entry.content.map((paragraph, pIndex) => (
                           <div key={pIndex} className="mb-3">
@@ -347,13 +404,33 @@ export default function AdminNotizen() {
                                   </ReactMarkdown>
                                 </div>
                               )}
-                              <button
-                                onClick={() => removeParagraphFromEntry(entry.id, pIndex)}
-                                className="px-3 py-1 text-red-600 hover:bg-red-50 rounded"
-                                title="Absatz löschen"
-                              >
-                                ×
-                              </button>
+                              <div className="flex flex-col gap-1">
+                                <label
+                                  className="px-3 py-1 text-xs bg-blue-100 text-blue-700 hover:bg-blue-200 rounded cursor-pointer text-center"
+                                  title="Bild hochladen"
+                                >
+                                  📷
+                                  <input
+                                    type="file"
+                                    accept="image/*"
+                                    className="hidden"
+                                    disabled={uploading}
+                                    onChange={(e) => {
+                                      const file = e.target.files?.[0]
+                                      if (file) {
+                                        handleImageUpload(entry.id, pIndex, file)
+                                      }
+                                    }}
+                                  />
+                                </label>
+                                <button
+                                  onClick={() => removeParagraphFromEntry(entry.id, pIndex)}
+                                  className="px-3 py-1 text-xs text-red-600 hover:bg-red-50 rounded"
+                                  title="Absatz löschen"
+                                >
+                                  ×
+                                </button>
+                              </div>
                             </div>
                           </div>
                         ))}
