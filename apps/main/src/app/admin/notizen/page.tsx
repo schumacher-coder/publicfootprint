@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 interface NotizenEntry {
   id: string
@@ -28,6 +30,8 @@ export default function AdminNotizen() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState('')
+  const [showMarkdownHelp, setShowMarkdownHelp] = useState(false)
+  const [previewMode, setPreviewMode] = useState<Record<string, boolean>>({})
 
   useEffect(() => {
     loadContent()
@@ -218,7 +222,18 @@ export default function AdminNotizen() {
           {/* Entries */}
           <section className="bg-white rounded-lg shadow-sm p-6">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-semibold text-gray-900">Notizen</h2>
+              <div>
+                <h2 className="text-xl font-semibold text-gray-900">Notizen</h2>
+                <p className="text-sm text-gray-600 mt-1">
+                  ✨ Markdown-Formatierung wird unterstützt
+                  <button
+                    onClick={() => setShowMarkdownHelp(!showMarkdownHelp)}
+                    className="ml-2 text-blue-600 hover:underline"
+                  >
+                    {showMarkdownHelp ? 'Hilfe ausblenden' : 'Markdown-Hilfe'}
+                  </button>
+                </p>
+              </div>
               <button
                 onClick={addNewEntry}
                 className="px-4 py-2 bg-magenta text-white rounded-md hover:bg-magenta-700"
@@ -226,6 +241,25 @@ export default function AdminNotizen() {
                 + Neue Notiz
               </button>
             </div>
+
+            {/* Markdown Help */}
+            {showMarkdownHelp && (
+              <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg text-sm">
+                <h3 className="font-semibold mb-2">Markdown-Formatierung</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p><code>**fett**</code> → <strong>fett</strong></p>
+                    <p><code>*kursiv*</code> → <em>kursiv</em></p>
+                    <p><code>[Link](url)</code> → Link</p>
+                  </div>
+                  <div>
+                    <p><code># Überschrift</code> → H1</p>
+                    <p><code>## Überschrift</code> → H2</p>
+                    <p><code>- Liste</code> → Aufzählung</p>
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div className="space-y-6">
               {(content.entries || []).map((entry, index) => (
@@ -281,23 +315,46 @@ export default function AdminNotizen() {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Absätze
-                        </label>
+                        <div className="flex justify-between items-center mb-2">
+                          <label className="block text-sm font-medium text-gray-700">
+                            Absätze (Markdown)
+                          </label>
+                          <button
+                            onClick={() => setPreviewMode({
+                              ...previewMode,
+                              [entry.id]: !previewMode[entry.id]
+                            })}
+                            className="px-3 py-1 text-xs bg-gray-100 hover:bg-gray-200 rounded"
+                          >
+                            {previewMode[entry.id] ? '📝 Bearbeiten' : '👁️ Vorschau'}
+                          </button>
+                        </div>
                         {entry.content.map((paragraph, pIndex) => (
-                          <div key={pIndex} className="mb-3 flex gap-2">
-                            <textarea
-                              value={paragraph}
-                              onChange={(e) => updateEntryContent(entry.id, pIndex, e.target.value)}
-                              rows={2}
-                              className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta"
-                            />
-                            <button
-                              onClick={() => removeParagraphFromEntry(entry.id, pIndex)}
-                              className="px-3 py-1 text-red-600 hover:bg-red-50 rounded"
-                            >
-                              ×
-                            </button>
+                          <div key={pIndex} className="mb-3">
+                            <div className="flex gap-2">
+                              {!previewMode[entry.id] ? (
+                                <textarea
+                                  value={paragraph}
+                                  onChange={(e) => updateEntryContent(entry.id, pIndex, e.target.value)}
+                                  rows={3}
+                                  className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-magenta font-mono text-sm"
+                                  placeholder="Text mit Markdown-Formatierung..."
+                                />
+                              ) : (
+                                <div className="flex-1 px-3 py-2 border border-gray-200 rounded-md bg-gray-50 prose prose-sm max-w-none">
+                                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                    {paragraph}
+                                  </ReactMarkdown>
+                                </div>
+                              )}
+                              <button
+                                onClick={() => removeParagraphFromEntry(entry.id, pIndex)}
+                                className="px-3 py-1 text-red-600 hover:bg-red-50 rounded"
+                                title="Absatz löschen"
+                              >
+                                ×
+                              </button>
+                            </div>
                           </div>
                         ))}
                         <button
