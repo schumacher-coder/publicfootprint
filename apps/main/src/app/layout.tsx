@@ -27,8 +27,12 @@ export default function RootLayout({
         <link rel="icon" type="image/png" href="/images/logos/pf-signet.png" />
       </head>
       <body>
+        {/* Skip to main content link for keyboard navigation */}
+        <a href="#main" className="skip-link">
+          Zum Hauptinhalt springen
+        </a>
         <Header />
-        <main className="min-h-screen">
+        <main id="main" className="min-h-screen">
           {children}
         </main>
         <Footer />

@@ -72,10 +72,10 @@ export default function Home() {
       </HeroCarousel>
 
       {/* Main Content Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white" aria-labelledby="main-content-heading">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <h2 className="mb-8 text-center">{content.mainContent.title}</h2>
+            <h2 id="main-content-heading" className="mb-8 text-center">{content.mainContent.title}</h2>
             <div className="space-y-6 text-lg leading-relaxed text-gray-700">
               {content.mainContent.content.map((block, index) =>
                 renderContentBlock(block, index, index === content.mainContent.content.length - 1, false)
@@ -86,10 +86,10 @@ export default function Home() {
       </section>
 
       {/* Services Preview */}
-      <section id="services" className="section-padding bg-white">
+      <section id="services" className="section-padding bg-white" aria-labelledby="services-heading">
         <div className="container-custom">
           <div className="max-w-5xl mx-auto">
-            <h2 className="mb-6 text-center">{content.servicesSection.title}</h2>
+            <h2 id="services-heading" className="mb-6 text-center">{content.servicesSection.title}</h2>
             <p className="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">
               {content.servicesSection.description}
             </p>
@@ -101,6 +101,7 @@ export default function Home() {
                   className="group bg-gray-50 p-8 rounded-lg shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,0.15)] transition-all duration-200 border border-gray-200"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`${service.title} - öffnet in neuem Tab`}
                 >
                   <h3 className="text-xl font-medium text-gray-900 mb-3 group-hover:text-magenta transition-colors">
                     {service.title}
@@ -108,6 +109,7 @@ export default function Home() {
                   <p className="text-gray-700 leading-relaxed">
                     {service.excerpt}
                   </p>
+                  <span className="sr-only">Öffnet in neuem Tab</span>
                 </a>
               ))}
             </div>

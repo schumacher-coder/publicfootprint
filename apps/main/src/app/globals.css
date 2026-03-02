@@ -34,6 +34,19 @@
   a {
     @apply text-magenta hover:text-magenta-600 transition-colors duration-200;
   }
+
+  /* Accessibility: Focus-visible styles for keyboard navigation */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-magenta ring-0;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    @apply outline-2 outline-offset-2 outline-magenta;
+  }
 }
 
 @layer components {
@@ -51,5 +64,16 @@
 
   .btn-secondary {
     @apply inline-block px-8 py-3 border-2 border-magenta text-magenta font-medium rounded-md hover:bg-magenta hover:text-white transition-all duration-200;
+  }
+
+  /* Accessibility: Skip to main content link */
+  .skip-link {
+    @apply absolute left-0 top-0 bg-magenta text-white px-4 py-2 z-50 transform -translate-y-full focus:translate-y-0 transition-transform;
+  }
+
+  /* Accessibility: Screen reader only text */
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+    clip: rect(0, 0, 0, 0);
   }
 }
