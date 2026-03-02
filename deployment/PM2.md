@@ -4,7 +4,7 @@
 
 ### First-time Setup:
 ```bash
-cd /home/thomas/publicfootprint
+cd /home/thomas/projects/publicfootprint
 
 # Create logs directory
 mkdir -p logs
@@ -14,7 +14,7 @@ cd apps/main
 npm run build
 
 # Start with PM2
-cd /home/thomas/publicfootprint
+cd /home/thomas/projects/publicfootprint
 pm2 start ecosystem.config.js
 
 # Save PM2 config (auto-start on boot)
@@ -34,7 +34,7 @@ pm2 startup
 
 ### Manual Way:
 ```bash
-cd /home/thomas/publicfootprint/apps/main
+cd /home/thomas/projects/publicfootprint/apps/main
 npm run build
 cd ..
 pm2 reload ecosystem.config.js
@@ -80,13 +80,13 @@ pm2 startup                   # Generate startup script
 - **App Name:** `publicfootprint`
 - **Port:** `3003`
 - **Node Version:** `/usr/bin/node`
-- **Working Dir:** `/home/thomas/publicfootprint/apps/main`
+- **Working Dir:** `/home/thomas/projects/publicfootprint/apps/main`
 - **Mode:** `fork` (single instance)
 - **Max Memory:** `1GB` (auto-restart if exceeded)
-- **Logs:** `/home/thomas/publicfootprint/logs/`
+- **Logs:** `/home/thomas/projects/publicfootprint/logs/`
 
 ### Environment Variables:
-Loaded from `/home/thomas/publicfootprint/apps/main/.env`
+Loaded from `/home/thomas/projects/publicfootprint/apps/main/.env`
 
 ---
 
@@ -174,7 +174,7 @@ pm2 install pm2-server-monit
 ./deploy.sh
 
 # Option 2: Manual
-cd /home/thomas/publicfootprint/apps/main
+cd /home/thomas/projects/publicfootprint/apps/main
 git pull
 npm install
 npm run build

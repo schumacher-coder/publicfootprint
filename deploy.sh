@@ -6,7 +6,7 @@ set -e
 echo "🚀 Deploying PublicFootprint..."
 
 # Navigate to app directory
-cd /home/thomas/publicfootprint/apps/main
+cd /home/thomas/projects/publicfootprint/apps/main
 
 # Pull latest changes (optional - comment out if you deploy via git push)
 # git pull origin main
@@ -21,7 +21,7 @@ npm run build
 
 # Reload PM2 (zero-downtime)
 echo "♻️  Reloading PM2..."
-cd /home/thomas/publicfootprint
+cd /home/thomas/projects/publicfootprint
 pm2 reload ecosystem.config.js --update-env
 
 # Show status
