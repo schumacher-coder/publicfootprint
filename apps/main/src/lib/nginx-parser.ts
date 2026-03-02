@@ -243,7 +243,7 @@ export async function parseNginxLogs(
     botTraffic,
     humanTraffic,
     topPages,
-    statusCodes,
+    statusCodes: statusCounts,
     deviceStats: { mobile: mobileHits, desktop: desktopHits },
     referrers: topReferrers,
     hourlyStats,
