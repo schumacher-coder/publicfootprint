@@ -15,14 +15,18 @@ cd /home/thomas/projects/publicfootprint/apps/main
 echo "📦 Checking dependencies..."
 npm install --production=false
 
+# Clean build cache to prevent Server Action mismatches
+echo "🧹 Cleaning build cache..."
+rm -rf .next
+
 # Build Next.js app
 echo "🔨 Building application..."
 npm run build
 
-# Reload PM2 (zero-downtime)
-echo "♻️  Reloading PM2..."
+# Restart PM2 (clean restart - important for Server Actions!)
+echo "♻️  Restarting PM2..."
 cd /home/thomas/projects/publicfootprint
-pm2 reload ecosystem.config.js --update-env
+pm2 restart ecosystem.config.js --update-env
 
 # Show status
 echo ""
