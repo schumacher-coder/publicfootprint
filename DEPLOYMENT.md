@@ -32,6 +32,29 @@ pm2 monit                     # Live monitoring
 pm2 restart publicfootprint   # Restart app
 ```
 
+### Alias Domain Redirects
+
+**Alias-Domains** (redirect to `public-footprint.de`):
+- `publicfootprint.de` (ohne Bindestrich)
+- `public-footprint.com` (.com statt .de)
+
+**Option A: Ionos Domain-Weiterleitung (Empfohlen)**
+1. Bei Ionos: Domain-Verwaltung → Weiterleitung einrichten
+2. Ziel: `https://public-footprint.de`
+3. Typ: `301 Permanent Redirect`
+4. Wildcard aktivieren (für www-Subdomain)
+
+**Option B: VPS Nginx Redirect**
+```bash
+cd ~/projects/publicfootprint
+./deployment/setup-alias-domains.sh
+```
+
+Das Script:
+1. Installiert nginx-config für Alias-Redirects
+2. Erstellt SSL-Zertifikate (Let's Encrypt)
+3. Aktiviert die Redirects
+
 ---
 
 ## Alternative: Vercel Setup für Multi-Domain Monorepo
