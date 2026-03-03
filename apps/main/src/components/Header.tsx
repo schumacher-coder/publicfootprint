@@ -11,7 +11,7 @@ export default function Header() {
       <nav className="container-custom">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="https://public-footprint.de" className="flex items-center">
             <img
               src="/images/logos/public-footprint-logo.png"
               alt="Public Footprint"
@@ -21,16 +21,16 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-magenta transition-colors">
+            <Link href="https://public-footprint.de" className="text-gray-700 hover:text-magenta transition-colors">
               Home
             </Link>
-            <Link href="/notizen" className="text-gray-700 hover:text-magenta transition-colors">
+            <Link href="https://public-footprint.de/notizen" className="text-gray-700 hover:text-magenta transition-colors">
               Notizen
             </Link>
-            <Link href="/about" className="text-gray-700 hover:text-magenta transition-colors">
+            <Link href="https://public-footprint.de/about" className="text-gray-700 hover:text-magenta transition-colors">
               About
             </Link>
-            <Link href="/kontakt" className="btn-primary text-sm">
+            <Link href="https://public-footprint.de/kontakt" className="btn-primary text-sm">
               Kontakt
             </Link>
           </div>
@@ -64,28 +64,28 @@ export default function Header() {
           <div className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
               <Link
-                href="/"
+                href="https://public-footprint.de"
                 className="text-gray-700 hover:text-magenta transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
               </Link>
               <Link
-                href="/notizen"
+                href="https://public-footprint.de/notizen"
                 className="text-gray-700 hover:text-magenta transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Notizen
               </Link>
               <Link
-                href="/about"
+                href="https://public-footprint.de/about"
                 className="text-gray-700 hover:text-magenta transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 About
               </Link>
               <Link
-                href="/kontakt"
+                href="https://public-footprint.de/kontakt"
                 className="text-magenta hover:text-magenta-600 transition-colors py-2 font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >

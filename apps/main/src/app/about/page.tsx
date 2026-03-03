@@ -173,10 +173,10 @@ export default function AboutPage() {
             Wir entwickeln gemeinsam eine Strategie, die zu Ihnen passt.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <Link href="/kontakt" className="btn-primary">
+            <Link href="https://public-footprint.de/kontakt" className="btn-primary">
               Kontakt aufnehmen
             </Link>
-            <Link href="/#services" className="btn-secondary">
+            <Link href="https://public-footprint.de/#services" className="btn-secondary">
               Services entdecken
             </Link>
           </div>

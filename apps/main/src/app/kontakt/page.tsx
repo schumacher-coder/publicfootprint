@@ -33,7 +33,7 @@ export default function KontaktPage() {
                   <div>
                     <h3 className="text-sm font-medium text-gray-500 mb-1">Telefon</h3>
                     <a
-                      href="tel:+492148309779"
+                      href="tel:+4921483097790"
                       className="text-xl text-magenta hover:text-magenta-600 transition-colors"
                     >
                       +49 214 830977-90
@@ -99,7 +99,7 @@ export default function KontaktPage() {
                   E-Mail schreiben
                 </a>
                 <a
-                  href="tel:+492148309779"
+                  href="tel:+4921483097790"
                   className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white text-white font-medium rounded-md hover:bg-white/10 transition-colors duration-200"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -128,7 +128,7 @@ export default function Home() {
       {/* Contact Section */}
       <section className="section-padding bg-white">
         <div className="container-custom text-center">
-          <Link href="/kontakt" className="btn-primary">
+          <Link href="https://public-footprint.de/kontakt" className="btn-primary">
             Kontakt aufnehmen
           </Link>
         </div>
