@@ -1,6 +1,40 @@
 # Deployment Guide
 
-## Vercel Setup für Multi-Domain Monorepo
+## PM2 on VPS Setup (Current Production)
+
+### Quick Deploy
+
+```bash
+cd ~/projects/publicfootprint
+git pull
+./deploy.sh
+```
+
+The `deploy.sh` script:
+1. Installs dependencies (`npm install`)
+2. Builds Next.js app (`npm run build`)
+3. Reloads PM2 with zero-downtime (`pm2 reload`)
+
+### DNS Setup (Ionos)
+
+Current DNS configuration:
+```
+@    A      217.154.254.102  (VPS IP)
+www  CNAME  public-footprint.de
+```
+
+### PM2 Management
+
+```bash
+pm2 status                    # Show all apps
+pm2 logs publicfootprint -f   # Follow logs
+pm2 monit                     # Live monitoring
+pm2 restart publicfootprint   # Restart app
+```
+
+---
+
+## Alternative: Vercel Setup für Multi-Domain Monorepo
 
 ### Schritt 1: Vercel-Projekt für Main App erstellen
 

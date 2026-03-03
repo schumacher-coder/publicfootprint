@@ -32,14 +32,22 @@ npm run build
 
 ## Deployment
 
-Each app is deployed as separate Vercel project:
-- Main app: publicfootprint.de
-- Reference: reference-footprint.de
+Deployed on VPS with PM2:
+- Main app: https://public-footprint.de
+- Reference: reference-footprint.de (coming soon)
 - etc.
+
+**Deploy command:**
+```bash
+cd ~/projects/publicfootprint
+git pull
+./deploy.sh
+```
 
 ## Tech Stack
 
 - Next.js 14 (App Router)
 - Tailwind CSS
 - React 18
-- Vercel (Hosting)
+- PM2 on VPS (Hosting)
+- Ionos (Domain & DNS)
