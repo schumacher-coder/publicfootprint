@@ -1,6 +1,30 @@
 # Backup & Monitoring Scripts
 
-## Setup
+## 📦 Available Scripts
+
+1. **`backup-content.sh`** - Git-based content backup (daily)
+2. **`monitor-website.sh`** - Website health monitoring (every 5 minutes)
+3. **`install-cronjobs.sh`** - Automated cronjob installation
+
+## 🚀 Quick Setup
+
+### Automatic Installation (Recommended)
+
+```bash
+# On your VPS
+cd /var/www/publicfootprint
+sudo bash scripts/install-cronjobs.sh
+```
+
+This will:
+- ✅ Make scripts executable
+- ✅ Create log files
+- ✅ Install cronjobs
+- ✅ Backup existing crontab
+
+---
+
+## 📱 NTFY Setup
 
 ### 1. NTFY Topic erstellen
 
@@ -55,28 +79,48 @@ ntfy subscribe publicfootprint-monitoring
 
 ### 4. Cron-Job einrichten
 
+**Automatic (use install-cronjobs.sh)** or **Manual:**
+
 ```bash
 # Crontab bearbeiten
 sudo crontab -e
 
-# Hinzufügen (täglich um 2 Uhr nachts):
-0 2 * * * /var/www/publicfootprint/scripts/backup-content.sh
+# Backup: täglich um 3 Uhr nachts
+0 3 * * * /var/www/publicfootprint/scripts/backup-content.sh
 
-# Oder mehrmals täglich (alle 6 Stunden):
-0 */6 * * * /var/www/publicfootprint/scripts/backup-content.sh
-
-# Oder stündlich (für wichtige Sites):
-0 * * * * /var/www/publicfootprint/scripts/backup-content.sh
+# Monitoring: alle 5 Minuten
+*/5 * * * * /var/www/publicfootprint/scripts/monitor-website.sh
 ```
 
-## Notifications
+**Custom schedules:**
+```bash
+# Backup alle 6 Stunden:
+0 */6 * * * /var/www/publicfootprint/scripts/backup-content.sh
 
-Das Script sendet **nur Fehler-Notifications** (keine Erfolgs-Meldungen):
+# Monitoring jede Minute (aggressiv):
+* * * * * /var/www/publicfootprint/scripts/monitor-website.sh
 
-- ❌ **Backup Failed** - Git push fehlgeschlagen
-- ⚠️ **Website Down** - Website nicht erreichbar
+# Monitoring alle 15 Minuten (sparsam):
+*/15 * * * * /var/www/publicfootprint/scripts/monitor-website.sh
+```
 
-**Erfolgreiches Backup** wird nur im Log vermerkt, **keine Notification**.
+## 🔔 Notifications
+
+### Backup Notifications (backup-content.sh)
+**Nur Fehler:**
+- ❌ **Backup Failed** - Git push fehlgeschlagen (priority: high)
+
+### Monitoring Notifications (monitor-website.sh)
+**Smart notifications:**
+- 🚨 **Website Down** - Website nicht erreichbar (priority: urgent) - **nur beim ersten Mal!**
+- ✅ **Website UP again** - Recovery notification - **nur wenn vorher down**
+- ⚠️ **Slow Response** - Response time > 3 seconds (priority: default)
+
+**Anti-Spam:** Notifications werden nur **einmal** gesendet bis sich der Status ändert.
+
+**Monitored Sites:**
+- ✅ `publicfootprint.de`
+- ✅ `public-footprint.de`
 
 ## Anpassungen
 
@@ -104,17 +148,23 @@ Cron: Alle 5 Minuten checken
 */5 * * * * /var/www/publicfootprint/scripts/check-website.sh
 ```
 
-## Logs anschauen
+## 📊 Logs anschauen
 
 ```bash
-# Alle Logs
+# Live monitoring logs
+tail -f /var/log/publicfootprint-monitor.log
+
+# Live backup logs
 tail -f /var/log/publicfootprint-backup.log
 
+# Both logs together
+tail -f /var/log/publicfootprint-*.log
+
 # Nur Fehler
-grep "❌\|ERROR" /var/log/publicfootprint-backup.log
+grep "❌\|ERROR\|DOWN" /var/log/publicfootprint-*.log
 
 # Letzte 50 Zeilen
-tail -50 /var/log/publicfootprint-backup.log
+tail -50 /var/log/publicfootprint-monitor.log
 ```
 
 ## Troubleshooting
